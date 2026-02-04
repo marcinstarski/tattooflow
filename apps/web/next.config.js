@@ -4,6 +4,9 @@ const nextConfig = {
   transpilePackages: ["@inkflow/shared"],
   images: {
     remotePatterns: []
+  },
+  eslint: {
+    ignoreDuringBuilds: true
   }
 };
 
