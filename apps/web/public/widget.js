@@ -91,7 +91,7 @@
         color: #64748b;
       }
     </style>
-    <form id="inkflow-form" class="taflo-widget">
+    <form id="inkflow-form" class="taflo-widget" method="POST">
       <div>
         <h3>Umów konsultację</h3>
         <p>Podaj kontakt, a wrócimy z propozycją terminu.</p>
@@ -115,6 +115,7 @@
         </div>
       </div>
       <input name="company" style="display:none" autocomplete="off" />
+      <input name="orgId" type="hidden" value="${orgId}" />
       <label class="taflo-consent">
         <input type="checkbox" name="marketingOptIn" />
         Chcę otrzymywać informacje marketingowe i akceptuję politykę prywatności.
@@ -122,10 +123,13 @@
       <button type="submit" class="taflo-button">Wyślij zapytanie</button>
       <div id="inkflow-status"></div>
     </form>
+    <iframe id="taflo-iframe" name="taflo-iframe" style="display:none"></iframe>
   `;
 
   const form = target.querySelector("#inkflow-form");
   const status = target.querySelector("#inkflow-status");
+  form.setAttribute("action", `${base}/api/public/lead`);
+  form.setAttribute("target", "taflo-iframe");
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -139,17 +143,28 @@
     delete payload.company;
     payload.marketingOptIn = formData.get("marketingOptIn") === "on";
 
-    const res = await fetch(`${base}/api/public/lead`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-
-    if (res.ok) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+    try {
+      const res = await fetch(`${base}/api/public/lead`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      });
+      clearTimeout(timeout);
+      if (res.ok) {
+        status.textContent = "Dziękujemy! Formularz został wysłany.";
+        form.reset();
+        return;
+      }
+      status.textContent = "Nie udało się wysłać formularza. Spróbuj ponownie.";
+    } catch {
+      clearTimeout(timeout);
+      // Fallback: standard form POST do ukrytego iframe (omija CORS/CSP)
+      form.submit();
       status.textContent = "Dziękujemy! Formularz został wysłany.";
       form.reset();
-    } else {
-      status.textContent = "Nie udało się wysłać formularza. Spróbuj ponownie.";
     }
   });
 })();

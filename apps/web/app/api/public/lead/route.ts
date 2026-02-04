@@ -13,7 +13,14 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Rate limit" }, { status: 429, headers: corsHeaders(origin) });
     }
 
-    const body = await req.json();
+    const contentType = req.headers.get("content-type") || "";
+    const body =
+      contentType.includes("application/json")
+        ? await req.json()
+        : Object.fromEntries((await req.formData()).entries());
+    if (typeof body.marketingOptIn === "string") {
+      body.marketingOptIn = body.marketingOptIn === "on" || body.marketingOptIn === "true";
+    }
     const parsed = leadCreateSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json({ error: "Invalid payload" }, { status: 400, headers: corsHeaders(origin) });
