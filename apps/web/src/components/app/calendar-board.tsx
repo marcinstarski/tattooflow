@@ -165,7 +165,6 @@ export function CalendarBoard() {
           {form.depositRequired && (
             <>
               <Input placeholder="Kwota zadatku" value={form.depositAmount} onChange={(e) => setForm({ ...form, depositAmount: e.target.value })} />
-              <Input placeholder="Termin zadatku (dni przed)" value={form.depositDueDays} onChange={(e) => setForm({ ...form, depositDueDays: e.target.value })} />
             </>
           )}
         </div>

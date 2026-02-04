@@ -39,7 +39,6 @@ export function CalendarFull() {
   const [description, setDescription] = useState("");
   const [depositPaid, setDepositPaid] = useState(false);
   const [depositAmount, setDepositAmount] = useState("200");
-  const [depositDueDays, setDepositDueDays] = useState("7");
   const depositAmountNumber = Number(depositAmount || 0);
 
   const days = useMemo(() => {
@@ -103,7 +102,7 @@ export function CalendarFull() {
     const depositRequired = depositAmountNumber > 0;
     const depositPaidEffective = depositRequired && depositPaid;
     const depositDueAt = depositRequired
-      ? new Date(startsAt.getTime() - Number(depositDueDays || 7) * 24 * 60 * 60 * 1000)
+      ? new Date(startsAt.getTime() - 7 * 24 * 60 * 60 * 1000)
       : undefined;
 
     await fetch("/api/appointments", {
@@ -343,9 +342,8 @@ export function CalendarFull() {
 
           <div className="rounded-xl border border-ink-700 p-3">
             <div className="text-xs text-ink-400">Zadatek</div>
-            <div className="mt-2 grid grid-cols-2 gap-2">
+            <div className="mt-2 grid grid-cols-1 gap-2">
               <Input placeholder="Kwota zadatku" value={depositAmount} onChange={(e) => setDepositAmount(e.target.value)} />
-              <Input placeholder="Termin zadatku (dni przed)" value={depositDueDays} onChange={(e) => setDepositDueDays(e.target.value)} />
             </div>
             <label className="mt-3 flex items-center gap-2 text-xs text-ink-300">
               <input
