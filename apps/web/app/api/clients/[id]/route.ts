@@ -81,7 +81,7 @@ export async function DELETE(req: Request, { params }: { params: { id: string } 
     where: { orgId, clientId: params.id },
     select: { id: true }
   });
-  const appointmentIds = appointments.map((appt) => appt.id);
+  const appointmentIds = appointments.map((appt: { id: string }) => appt.id);
 
   await prisma.$transaction([
     prisma.reminder.deleteMany({ where: { orgId, appointmentId: { in: appointmentIds } } }),
