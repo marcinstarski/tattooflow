@@ -169,7 +169,7 @@ export function MetaConnectCard() {
 
           {error && <div className="text-xs text-red-300">{error}</div>}
 
-          {status.status === "disconnected" && (
+          {(status.status === "disconnected" || (status.hasToken && !status.pageId)) && (
             <Button onClick={startConnect}>Połącz Instagram i Facebook</Button>
           )}
 
