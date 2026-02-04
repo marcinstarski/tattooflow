@@ -28,18 +28,23 @@ export async function POST(req: Request, { params }: { params: { id: string } })
     return NextResponse.json({ error: "Brak leada" }, { status: 404 });
   }
 
-  const client = lead.clientId
+  let client = lead.clientId
     ? await prisma.client.findFirst({ where: { id: lead.clientId, orgId } })
-    : await prisma.client.findFirst({
-        where: {
-          orgId,
-          OR: [
-            lead.email ? { email: lead.email } : undefined,
-            lead.phone ? { phone: lead.phone } : undefined,
-            lead.igHandle ? { igHandle: lead.igHandle } : undefined
-          ].filter((item): item is { email?: string; phone?: string; igHandle?: string } => Boolean(item))
-        }
-      });
+    : null;
+
+  if (!client) {
+    const orConditions: Array<{ email?: string; phone?: string; igHandle?: string }> = [];
+    if (lead.email) orConditions.push({ email: lead.email });
+    if (lead.phone) orConditions.push({ phone: lead.phone });
+    if (lead.igHandle) orConditions.push({ igHandle: lead.igHandle });
+
+    client = await prisma.client.findFirst({
+      where: {
+        orgId,
+        OR: orConditions.length ? orConditions : undefined
+      }
+    });
+  }
 
   if (!client) {
     return NextResponse.json({ error: "Brak powiązanego klienta" }, { status: 400 });
