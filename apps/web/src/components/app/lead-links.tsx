@@ -24,7 +24,7 @@ export function LeadLinks() {
   }
 
   const leadLink = `${origin}/lead/${org.id}`;
-  const widgetSnippet = `<div id=\"inkflow-lead\"></div>\n<script src=\"${origin}/widget.js\" data-org=\"${org.id}\"></script>`;
+  const iframeSnippet = `<iframe src=\"${origin}/lead/${org.id}\" style=\"width:100%;max-width:560px;height:620px;border:0;border-radius:20px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,0.12);background:transparent;\" loading=\"lazy\" title=\"Formularz kontaktowy\"></iframe>`;
 
   return (
     <Card>
@@ -40,10 +40,15 @@ export function LeadLinks() {
           </div>
         </div>
         <div>
-          <div className="text-xs text-ink-500">Widget na stronę</div>
+          <div className="text-xs text-ink-500">Kod do wklejenia na stronę</div>
           <pre className="mt-2 whitespace-pre-wrap rounded-xl border border-ink-700 bg-ink-900/70 p-3 text-xs text-ink-200">
-            {widgetSnippet}
+            {iframeSnippet}
           </pre>
+          <div className="mt-2">
+            <Button variant="secondary" onClick={() => navigator.clipboard.writeText(iframeSnippet)}>
+              Kopiuj kod iframe
+            </Button>
+          </div>
         </div>
       </div>
     </Card>
