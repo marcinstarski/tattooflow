@@ -23,7 +23,8 @@ export async function POST(req: Request) {
   }
 
   const org = await prisma.organization.findUnique({ where: { id: orgId } });
-  const features = planFeatures[org?.plan || "starter"];
+  const planKey = (org?.plan || "starter") as keyof typeof planFeatures;
+  const features = planFeatures[planKey];
   const monthStart = new Date();
   monthStart.setDate(1);
   monthStart.setHours(0, 0, 0, 0);
