@@ -19,7 +19,7 @@ export async function getArtistLimit(orgId: string): Promise<ArtistLimit | null>
   const planKey = org.plan as keyof typeof planFeatures;
   const base = planFeatures[planKey].artists;
   const extra = org.seatSubscriptions
-    .filter((seat) => !inactiveStatuses.has(seat.status))
-    .reduce((sum, seat) => sum + (seat.quantity || 0), 0);
+    .filter((seat: { status: string }) => !inactiveStatuses.has(seat.status))
+    .reduce((sum, seat: { quantity: number | null }) => sum + (seat.quantity || 0), 0);
   return { base, extra, total: base + extra, plan: org.plan };
 }
