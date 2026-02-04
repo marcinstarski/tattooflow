@@ -8,7 +8,7 @@ export async function POST(req: Request) {
   const origin = req.headers.get("origin") || "*";
   try {
     const ip = req.headers.get("x-forwarded-for") || "unknown";
-    const ok = await rateLimit(`rl:lead:${ip}`, 20, 60);
+    const ok = await withTimeout(rateLimit(`rl:lead:${ip}`, 20, 60), 800).catch(() => true);
     if (!ok) {
       return NextResponse.json({ error: "Rate limit" }, { status: 429, headers: corsHeaders(origin) });
     }
@@ -92,4 +92,19 @@ function corsHeaders(origin: string | null) {
     "Access-Control-Max-Age": "86400",
     "Vary": "Origin"
   };
+}
+
+function withTimeout<T>(promise: Promise<T>, ms: number) {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error("timeout")), ms);
+    promise
+      .then((value) => {
+        clearTimeout(timer);
+        resolve(value);
+      })
+      .catch((error) => {
+        clearTimeout(timer);
+        reject(error);
+      });
+  });
 }

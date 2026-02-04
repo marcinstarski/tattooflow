@@ -19,35 +19,44 @@ export function LeadPublicForm({ orgId }: { orgId: string }) {
   const submit = async (event: React.FormEvent) => {
     event.preventDefault();
     setStatus("sending");
-    const res = await fetch("/api/public/lead", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        orgId,
-        name: form.name,
-        email: form.email || undefined,
-        phone: form.phone || undefined,
-        message: form.message || undefined,
-        marketingOptIn: form.marketingOptIn,
-        honeypot: form.honeypot,
-        source: "website"
-      })
-    });
-
-    if (res.ok) {
-      setStatus("success");
-      setForm({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-        marketingOptIn: false,
-        honeypot: "",
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+    try {
+      const res = await fetch("/api/public/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          orgId,
+          name: form.name,
+          email: form.email || undefined,
+          phone: form.phone || undefined,
+          message: form.message || undefined,
+          marketingOptIn: form.marketingOptIn,
+          honeypot: form.honeypot,
+          source: "website"
+        }),
+        signal: controller.signal
       });
-      return;
-    }
+      clearTimeout(timeout);
 
-    setStatus("error");
+      if (res.ok) {
+        setStatus("success");
+        setForm({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+          marketingOptIn: false,
+          honeypot: ""
+        });
+        return;
+      }
+
+      setStatus("error");
+    } catch {
+      clearTimeout(timeout);
+      setStatus("error");
+    }
   };
 
   return (
