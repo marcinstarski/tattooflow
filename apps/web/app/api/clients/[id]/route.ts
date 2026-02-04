@@ -65,8 +65,8 @@ export async function DELETE(req: Request, { params }: { params: { id: string } 
 
   await Promise.all(
     assets
-      .filter((asset) => asset.url.startsWith("/uploads/"))
-      .map(async (asset) => {
+      .filter((asset: { url: string }) => asset.url.startsWith("/uploads/"))
+      .map(async (asset: { url: string }) => {
         const filePath = asset.url.replace("/uploads/", "");
         const absolutePath = path.join(getAppRoot(), "public/uploads", filePath);
         try {
