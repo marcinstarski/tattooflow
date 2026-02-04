@@ -13,6 +13,15 @@ export default function LoginPage() {
   return (
     <main className="min-h-screen bg-ink-900 px-6">
       <div className="mx-auto flex max-w-md flex-col gap-6 py-24">
+        <div className="flex justify-end">
+          <Link
+            href="/"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-ink-700 text-sm text-ink-300 transition hover:bg-ink-800 hover:text-ink-100"
+            aria-label="Powrót na stronę główną"
+          >
+            ×
+          </Link>
+        </div>
         <h1 className="text-3xl font-display">Zaloguj się</h1>
         <div className="space-y-3">
           <Input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
