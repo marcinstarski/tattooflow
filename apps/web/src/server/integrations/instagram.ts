@@ -5,7 +5,7 @@ const graphVersion = env.META_GRAPH_VERSION || "v19.0";
 const graphBase = `https://graph.facebook.com/${graphVersion}`;
 
 const defaultScopes = [
-  "instagram_basic",
+  "instagram_business_basic",
   "instagram_manage_messages",
   "pages_show_list",
   "pages_read_engagement",
