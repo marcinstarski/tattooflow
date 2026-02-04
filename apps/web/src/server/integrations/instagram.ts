@@ -33,6 +33,8 @@ export function buildInstagramAuthUrl(orgId: string, artistId: string) {
   url.searchParams.set("state", state);
   url.searchParams.set("scope", defaultScopes.join(","));
   url.searchParams.set("response_type", "code");
+  url.searchParams.set("auth_type", "rerequest");
+  url.searchParams.set("prompt", "select_account");
   return url.toString();
 }
 
