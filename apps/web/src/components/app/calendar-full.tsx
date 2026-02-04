@@ -339,13 +339,14 @@ export function CalendarFull() {
               value={time}
               onChange={(e) => setTime(e.target.value)}
             >
-              {Array.from({ length: 24 }).map((_, idx) => {
-                const value = `${String(idx).padStart(2, "0")}:00`;
-                return (
+              {Array.from({ length: 24 }).flatMap((_, idx) => {
+                const hour = String(idx).padStart(2, "0");
+                const values = [`${hour}:00`, `${hour}:30`];
+                return values.map((value) => (
                   <option key={value} value={value}>
                     {value}
                   </option>
-                );
+                ));
               })}
             </select>
           </div>
