@@ -22,20 +22,10 @@ export default async function LeadPublicPage({ params }: { params: { orgId: stri
   }
 
   return (
-    <main className="min-h-screen bg-ink-900 px-6 pb-24">
-      <section className="mx-auto max-w-2xl py-16">
+    <main className="min-h-screen bg-transparent px-6 py-10">
+      <section className="mx-auto max-w-xl">
         <div className="rounded-3xl border border-ink-700 bg-ink-900/70 p-8">
-          <div className="text-xs uppercase tracking-[0.2em] text-ink-500">Taflo</div>
-          <h1 className="mt-3 text-3xl font-display">Formularz zgłoszeniowy</h1>
-          <p className="mt-2 text-sm text-ink-300">
-            {org.name} · Odpowiemy możliwie szybko.
-          </p>
-          <div className="mt-6">
-            <LeadPublicForm orgId={params.orgId} />
-          </div>
-        </div>
-        <div className="mt-6 text-xs text-ink-500">
-          Masz pytania? Sprawdź <Link className="text-accent-400" href="/legal/privacy">politykę prywatności</Link>.
+          <LeadPublicForm orgId={params.orgId} />
         </div>
       </section>
     </main>
