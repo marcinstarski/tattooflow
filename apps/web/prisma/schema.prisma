@@ -1,0 +1,491 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum PlanTier {
+  starter
+  pro
+  studio
+}
+
+enum LeadStatus {
+  new
+  contacted
+  booked
+  lost
+}
+
+enum AppointmentStatus {
+  scheduled
+  completed
+  cancelled
+  no_show
+}
+
+enum MessageDirection {
+  inbound
+  outbound
+}
+
+enum ReminderStatus {
+  pending
+  sent
+  failed
+}
+
+enum ReminderType {
+  appointment_48h
+  appointment_24h
+  manual
+  deposit
+  no_reply
+  dunning
+}
+
+enum CampaignStatus {
+  draft
+  scheduled
+  sent
+}
+
+enum CampaignSendStatus {
+  pending
+  sent
+  failed
+  skipped
+}
+
+enum MembershipRole {
+  owner
+  artist
+  reception
+}
+
+enum DepositStatus {
+  none
+  pending
+  paid
+  expired
+}
+
+enum Channel {
+  email
+  sms
+  instagram
+  facebook
+  other
+}
+
+model Organization {
+  id                     String   @id @default(cuid())
+  name                   String
+  timezone               String   @default("Europe/Warsaw")
+  currency               String   @default("PLN")
+  plan                   PlanTier @default(starter)
+  trialEndsAt            DateTime?
+  stripeCustomerId       String?
+  stripeSubscriptionId   String?
+  subscriptionStatus     String?  @default("trialing")
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  memberships            Membership[]
+  artists                Artist[]
+  leads                  Lead[]
+  clients                Client[]
+  appointments           Appointment[]
+  reminders              Reminder[]
+  messages               Message[]
+  campaigns              Campaign[]
+  invoices               Invoice[]
+  billingProfile         BillingProfile?
+  settings               Settings?
+  auditLogs              AuditLog[]
+  outbox                 Outbox[]
+  assets                 ClientAsset[]
+  clientAlbums           ClientAlbum[]
+  artistIntegrations     ArtistIntegration[]
+  seatSubscriptions      SeatSubscription[]
+
+  @@index([plan])
+}
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  passwordHash  String?
+  name          String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  memberships   Membership[]
+  messages      Message[] @relation("UserMessages")
+  auditLogs     AuditLog[] @relation("AuditUser")
+  accounts      Account[]
+  sessions      Session[]
+  artistProfile Artist? @relation("ArtistUser")
+}
+
+model Membership {
+  id        String @id @default(cuid())
+  orgId     String
+  userId    String
+  role      MembershipRole @default(artist)
+  createdAt DateTime @default(now())
+
+  org       Organization @relation(fields: [orgId], references: [id])
+  user      User @relation(fields: [userId], references: [id])
+
+  @@unique([orgId, userId])
+  @@index([orgId])
+}
+
+model Artist {
+  id        String   @id @default(cuid())
+  orgId     String
+  userId    String?  @unique
+  name      String
+  email     String?
+  phone     String?
+  createdAt DateTime @default(now())
+
+  org       Organization @relation(fields: [orgId], references: [id])
+  user      User? @relation("ArtistUser", fields: [userId], references: [id])
+  appointments Appointment[]
+  leads     Lead[]
+  messages  Message[]
+  integration ArtistIntegration?
+
+  @@index([orgId])
+}
+
+model Lead {
+  id          String     @id @default(cuid())
+  orgId       String
+  artistId    String?
+  name        String
+  email       String?
+  phone       String?
+  igHandle    String?
+  source      String     @default("website")
+  status      LeadStatus @default(new)
+  message     String?
+  clientId    String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  org         Organization @relation(fields: [orgId], references: [id])
+  artist      Artist? @relation(fields: [artistId], references: [id])
+  client      Client? @relation(fields: [clientId], references: [id])
+
+  @@index([orgId, status])
+  @@index([orgId, artistId])
+}
+
+model Client {
+  id              String   @id @default(cuid())
+  orgId           String
+  name            String
+  email           String?
+  phone           String?
+  igHandle        String?
+  igUserId        String?
+  fbUserId        String?
+  marketingOptIn  Boolean  @default(false)
+  unsubscribedAt  DateTime?
+  unsubscribeToken String?
+  notes           String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  org             Organization @relation(fields: [orgId], references: [id])
+  appointments    Appointment[]
+  messages        Message[]
+  campaignSends   CampaignSend[]
+  leads           Lead[]
+  assets          ClientAsset[]
+  albums          ClientAlbum[]
+
+  @@index([orgId])
+  @@index([orgId, igUserId])
+  @@index([orgId, fbUserId])
+}
+
+model ArtistIntegration {
+  id                 String   @id @default(cuid())
+  orgId              String
+  artistId           String   @unique
+  status             String   @default("disconnected")
+  userAccessToken    String?
+  userTokenExpiresAt DateTime?
+  pageId             String?
+  pageName           String?
+  pageAccessToken    String?
+  igBusinessAccountId String?
+  connectedAt        DateTime?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  org                Organization @relation(fields: [orgId], references: [id])
+  artist             Artist @relation(fields: [artistId], references: [id])
+
+  @@index([orgId])
+  @@index([pageId])
+  @@index([igBusinessAccountId])
+}
+
+model Appointment {
+  id              String   @id @default(cuid())
+  orgId           String
+  clientId        String
+  artistId        String
+  startsAt        DateTime
+  endsAt          DateTime
+  description     String?
+  price           Int?
+  status          AppointmentStatus @default(scheduled)
+  depositRequired Boolean @default(false)
+  depositAmount   Int?
+  depositDueAt    DateTime?
+  depositStatus   DepositStatus @default(none)
+  depositPaidAt   DateTime?
+  depositLink     String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  org             Organization @relation(fields: [orgId], references: [id])
+  client          Client @relation(fields: [clientId], references: [id])
+  artist          Artist @relation(fields: [artistId], references: [id])
+  reminders       Reminder[]
+
+  @@index([orgId, startsAt])
+}
+
+model Reminder {
+  id            String   @id @default(cuid())
+  orgId         String
+  appointmentId String?
+  type          ReminderType
+  channel       Channel
+  sendAt        DateTime
+  status        ReminderStatus @default(pending)
+  sentAt        DateTime?
+  error         String?
+  createdAt     DateTime @default(now())
+
+  org           Organization @relation(fields: [orgId], references: [id])
+  appointment   Appointment? @relation(fields: [appointmentId], references: [id])
+
+  @@index([orgId, sendAt])
+}
+
+model Message {
+  id            String   @id @default(cuid())
+  orgId         String
+  clientId      String
+  artistId      String?
+  userId        String?
+  direction     MessageDirection
+  channel       Channel
+  body          String
+  externalId    String?
+  createdAt     DateTime @default(now())
+
+  org           Organization @relation(fields: [orgId], references: [id])
+  client        Client @relation(fields: [clientId], references: [id])
+  artist        Artist? @relation(fields: [artistId], references: [id])
+  user          User? @relation("UserMessages", fields: [userId], references: [id])
+
+  @@index([orgId, createdAt])
+}
+
+model Campaign {
+  id          String   @id @default(cuid())
+  orgId       String
+  name        String
+  channel     Channel
+  subject     String?
+  body        String
+  status      CampaignStatus @default(draft)
+  sendAt      DateTime?
+  onlyOptIn   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  org         Organization @relation(fields: [orgId], references: [id])
+  sends       CampaignSend[]
+
+  @@index([orgId, status])
+}
+
+model CampaignSend {
+  id          String   @id @default(cuid())
+  campaignId  String
+  clientId    String
+  status      CampaignSendStatus @default(pending)
+  error       String?
+  sentAt      DateTime?
+
+  campaign    Campaign @relation(fields: [campaignId], references: [id])
+  client      Client @relation(fields: [clientId], references: [id])
+
+  @@index([campaignId])
+}
+
+model BillingProfile {
+  id          String   @id @default(cuid())
+  orgId       String   @unique
+  companyName String
+  taxId       String?
+  address     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  org         Organization @relation(fields: [orgId], references: [id])
+}
+
+model Invoice {
+  id             String   @id @default(cuid())
+  orgId          String
+  number         String
+  amount         Int
+  currency       String @default("PLN")
+  status         String @default("issued")
+  stripeInvoiceId String?
+  pdfUrl         String?
+  issuedAt       DateTime @default(now())
+  createdAt      DateTime @default(now())
+
+  org            Organization @relation(fields: [orgId], references: [id])
+
+  @@index([orgId, issuedAt])
+}
+
+model SeatSubscription {
+  id                    String   @id @default(cuid())
+  orgId                 String
+  stripeSubscriptionId  String   @unique
+  status                String   @default("active")
+  quantity              Int      @default(1)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  org                   Organization @relation(fields: [orgId], references: [id])
+
+  @@index([orgId, status])
+}
+
+model Settings {
+  id              String   @id @default(cuid())
+  orgId           String   @unique
+  depositType     String   @default("fixed")
+  depositValue    Int      @default(0)
+  depositDueDays  Int      @default(7)
+  templateReminder String  @default("Hej {{clientName}}, przypomnienie o wizycie {{appointmentDate}}.")
+  templateDeposit  String  @default("Cześć:) Podsyłam tutaj link do zadatku na naszą sesję: {{depositLink}}")
+  templateFollowUp String  @default("Czy mamy wrócić do tematu tatuażu?")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  org             Organization @relation(fields: [orgId], references: [id])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  orgId     String
+  actorId   String?
+  action    String
+  entity    String
+  entityId  String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  org       Organization @relation(fields: [orgId], references: [id])
+  actor     User? @relation("AuditUser", fields: [actorId], references: [id])
+
+  @@index([orgId, createdAt])
+}
+
+model Outbox {
+  id        String   @id @default(cuid())
+  orgId     String
+  channel   Channel
+  to        String
+  subject   String?
+  body      String
+  status    String   @default("queued")
+  createdAt DateTime @default(now())
+
+  org       Organization @relation(fields: [orgId], references: [id])
+}
+
+model ClientAsset {
+  id        String   @id @default(cuid())
+  orgId     String
+  clientId  String
+  albumId   String?
+  url       String
+  note      String?
+  source    String   @default("client")
+  createdAt DateTime @default(now())
+
+  org       Organization @relation(fields: [orgId], references: [id])
+  client    Client @relation(fields: [clientId], references: [id])
+  album     ClientAlbum? @relation(fields: [albumId], references: [id])
+
+  @@index([orgId, clientId])
+}
+
+model ClientAlbum {
+  id        String   @id @default(cuid())
+  orgId     String
+  clientId  String
+  name      String
+  createdAt DateTime @default(now())
+
+  org       Organization @relation(fields: [orgId], references: [id])
+  client    Client @relation(fields: [clientId], references: [id])
+  assets    ClientAsset[]
+
+  @@index([orgId, clientId])
+}
+
+// NextAuth models
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?
+  access_token       String?
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}

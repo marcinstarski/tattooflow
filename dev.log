@@ -1,0 +1,2531 @@
+
+> inkflow-crm@ dev /Users/marcinpikul/Documents/New project
+> pnpm --filter web dev
+
+
+> web@0.1.0 dev /Users/marcinpikul/Documents/New project/apps/web
+> next dev
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+  - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 1927ms
+ ○ Compiling / ...
+ ✓ Compiled / in 2.6s (539 modules)
+ ✓ Compiled in 115ms (265 modules)
+ GET / 200 in 1433ms
+ ✓ Compiled /auth/login in 286ms (599 modules)
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /api/auth/[...nextauth] in 692ms (608 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /api/auth/providers 200 in 1471ms
+ GET /api/auth/providers 200 in 6ms
+ GET /api/auth/providers 200 in 5ms
+ GET /api/auth/providers 200 in 5ms
+ GET /api/auth/csrf 200 in 7ms
+ GET /api/auth/csrf 200 in 6ms
+ GET /api/auth/csrf 200 in 9ms
+ GET /api/auth/csrf 200 in 7ms
+ POST /api/auth/callback/credentials 200 in 337ms
+ POST /api/auth/callback/credentials 200 in 365ms
+ POST /api/auth/callback/credentials 200 in 360ms
+ POST /api/auth/callback/credentials 200 in 348ms
+ ✓ Compiled /app in 231ms (921 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /app 200 in 307ms
+ GET /api/auth/providers 200 in 13ms
+ POST /api/auth/_log 200 in 6ms
+ ✓ Compiled /api/appointments in 137ms (653 modules)
+ ✓ Compiled (945 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /api/leads 200 in 813ms
+ GET /api/appointments 200 in 808ms
+ GET /api/leads 200 in 11ms
+ GET /api/appointments 200 in 11ms
+ ✓ Compiled /app/clients in 289ms (1252 modules)
+ ✓ Compiled /api/clients in 127ms (952 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /api/clients 200 in 168ms
+ GET /api/clients 200 in 6ms
+ ✓ Compiled /app/clients/[id] in 302ms (1264 modules)
+ ✓ Compiled /api/clients/[id] in 161ms (960 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 429ms
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 6ms
+ ✓ Compiled /api/appointments/[id]/ics in 213ms (962 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /api/appointments/cml60p67h000c4n8dja17a466/ics 200 in 487ms
+ ✓ Compiled in 334ms (320 modules)
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 36ms
+ ✓ Compiled in 154ms (320 modules)
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 11ms
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 8ms
+ ✓ Compiled in 160ms (320 modules)
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 13ms
+ ✓ Compiled /api/clients/[id] in 471ms (935 modules)
+ ✓ Compiled in 0ms (644 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 472ms
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 764ms
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 18ms
+ GET /app/clients/cml60p67e00084n8domcbol49 200 in 110ms
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 24ms
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 12ms
+ ✓ Compiled /api/clients/[id]/assets/upload in 270ms (647 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ POST /api/clients/cml60p67e00084n8domcbol49/assets/upload 200 in 688ms
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 12ms
+ ✓ Compiled /_not-found in 276ms (956 modules)
+ GET /uploads/cml60p67200004n8dkoijgmmt/cml60p67e00084n8domcbol49/1770091338797-a1ee7dc91064.png 404 in 309ms
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /app/clients/cml60p67e00084n8domcbol49 200 in 79ms
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 30ms
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 10ms
+ GET /uploads/cml60p67200004n8dkoijgmmt/cml60p67e00084n8domcbol49/1770091338797-a1ee7dc91064.png 404 in 20ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 58ms
+ ✓ Compiled in 658ms (938 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 187ms
+ ✓ Compiled in 99ms (321 modules)
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 9ms
+ GET /app/clients/cml60p67e00084n8domcbol49 200 in 87ms
+ ✓ Compiled /api/clients/[id] in 219ms (644 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 442ms
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 11ms
+ ✓ Compiled /_not-found in 236ms (646 modules)
+ GET /uploads/cml60p67200004n8dkoijgmmt/cml60p67e00084n8domcbol49/1770091338797-a1ee7dc91064.png 404 in 296ms
+ ✓ Compiled /api/clients/[id]/assets/upload in 498ms (649 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 48ms
+ POST /api/clients/cml60p67e00084n8domcbol49/assets/upload 200 in 670ms
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 27ms
+ GET /uploads/cml60p67200004n8dkoijgmmt/cml60p67e00084n8domcbol49/1770091338797-a1ee7dc91064.png 404 in 118ms
+ ✓ Compiled in 599ms (970 modules)
+ ✓ Compiled in 0ms (649 modules)
+ ✓ Compiled in 0ms (649 modules)
+ ✓ Compiled in 0ms (649 modules)
+ GET /uploads/cml60p67200004n8dkoijgmmt/cml60p67e00084n8domcbol49/1770091338797-a1ee7dc91064.png 404 in 499ms
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 427ms
+ GET /app/clients/cml60p67e00084n8domcbol49 200 in 55ms
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 86ms
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 14ms
+ GET /uploads/cml60p67200004n8dkoijgmmt/cml60p67e00084n8domcbol49/1770091338797-a1ee7dc91064.png 404 in 28ms
+ ✓ Compiled in 1208ms (967 modules)
+ ✓ Compiled in 0ms (646 modules)
+ ✓ Compiled in 0ms (646 modules)
+ ✓ Compiled in 0ms (646 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 634ms
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 483ms
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 13ms
+ GET /uploads/cml60p67200004n8dkoijgmmt/cml60p67e00084n8domcbol49/1770091338797-a1ee7dc91064.png 404 in 28ms
+ GET /uploads/cml60p67200004n8dkoijgmmt/cml60p67e00084n8domcbol49/1770091338797-a1ee7dc91064.png 404 in 41ms
+ ✓ Compiled /api/clients/[id]/assets/[assetId] in 428ms (649 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ DELETE /api/clients/cml60p67e00084n8domcbol49/assets/cml62oi7r0001bz4qaoimr5ye 200 in 822ms
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 16ms
+ ✓ Compiled in 362ms (970 modules)
+ ✓ Compiled in 1ms (649 modules)
+ ✓ Compiled in 1ms (649 modules)
+ ✓ Compiled in 0ms (649 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 401ms
+ ✓ Compiled in 1ms (649 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 426ms
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /api/clients/cml60p67e00084n8domcbol49 200 in 240ms
+ ✓ Compiled in 398ms (936 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 166ms
+ ✓ Compiled in 142ms (321 modules)
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 25ms
+ ✓ Compiled in 180ms (321 modules)
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 18ms
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 9ms
+ ✓ Compiled in 130ms (321 modules)
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 17ms
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 26ms
+ ✓ Compiled in 187ms (321 modules)
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 10ms
+ ✓ Compiled /api/clients/[id] in 623ms (936 modules)
+ ✓ Compiled in 0ms (644 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 696ms
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 19ms
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 938ms
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 14ms
+ ✓ Compiled /app/clients in 223ms (649 modules)
+ ✓ Compiled /api/clients in 120ms (651 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /api/clients 200 in 183ms
+ GET /api/clients 200 in 4ms
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 14ms
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 10ms
+ GET /app/clients/cml60p67e00084n8domcbol49 200 in 97ms
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 17ms
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 42ms
+ GET /api/clients 200 in 35ms
+ GET /api/clients 200 in 7ms
+ ✓ Compiled /api/appointments in 161ms (658 modules)
+ ✓ Compiled (950 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /api/appointments 200 in 526ms
+ GET /api/appointments 200 in 7ms
+ GET /api/leads 200 in 554ms
+ GET /api/leads 200 in 4ms
+ GET /app 200 in 64ms
+ GET /api/leads 200 in 8ms
+ GET /api/appointments 200 in 10ms
+ GET /api/leads 200 in 7ms
+ GET /api/appointments 200 in 8ms
+ GET /api/clients 200 in 42ms
+ GET /api/clients 200 in 7ms
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 13ms
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 6ms
+ GET /api/clients 200 in 10ms
+ GET /api/clients 200 in 11ms
+ GET /app/clients 200 in 50ms
+ GET /api/clients 200 in 31ms
+ GET /api/clients 200 in 9ms
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 21ms
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 10ms
+ GET /api/clients 200 in 26ms
+ GET /api/clients 200 in 11ms
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 30ms
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 8ms
+ GET /api/clients 200 in 17ms
+ GET /api/clients 200 in 26ms
+ GET /app/clients 200 in 37ms
+ GET /api/clients 200 in 43ms
+ GET /api/clients 200 in 5ms
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 16ms
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 14ms
+ ✓ Compiled in 582ms (972 modules)
+ ✓ Compiled in 0ms (651 modules)
+ ✓ Compiled in 0ms (651 modules)
+ ✓ Compiled in 0ms (651 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 484ms
+ ✓ Compiled in 1ms (651 modules)
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /app/clients/cml60p67e00084n8domcbol49?_rsc=1m4dh 200 in 487ms
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 311ms
+ GET /api/clients 200 in 43ms
+ GET /api/clients 200 in 17ms
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 11ms
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 5ms
+ GET /api/clients 200 in 21ms
+ GET /api/clients 200 in 87ms
+ GET /app/clients 200 in 111ms
+ GET /api/clients 200 in 18ms
+ GET /api/clients 200 in 8ms
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 15ms
+prisma:error 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+ ⨯ PrismaClientValidationError: 
+Invalid `prisma.client.findFirst()` invocation:
+
+{
+  where: {
+    id: "cml60p67e00084n8domcbol49",
+    orgId: "cml60p67200004n8dkoijgmmt"
+  },
+  include: {
+    appointments: {
+      include: {
+        artist: true
+      },
+      orderBy: {
+        startsAt: "desc"
+      }
+    },
+    messages: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    assets: {
+      orderBy: {
+        createdAt: "desc"
+      }
+    },
+    albums: {
+    ~~~~~~
+      orderBy: {
+        createdAt: "asc"
+      }
+    },
+?   org?: true,
+?   campaignSends?: true,
+?   leads?: true
+  }
+}
+
+Unknown field `albums` for include statement on model `Client`. Available options are marked with ?.
+    at wn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at $n.handleRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6958)
+    at $n.handleAndLogRequestError (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/@prisma+client@5.22.0_prisma@5.22.0/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async GET (webpack-internal:///(rsc)/./app/api/clients/[id]/route.ts:39:20)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1576:40)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:818:17)
+    at async /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/start-server.js:141:13) {
+  clientVersion: '5.22.0'
+}
+ GET /api/clients/cml60p67e00084n8domcbol49 500 in 6ms
+ ✓ Compiled /_not-found in 419ms (653 modules)
+ ⨯ TypeError: Cannot read properties of undefined (reading 'clientModules')
+    at /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:40:25679
+    at /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/trace/tracer.js:191:62
+    at /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/trace/tracer.js:140:36
+    at NoopContextManager.with (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/trace/tracer.js:122:103
+    at NoopContextManager.with (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NextTracerImpl.trace (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/trace/tracer.js:122:28)
+    at /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/lib/trace/tracer.js:191:31
+    at ne (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/next-server/app-page.runtime.dev.js:42:1678)
+    at async doRender (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1427:30)
+    at async cacheEntry.responseCache.get.routeKind (/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/base-server.js:1588:28)
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 847ms (1186 modules)
+ GET /api/clients 500 in 2450ms
+[next-auth][warn][DEBUG_ENABLED] 
+https://next-auth.js.org/warnings#debug_enabled
+ GET /app/clients?_rsc=vp5a1 200 in 685ms
+ GET /api/clients 404 in 227ms
+ GET /app/clients?_rsc=vp5a1 200 in 51ms
+ GET /_next/static/css/app/layout.css?v=1770092235036 404 in 9ms
+ GET /app/clients 200 in 24ms
+ GET /_next/static/css/app/layout.css?v=1770092235124 404 in 18ms
+ GET /_next/static/chunks/main-app.js?v=1770092235124 404 in 26ms
+ GET /_next/static/chunks/app/error.js 404 in 26ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 26ms
+ GET /_next/static/chunks/app/app/clients/page.js 404 in 28ms
+ GET /_next/static/chunks/app/app/layout.js 404 in 27ms
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, lstat '/Users/marcinpikul/Documents/New project/apps/web/.next/server/app/api/leads'
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving './vendor-chunks/clsx@2.1.1' in /Users/marcinpikul/Documents/New project/apps/web/.next/server for build dependencies doesn't lead to expected result '/Users/marcinpikul/Documents/New project/apps/web/.next/server/vendor-chunks/clsx@2.1.1.js', but to 'Error: Can't resolve './vendor-chunks/clsx@2.1.1' in '/Users/marcinpikul/Documents/New project/apps/web/.next/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ./vendor-chunks/clsx@2.1.1 (expected /Users/marcinpikul/Documents/New project/apps/web/.next/server/vendor-chunks/clsx@2.1.1.js)
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/apps/web/.next/server/webpack-runtime.js
+<w>  at file /Users/marcinpikul/Documents/New project/apps/web/.next/server/webpack-runtime.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/apps/web/.next/server/app/_not-found/page.js
+<w>  at file /Users/marcinpikul/Documents/New project/apps/web/.next/server/app/_not-found/page.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/require.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/utils.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/handle-externals.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/handle-externals.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at resolve commonjs /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../../../../apps/web/.next/server/app/api/leads/route' in /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server for build dependencies doesn't lead to expected result '/Users/marcinpikul/Documents/New project/apps/web/.next/server/app/api/leads/route.js', but to 'Error: Can't resolve '../../../../../../../apps/web/.next/server/app/api/leads/route' in '/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../../../../apps/web/.next/server/app/api/leads/route (expected /Users/marcinpikul/Documents/New project/apps/web/.next/server/app/api/leads/route.js)
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/require.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/utils.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/handle-externals.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/handle-externals.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at resolve commonjs /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../../../../apps/web/.next/server/app/api/appointments/route' in /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server for build dependencies doesn't lead to expected result '/Users/marcinpikul/Documents/New project/apps/web/.next/server/app/api/appointments/route.js', but to 'Error: Can't resolve '../../../../../../../apps/web/.next/server/app/api/appointments/route' in '/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../../../../apps/web/.next/server/app/api/appointments/route (expected /Users/marcinpikul/Documents/New project/apps/web/.next/server/app/api/appointments/route.js)
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/require.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/utils.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/handle-externals.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/handle-externals.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at resolve commonjs /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../../../../apps/web/.next/server/app/api/appointments/[id]/ics/route' in /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server for build dependencies doesn't lead to expected result '/Users/marcinpikul/Documents/New project/apps/web/.next/server/app/api/appointments/[id]/ics/route.js', but to 'Error: Can't resolve '../../../../../../../apps/web/.next/server/app/api/appointments/[id]/ics/route' in '/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../../../../apps/web/.next/server/app/api/appointments/[id]/ics/route (expected /Users/marcinpikul/Documents/New project/apps/web/.next/server/app/api/appointments/[id]/ics/route.js)
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/require.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/utils.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/handle-externals.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/handle-externals.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at resolve commonjs /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+ ✓ Compiled / in 335ms (701 modules)
+ GET / 200 in 432ms
+ GET /_next/static/css/app/layout.css?v=1770092241043 404 in 19ms
+ GET /_next/static/chunks/app/error.js 404 in 19ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 20ms
+ GET /_next/static/chunks/app/not-found.js 404 in 20ms
+ GET /_next/static/chunks/main-app.js?v=1770092241043 404 in 20ms
+ GET / 200 in 57ms
+ GET /_next/static/css/app/layout.css?v=1770092265254 404 in 22ms
+ GET /_next/static/media/13971731025ec697-s.p.woff2 404 in 37ms
+ GET /_next/static/media/982ceffe7b733b3b-s.p.woff2 404 in 33ms
+ GET /_next/static/chunks/main-app.js?v=1770092265254 404 in 33ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 32ms
+ GET /_next/static/chunks/app/not-found.js 404 in 31ms
+ GET /_next/static/chunks/app/error.js 404 in 14ms
+ GET / 200 in 55ms
+ GET /_next/static/css/app/layout.css?v=1770092268179 404 in 32ms
+ GET /_next/static/media/982ceffe7b733b3b-s.p.woff2 404 in 36ms
+ GET /_next/static/media/13971731025ec697-s.p.woff2 404 in 38ms
+ GET /_next/static/chunks/main-app.js?v=1770092268179 404 in 34ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 34ms
+ GET /_next/static/chunks/app/not-found.js 404 in 17ms
+ GET /_next/static/chunks/app/error.js 404 in 13ms
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, lstat '/Users/marcinpikul/Documents/New project/apps/web/.next/server/app/api/leads'
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../../../../apps/web/.next/server/app/api/leads/route' in /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server for build dependencies doesn't lead to expected result '/Users/marcinpikul/Documents/New project/apps/web/.next/server/app/api/leads/route.js', but to 'Error: Can't resolve '../../../../../../../apps/web/.next/server/app/api/leads/route' in '/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../../../../apps/web/.next/server/app/api/leads/route (expected /Users/marcinpikul/Documents/New project/apps/web/.next/server/app/api/leads/route.js)
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/require.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/utils.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at resolve commonjs /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../../../../apps/web/.next/server/app/api/appointments/route' in /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server for build dependencies doesn't lead to expected result '/Users/marcinpikul/Documents/New project/apps/web/.next/server/app/api/appointments/route.js', but to 'Error: Can't resolve '../../../../../../../apps/web/.next/server/app/api/appointments/route' in '/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../../../../apps/web/.next/server/app/api/appointments/route (expected /Users/marcinpikul/Documents/New project/apps/web/.next/server/app/api/appointments/route.js)
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/require.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/utils.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at resolve commonjs /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../../../../apps/web/.next/server/app/api/appointments/[id]/ics/route' in /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server for build dependencies doesn't lead to expected result '/Users/marcinpikul/Documents/New project/apps/web/.next/server/app/api/appointments/[id]/ics/route.js', but to 'Error: Can't resolve '../../../../../../../apps/web/.next/server/app/api/appointments/[id]/ics/route' in '/Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../../../../apps/web/.next/server/app/api/appointments/[id]/ics/route (expected /Users/marcinpikul/Documents/New project/apps/web/.next/server/app/api/appointments/[id]/ics/route.js)
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/require.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/utils.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at file /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+<w>  at resolve commonjs /Users/marcinpikul/Documents/New project/node_modules/.pnpm/next@14.2.35_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+ GET / 200 in 54ms
+ GET /_next/static/media/13971731025ec697-s.p.woff2 404 in 15ms
+ GET /_next/static/css/app/layout.css?v=1770092326853 404 in 20ms
+ GET /_next/static/media/982ceffe7b733b3b-s.p.woff2 404 in 31ms
+ GET /_next/static/chunks/main-app.js?v=1770092326853 404 in 28ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 28ms
+ GET /_next/static/chunks/app/not-found.js 404 in 27ms
+ GET /_next/static/chunks/app/error.js 404 in 27ms

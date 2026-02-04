@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  @apply bg-ink-900 text-ink-100 font-sans;
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(255, 90, 60, 0.25), transparent 45%),
+    radial-gradient(circle at 80% 20%, rgba(138, 255, 193, 0.18), transparent 40%),
+    radial-gradient(circle at 30% 80%, rgba(96, 96, 122, 0.2), transparent 50%);
+}
+
+a {
+  @apply text-ink-100;
+}
