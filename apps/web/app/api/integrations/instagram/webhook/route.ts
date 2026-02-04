@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/server/db";
 import { env } from "@/server/env";
 import { verifyInstagramSignature } from "@/server/integrations/instagram";
-import type { Prisma } from "@prisma/client";
 
 type InstagramAttachment = { payload?: { url?: string } | null };
 type InstagramMessage = { mid?: string; text?: string; attachments?: InstagramAttachment[] };
@@ -60,7 +59,7 @@ export async function POST(req: Request) {
 
       if (!senderId) continue;
 
-      const conditions: Prisma.ArtistIntegrationWhereInput[] = [];
+      const conditions: Array<{ igBusinessAccountId?: string; pageId?: string }> = [];
       if (recipientId) {
         conditions.push({ igBusinessAccountId: recipientId });
         conditions.push({ pageId: recipientId });
