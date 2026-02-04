@@ -129,6 +129,9 @@
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    if (status) {
+      status.textContent = "Wysyłanie...";
+    }
     const formData = new FormData(form);
     const payload = Object.fromEntries(formData.entries());
     payload.orgId = orgId;
@@ -143,10 +146,10 @@
     });
 
     if (res.ok) {
-      status.textContent = "Dziękujemy! Wrócimy do Ciebie z terminem.";
+      status.textContent = "Dziękujemy! Formularz został wysłany.";
       form.reset();
     } else {
-      status.textContent = "Nie udało się wysłać. Spróbuj ponownie.";
+      status.textContent = "Nie udało się wysłać formularza. Spróbuj ponownie.";
     }
   });
 })();
