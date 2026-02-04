@@ -35,7 +35,6 @@ export function CalendarFull() {
   const [newClientMode, setNewClientMode] = useState(false);
   const [newClient, setNewClient] = useState({ name: "", email: "", phone: "", igHandle: "" });
   const [time, setTime] = useState("10:00");
-  const [duration, setDuration] = useState("2");
   const [description, setDescription] = useState("");
   const [depositPaid, setDepositPaid] = useState(false);
   const [depositAmount, setDepositAmount] = useState("200");
@@ -98,7 +97,7 @@ export function CalendarFull() {
     const startsAt = new Date(
       `${format(selectedDate, "yyyy-MM-dd")}T${time}:00`
     );
-    const endsAt = new Date(startsAt.getTime() + Number(duration || 2) * 60 * 60 * 1000);
+    const endsAt = new Date(startsAt.getTime() + 2 * 60 * 60 * 1000);
     const depositRequired = depositAmountNumber > 0;
     const depositPaidEffective = depositRequired && depositPaid;
     const depositDueAt = depositRequired
@@ -334,9 +333,21 @@ export function CalendarFull() {
             </select>
           )}
 
-          <div className="grid grid-cols-2 gap-2">
-            <Input type="time" value={time} onChange={(e) => setTime(e.target.value)} />
-            <Input placeholder="Czas (h)" value={duration} onChange={(e) => setDuration(e.target.value)} />
+          <div className="grid grid-cols-1 gap-2">
+            <select
+              className="w-full rounded-xl border border-ink-700 bg-ink-900/70 px-4 py-2 text-sm"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+            >
+              {Array.from({ length: 24 }).map((_, idx) => {
+                const value = `${String(idx).padStart(2, "0")}:00`;
+                return (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                );
+              })}
+            </select>
           </div>
           <Input placeholder="Opis" value={description} onChange={(e) => setDescription(e.target.value)} />
 

@@ -28,7 +28,6 @@ type FormState = {
   artistId: string;
   date: string;
   time: string;
-  durationHours: string;
   price: string;
   description: string;
   depositRequired: boolean;
@@ -41,7 +40,6 @@ const emptyForm: FormState = {
   artistId: "",
   date: "",
   time: "",
-  durationHours: "2",
   price: "",
   description: "",
   depositRequired: false,
@@ -81,7 +79,7 @@ export function CalendarBoard() {
   const createAppointment = async () => {
     if (!form.clientId || !form.artistId || !form.date || !form.time) return;
     const startsAt = new Date(`${form.date}T${form.time}:00`);
-    const endsAt = new Date(startsAt.getTime() + Number(form.durationHours || 2) * 60 * 60 * 1000);
+    const endsAt = new Date(startsAt.getTime() + 2 * 60 * 60 * 1000);
     const depositDueAt = form.depositRequired
       ? new Date(startsAt.getTime() - Number(form.depositDueDays || 7) * 24 * 60 * 60 * 1000)
       : undefined;
@@ -150,8 +148,21 @@ export function CalendarBoard() {
             ))}
           </select>
           <Input type="date" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })} />
-          <Input type="time" value={form.time} onChange={(e) => setForm({ ...form, time: e.target.value })} />
-          <Input placeholder="Czas (h)" value={form.durationHours} onChange={(e) => setForm({ ...form, durationHours: e.target.value })} />
+          <select
+            className="w-full rounded-xl border border-ink-700 bg-ink-900/70 px-4 py-2 text-sm"
+            value={form.time}
+            onChange={(e) => setForm({ ...form, time: e.target.value })}
+          >
+            <option value="">Wybierz godzinę</option>
+            {Array.from({ length: 24 }).map((_, idx) => {
+              const value = `${String(idx).padStart(2, "0")}:00`;
+              return (
+                <option key={value} value={value}>
+                  {value}
+                </option>
+              );
+            })}
+          </select>
           <Input placeholder="Cena (PLN)" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} />
           <Input placeholder="Opis" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
           <label className="flex items-center gap-2 text-xs text-ink-300">
