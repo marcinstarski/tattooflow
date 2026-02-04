@@ -26,8 +26,8 @@ export const authOptions: NextAuthOptions = {
         await resend.emails.send({
           from: env.EMAIL_FROM,
           to: identifier,
-          subject: "InkFlow: magic link do logowania",
-          html: `<p>Użyj linku, aby zalogować się do InkFlow:</p><p><a href="${url}">${url}</a></p>`
+          subject: "Taflo: magic link do logowania",
+          html: `<p>Użyj linku, aby zalogować się do Taflo:</p><p><a href="${url}">${url}</a></p>`
         });
       }
     }),

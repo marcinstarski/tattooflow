@@ -41,7 +41,7 @@ export async function POST(req: Request) {
     if (!to) {
       return NextResponse.json({ error: "Brak adresu email" }, { status: 400 });
     }
-    const subject = parsed.data.subject || `InkFlow: wiadomość od ${client.name}`;
+    const subject = parsed.data.subject || `Taflo: wiadomość od ${client.name}`;
     await sendEmail({
       orgId,
       to,

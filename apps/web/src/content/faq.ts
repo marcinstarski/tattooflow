@@ -1,6 +1,6 @@
 export const faqs = [
   {
-    q: "Czy mogę używać InkFlow bez strony?",
+    q: "Czy mogę używać Taflo bez strony?",
     a: "Tak. Możesz zbierać leady z Instagrama i Facebooka oraz ręcznie dodawać klientów."
   },
   {
@@ -8,7 +8,7 @@ export const faqs = [
     a: "Tak. Automatyczne przypomnienia 48h i 24h przed wizytą oraz ręczne SMS-y."
   },
   {
-    q: "Czy InkFlow wystawia faktury?",
+    q: "Czy Taflo wystawia faktury?",
     a: "Dostajesz prosty rachunek/proformę oraz link do faktury online."
   }
 ];

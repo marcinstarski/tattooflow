@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 export function Navbar() {
   return (
     <div className="flex items-center justify-between py-6">
-      <Link href="/" className="text-xl font-display tracking-tight">InkFlow</Link>
+      <Link href="/" className="text-xl font-display tracking-tight">Taflo</Link>
       <nav className="hidden items-center gap-6 text-sm md:flex">
         <Link href="/pricing">Cennik</Link>
         <Link href="/demo">Demo</Link>

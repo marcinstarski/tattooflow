@@ -19,7 +19,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-ink-900">
       <div className="flex">
         <aside className="hidden w-64 border-r border-ink-800 bg-ink-900/80 p-6 lg:block">
-          <div className="text-lg font-display">InkFlow</div>
+          <div className="text-lg font-display">Taflo</div>
           <div className="mt-8 flex flex-col gap-3 text-sm text-ink-300">
             {nav.map((item) => (
               <Link key={item.href} href={item.href} className="rounded-lg px-3 py-2 hover:bg-ink-800">

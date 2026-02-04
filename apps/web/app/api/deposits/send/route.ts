@@ -113,7 +113,7 @@ export async function POST(req: Request) {
     await sendEmail({
       orgId,
       to,
-      subject: "InkFlow: link do zadatku",
+      subject: "Taflo: link do zadatku",
       html: `<p>${body}</p>`
     });
   }

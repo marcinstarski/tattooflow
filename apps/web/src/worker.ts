@@ -92,7 +92,7 @@ new Worker(
             await sendEmail({
               orgId: org.id,
               to: owner.user.email,
-              subject: "InkFlow: brak odpowiedzi 24h",
+              subject: "Taflo: brak odpowiedzi 24h",
               html: `<p>${text}</p>`
             });
           }
@@ -227,7 +227,7 @@ new Worker(
         await sendEmail({
           orgId: org.id,
           to: owner.user.email,
-          subject: "InkFlow: problem z płatnością",
+          subject: "Taflo: problem z płatnością",
           html: "<p>Twoja płatność nie przeszła. Zaktualizuj metodę płatności.</p>"
         });
       }

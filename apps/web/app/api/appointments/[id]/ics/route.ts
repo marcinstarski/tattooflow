@@ -18,7 +18,7 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
   const ics = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//InkFlow//CRM//PL",
+    "PRODID:-//Taflo//CRM//PL",
     "BEGIN:VEVENT",
     `UID:${appointment.id}`,
     `DTSTAMP:${toICSDate(new Date())}`,

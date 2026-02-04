@@ -25,7 +25,7 @@ export default async function LeadPublicPage({ params }: { params: { orgId: stri
     <main className="min-h-screen bg-ink-900 px-6 pb-24">
       <section className="mx-auto max-w-2xl py-16">
         <div className="rounded-3xl border border-ink-700 bg-ink-900/70 p-8">
-          <div className="text-xs uppercase tracking-[0.2em] text-ink-500">InkFlow</div>
+          <div className="text-xs uppercase tracking-[0.2em] text-ink-500">Taflo</div>
           <h1 className="mt-3 text-3xl font-display">Formularz zgłoszeniowy</h1>
           <p className="mt-2 text-sm text-ink-300">
             {org.name} · Odpowiemy możliwie szybko.

@@ -29,7 +29,7 @@ export async function POST(req: Request, { params }: { params: { id: string } })
     if (!lead.email) {
       return NextResponse.json({ error: "Lead nie ma emaila" }, { status: 400 });
     }
-    const subject = parsed.data.subject || `InkFlow: kontakt w sprawie tatuażu`;
+    const subject = parsed.data.subject || `Taflo: kontakt w sprawie tatuażu`;
     await sendEmail({
       orgId,
       to: lead.email,

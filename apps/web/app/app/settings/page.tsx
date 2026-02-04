@@ -121,7 +121,7 @@ export default function SettingsPage() {
         <div className="grid gap-4 md:grid-cols-2">
           <div>
             <label className="text-sm">Nazwa studia</label>
-            <Input placeholder="InkFlow Tattoo" value={studioName} onChange={(e) => setStudioName(e.target.value)} />
+            <Input placeholder="Taflo Tattoo" value={studioName} onChange={(e) => setStudioName(e.target.value)} />
           </div>
           <div>
             <label className="text-sm">Telefon do SMS</label>
