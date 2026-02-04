@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { prisma } from "@/server/db";
 import { LeadPublicForm } from "@/components/public/lead-public-form";
 
@@ -7,15 +6,12 @@ export default async function LeadPublicPage({ params }: { params: { orgId: stri
 
   if (!org) {
     return (
-      <main className="min-h-screen bg-ink-900 px-6 pb-24">
-        <section className="mx-auto max-w-2xl py-16 text-ink-200">
-          <h1 className="text-3xl font-display">Nie znaleziono studia</h1>
+      <main className="min-h-screen bg-transparent px-6 py-10">
+        <section className="mx-auto max-w-xl text-ink-200">
+          <h1 className="text-2xl font-display">Nie znaleziono studia</h1>
           <p className="mt-3 text-sm text-ink-400">
             Sprawdź, czy link jest poprawny albo skontaktuj się bezpośrednio ze studiem.
           </p>
-          <div className="mt-6">
-            <Link className="text-accent-400" href="/">Wróć na stronę główną</Link>
-          </div>
         </section>
       </main>
     );
