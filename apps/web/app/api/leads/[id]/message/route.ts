@@ -37,7 +37,7 @@ export async function POST(req: Request, { params }: { params: { id: string } })
             lead.email ? { email: lead.email } : undefined,
             lead.phone ? { phone: lead.phone } : undefined,
             lead.igHandle ? { igHandle: lead.igHandle } : undefined
-          ].filter(Boolean) as Array<Record<string, string>>
+          ].filter((item): item is { email?: string; phone?: string; igHandle?: string } => Boolean(item))
         }
       });
 
