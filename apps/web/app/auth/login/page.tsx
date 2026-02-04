@@ -28,13 +28,6 @@ export default function LoginPage() {
           >
             Zaloguj
           </Button>
-          <Button
-            variant="secondary"
-            className="w-full"
-            onClick={() => signIn("email", { email, callbackUrl: "/app" })}
-          >
-            Wyślij magic link
-          </Button>
         </div>
         <p className="text-sm text-ink-300">
           Nie masz konta? <Link href="/auth/register" className="text-accent-400">Zarejestruj się</Link>
