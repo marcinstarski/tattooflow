@@ -209,7 +209,7 @@ export default function DemoPage() {
                 <div className="rounded-xl border border-ink-700 bg-ink-900/50 p-4 text-sm">
                   <div className="text-xs text-ink-400">Wątek: {selectedThread.name}</div>
                   <div className="mt-3 space-y-3">
-                    {selectedThread.messages.map((msg: DemoMessage) => (
+                    {selectedThread.messages.map((msg) => (
                       <div
                         key={msg.id}
                         className={`max-w-[80%] rounded-2xl border p-3 text-xs ${
