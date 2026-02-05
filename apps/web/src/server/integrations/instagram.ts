@@ -122,11 +122,57 @@ export async function fetchInstagramPages(userAccessToken: string) {
     throw new Error(data?.error?.message || "Nie udało się pobrać listy stron");
   }
 
-  return (data?.data || []) as Array<{
+  const directPages = (data?.data || []) as Array<{
     id: string;
     name: string;
     instagram_business_account?: { id: string } | null;
   }>;
+
+  if (directPages.length > 0 || !env.META_APP_ID || !env.META_APP_SECRET) {
+    return directPages;
+  }
+
+  const appAccessToken = `${env.META_APP_ID}|${env.META_APP_SECRET}`;
+  const debugUrl = new URL(`${graphBase}/debug_token`);
+  debugUrl.searchParams.set("input_token", userAccessToken);
+  debugUrl.searchParams.set("access_token", appAccessToken);
+
+  const debugRes = await fetch(debugUrl.toString());
+  const debugData = await debugRes.json().catch(() => ({}));
+  const granular = (debugData?.data?.granular_scopes || []) as Array<{
+    scope: string;
+    target_ids?: string[];
+  }>;
+
+  const pageIds = granular
+    .filter((item) => item.scope === "pages_show_list")
+    .flatMap((item) => item.target_ids || []);
+
+  if (pageIds.length === 0) {
+    return [];
+  }
+
+  const pages = await Promise.all(
+    pageIds.map(async (pageId) => {
+      const pageUrl = new URL(`${graphBase}/${pageId}`);
+      pageUrl.searchParams.set("fields", "id,name,instagram_business_account");
+      pageUrl.searchParams.set("access_token", userAccessToken);
+      const pageRes = await fetch(pageUrl.toString());
+      const pageData = await pageRes.json().catch(() => ({}));
+      if (!pageRes.ok) return null;
+      return pageData as {
+        id: string;
+        name: string;
+        instagram_business_account?: { id: string } | null;
+      };
+    })
+  );
+
+  return pages.filter((page): page is {
+    id: string;
+    name: string;
+    instagram_business_account?: { id: string } | null;
+  } => Boolean(page));
 }
 
 export async function fetchInstagramPageDetails(pageId: string, userAccessToken: string) {
