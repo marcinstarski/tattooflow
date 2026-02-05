@@ -96,12 +96,13 @@ export function MetaConnectCard() {
     if (!status) return "--";
     if (!status.configured) return "Nieaktywne";
     if (status.status === "connected") return "Połączono";
-    if (status.hasToken && !status.pageId) return "Wybierz stronę";
+    if (status.hasToken && (!status.pageId || !status.igBusinessAccountId)) return "Wybierz stronę";
     return "Rozłączono";
   })();
 
   const facebookConnected = Boolean(status?.pageId);
   const instagramConnected = Boolean(status?.igBusinessAccountId);
+  const needsPageSelection = Boolean(status?.hasToken && (!status?.pageId || !status?.igBusinessAccountId));
 
   return (
     <Card>
@@ -169,11 +170,11 @@ export function MetaConnectCard() {
 
           {error && <div className="text-xs text-red-300">{error}</div>}
 
-          {(status.status === "disconnected" || (status.hasToken && !status.pageId)) && (
+          {(status.status === "disconnected" || needsPageSelection) && (
             <Button onClick={startConnect}>Połącz Instagram i Facebook</Button>
           )}
 
-          {status.hasToken && !status.pageId && (
+          {needsPageSelection && (
             <div className="space-y-2">
               <div className="text-xs text-ink-400">Wybierz stronę Facebook</div>
               <div className="grid gap-2 md:grid-cols-2">
