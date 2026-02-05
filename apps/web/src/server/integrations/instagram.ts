@@ -7,6 +7,7 @@ const graphBase = `https://graph.facebook.com/${graphVersion}`;
 const defaultScopes = [
   "instagram_manage_messages",
   "pages_show_list",
+  "pages_read_engagement",
   "pages_manage_metadata",
   "pages_messaging"
 ];
