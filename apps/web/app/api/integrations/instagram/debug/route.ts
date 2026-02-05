@@ -33,21 +33,27 @@ export async function GET() {
   meUrl.searchParams.set("fields", "id,name");
   meUrl.searchParams.set("access_token", integration.userAccessToken);
 
-  const [debugRes, meRes, accountsRes] = await Promise.all([
+  const permissionsUrl = new URL(`${graphBase}/me/permissions`);
+  permissionsUrl.searchParams.set("access_token", integration.userAccessToken);
+
+  const [debugRes, meRes, accountsRes, permissionsRes] = await Promise.all([
     fetch(debugUrl.toString()),
     fetch(meUrl.toString()),
-    fetch(accountsUrl.toString())
+    fetch(accountsUrl.toString()),
+    fetch(permissionsUrl.toString())
   ]);
 
-  const [debugData, meData, accountsData] = await Promise.all([
+  const [debugData, meData, accountsData, permissionsData] = await Promise.all([
     debugRes.json().catch(() => ({})),
     meRes.json().catch(() => ({})),
-    accountsRes.json().catch(() => ({}))
+    accountsRes.json().catch(() => ({})),
+    permissionsRes.json().catch(() => ({}))
   ]);
 
   return NextResponse.json({
     debug: debugData,
     me: meData,
-    accounts: accountsData
+    accounts: accountsData,
+    permissions: permissionsData
   });
 }
