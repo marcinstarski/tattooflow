@@ -159,8 +159,29 @@ export async function fetchInstagramPages(userAccessToken: string) {
       pageUrl.searchParams.set("access_token", userAccessToken);
       const pageRes = await fetch(pageUrl.toString());
       const pageData = await pageRes.json().catch(() => ({}));
-      if (!pageRes.ok) return null;
-      return pageData as {
+      if (pageRes.ok) {
+        return pageData as {
+          id: string;
+          name: string;
+          instagram_business_account?: { id: string } | null;
+        };
+      }
+      const publicUrl = new URL(`${graphBase}/${pageId}`);
+      publicUrl.searchParams.set("fields", "id,name");
+      publicUrl.searchParams.set("access_token", appAccessToken);
+      const publicRes = await fetch(publicUrl.toString());
+      const publicData = await publicRes.json().catch(() => ({}));
+      if (!publicRes.ok) {
+        return { id: pageId, name: `Strona ${pageId}` } as {
+          id: string;
+          name: string;
+          instagram_business_account?: { id: string } | null;
+        };
+      }
+      return {
+        id: publicData.id || pageId,
+        name: publicData.name || `Strona ${pageId}`
+      } as {
         id: string;
         name: string;
         instagram_business_account?: { id: string } | null;
