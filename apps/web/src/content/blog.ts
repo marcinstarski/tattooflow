@@ -8,7 +8,7 @@ export const blogPosts = [
       "Zadatek buduje zaangażowanie i filtruje niezdecydowanych.",
       "Ustal jasną politykę: kwota, termin i sposób płatności.",
       "Wysyłaj przypomnienia 48h i 24h przed terminem płatności.",
-      "W Taflo możesz automatycznie generować link do zadatku i śledzić status." 
+      "W TaFlo możesz automatycznie generować link do zadatku i śledzić status." 
     ]
   },
   {

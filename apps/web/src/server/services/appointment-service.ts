@@ -60,30 +60,23 @@ export async function createAppointment(params: {
 }
 
 export async function scheduleAppointmentReminders(appointmentId: string, orgId: string, startsAt: Date) {
-  const reminder48h = subHours(startsAt, 48);
   const reminder24h = subHours(startsAt, 24);
 
-  const reminderRecords = await prisma.reminder.createMany({
-    data: [
-      {
-        orgId,
-        appointmentId,
-        type: "appointment_48h",
-        channel: "sms",
-        sendAt: reminder48h
-      },
-      {
-        orgId,
-        appointmentId,
-        type: "appointment_24h",
-        channel: "sms",
-        sendAt: reminder24h
-      }
-    ]
+  const reminderRecord = await prisma.reminder.create({
+    data: {
+      orgId,
+      appointmentId,
+      type: "appointment_24h",
+      channel: "sms",
+      sendAt: reminder24h
+    }
   });
 
-  await reminderQueue.add("appointment_reminder", { appointmentId, orgId }, { delay: Math.max(0, reminder48h.getTime() - Date.now()) });
-  await reminderQueue.add("appointment_reminder", { appointmentId, orgId }, { delay: Math.max(0, reminder24h.getTime() - Date.now()) });
+  await reminderQueue.add(
+    "appointment_reminder",
+    { appointmentId, orgId },
+    { delay: Math.max(0, reminder24h.getTime() - Date.now()) }
+  );
 
-  return reminderRecords;
+  return reminderRecord;
 }

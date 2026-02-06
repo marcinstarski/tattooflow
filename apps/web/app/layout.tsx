@@ -6,11 +6,11 @@ const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-sans" });
 const archivo = Archivo_Black({ subsets: ["latin"], weight: "400", variable: "--font-display" });
 
 export const metadata: Metadata = {
-  title: "Taflo CRM – CRM dla tatuatorów",
+  title: "TaFlo CRM – CRM dla tatuatorów",
   description: "CRM dla studiów tatuażu: leady, kalendarz, zadatki, automatyzacje i marketing.",
   metadataBase: new URL("https://example.com"),
   openGraph: {
-    title: "Taflo CRM",
+    title: "TaFlo CRM",
     description: "SaaS CRM dla tatuatorów.",
     type: "website"
   }

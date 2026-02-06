@@ -35,7 +35,7 @@ export default function LandingPage() {
         <div className="space-y-6">
           <Badge className="border-accent-500 text-accent-400">CRM dla tatuatorów</Badge>
           <h1 className="text-4xl font-display leading-tight md:text-6xl">
-            Taflo pomaga domykać więcej klientów na tatuaż.
+            TaFlo pomaga domykać więcej klientów na tatuaż.
           </h1>
           <p className="text-lg text-ink-200">
             Leady, kalendarz, zadatki, automatyzacje i marketing w jednym miejscu. Zbudowane z myślą o studiach tatuażu.

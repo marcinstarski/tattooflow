@@ -32,6 +32,7 @@ new Worker(
       where: {
         orgId,
         appointmentId,
+        type: "appointment_24h",
         status: "pending",
         sendAt: { lte: new Date() }
       }
@@ -45,19 +46,16 @@ new Worker(
 
       if (appointment.client.phone) {
         await sendSms({ orgId, to: appointment.client.phone, body });
-      } else if (appointment.client.email) {
-        await sendEmail({
-          orgId,
-          to: appointment.client.email,
-          subject: "Przypomnienie o wizycie",
-          html: `<p>${body}</p>`
+        await prisma.reminder.update({
+          where: { id: reminder.id },
+          data: { status: "sent", sentAt: new Date() }
+        });
+      } else {
+        await prisma.reminder.update({
+          where: { id: reminder.id },
+          data: { status: "skipped", sentAt: new Date() }
         });
       }
-
-      await prisma.reminder.update({
-        where: { id: reminder.id },
-        data: { status: "sent", sentAt: new Date() }
-      });
     }
   },
   { connection }
@@ -92,7 +90,7 @@ new Worker(
             await sendEmail({
               orgId: org.id,
               to: owner.user.email,
-              subject: "Taflo: brak odpowiedzi 24h",
+              subject: "TaFlo: brak odpowiedzi 24h",
               html: `<p>${text}</p>`
             });
           }
@@ -227,7 +225,7 @@ new Worker(
         await sendEmail({
           orgId: org.id,
           to: owner.user.email,
-          subject: "Taflo: problem z płatnością",
+          subject: "TaFlo: problem z płatnością",
           html: "<p>Twoja płatność nie przeszła. Zaktualizuj metodę płatności.</p>"
         });
       }

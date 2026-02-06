@@ -47,7 +47,7 @@ export async function POST(req: Request) {
     if (!client.email) {
       return NextResponse.json({ error: "Brak adresu email klienta" }, { status: 400 });
     }
-    const subject = `Taflo: wiadomość od ${client.name}`;
+    const subject = `TaFlo: wiadomość od ${client.name}`;
     await sendEmail({
       orgId,
       to: client.email,

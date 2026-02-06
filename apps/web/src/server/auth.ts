@@ -26,8 +26,8 @@ export const authOptions: NextAuthOptions = {
         await resend.emails.send({
           from: env.EMAIL_FROM,
           to: identifier,
-          subject: "Taflo: magic link do logowania",
-          html: `<p>Użyj linku, aby zalogować się do Taflo:</p><p><a href="${url}">${url}</a></p>`
+          subject: "TaFlo: magic link do logowania",
+          html: `<p>Użyj linku, aby zalogować się do TaFlo:</p><p><a href="${url}">${url}</a></p>`
         });
       }
     }),
