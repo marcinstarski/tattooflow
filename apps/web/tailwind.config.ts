@@ -17,9 +17,9 @@ const config: Config = {
           100: "#e5e5f0"
         },
         accent: {
-          600: "#e94b3c",
-          500: "#ff5a3c",
-          400: "#ff7a63"
+          600: "#28c7ff",
+          500: "#5a7dff",
+          400: "#b24bff"
         },
         neon: {
           500: "#8affc1"
@@ -30,7 +30,7 @@ const config: Config = {
         sans: ["'DM Sans'", "ui-sans-serif", "system-ui"]
       },
       boxShadow: {
-        glow: "0 0 40px rgba(255, 90, 60, 0.35)",
+        glow: "0 0 40px rgba(90, 125, 255, 0.35)",
         soft: "0 20px 60px rgba(5, 5, 15, 0.35)"
       }
     }
