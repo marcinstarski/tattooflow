@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+import Image from "next/image";
 
 export default function RegisterPage() {
   const [email, setEmail] = useState("");
@@ -28,6 +29,16 @@ export default function RegisterPage() {
   return (
     <main className="min-h-screen bg-ink-900 px-6">
       <div className="mx-auto flex max-w-md flex-col gap-6 py-24">
+        <div className="flex items-center justify-between">
+          <Image src="/logo.png" alt="TaFlo" width={140} height={46} className="h-9 w-auto" />
+          <Link
+            href="/"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-ink-700 text-sm text-ink-300 transition hover:bg-ink-800 hover:text-ink-100"
+            aria-label="Powrót na stronę główną"
+          >
+            ×
+          </Link>
+        </div>
         <h1 className="text-3xl font-display">Załóż konto</h1>
         <div className="space-y-3">
           <Input placeholder="Nazwa studia" value={studioName} onChange={(e) => setStudioName(e.target.value)} />
