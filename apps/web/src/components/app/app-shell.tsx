@@ -21,7 +21,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <div className="flex">
         <aside className="hidden w-64 border-r border-ink-800 bg-ink-900/80 p-6 lg:block">
           <div className="flex items-center gap-3">
-            <Image src="/talfologo.png" alt="TaFlo" width={120} height={40} className="h-8 w-auto" />
+            <Image src="/taflologo.png" alt="TaFlo" width={120} height={40} className="h-8 w-auto" />
             <span className="sr-only">TaFlo</span>
           </div>
           <div className="mt-8 flex flex-col gap-3 text-sm text-ink-300">
@@ -38,7 +38,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             <div className="hidden text-xs text-ink-400 lg:block">Plan: Trial</div>
             <div className="flex flex-col gap-3 lg:hidden">
               <div className="flex items-center justify-between">
-                <Image src="/talfologo.png" alt="TaFlo" width={120} height={40} className="h-8 w-auto" />
+                <Image src="/taflologo.png" alt="TaFlo" width={120} height={40} className="h-8 w-auto" />
                 <span className="text-xs text-ink-400">Plan: Trial</span>
               </div>
               <div className="text-xs text-ink-500">Strefa: Europe/Warsaw · Waluta: PLN</div>
