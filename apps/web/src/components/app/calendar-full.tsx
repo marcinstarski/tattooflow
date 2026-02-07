@@ -30,6 +30,7 @@ export function CalendarFull() {
   const [artists, setArtists] = useState<Artist[]>([]);
   const [clients, setClients] = useState<Client[]>([]);
   const [appointments, setAppointments] = useState<Appointment[]>([]);
+  const [selectedAppointmentId, setSelectedAppointmentId] = useState<string | null>(null);
   const [artistId, setArtistId] = useState("");
   const [clientId, setClientId] = useState("");
   const [newClientMode, setNewClientMode] = useState(false);
@@ -39,6 +40,10 @@ export function CalendarFull() {
   const [depositPaid, setDepositPaid] = useState(false);
   const [depositAmount, setDepositAmount] = useState("200");
   const depositAmountNumber = Number(depositAmount || 0);
+  const [editDate, setEditDate] = useState("");
+  const [editTime, setEditTime] = useState("");
+  const [editDescription, setEditDescription] = useState("");
+  const [editDepositPaid, setEditDepositPaid] = useState(false);
 
   const days = useMemo(() => {
     const start = startOfWeek(startOfMonth(currentMonth), { weekStartsOn: 1 });
@@ -139,6 +144,24 @@ export function CalendarFull() {
 
   const selectedKey = format(selectedDate, "yyyy-MM-dd");
   const selectedDayAppointments = appointmentsByDay[selectedKey] || [];
+  const selectedAppointment = selectedAppointmentId
+    ? appointments.find((appt) => appt.id === selectedAppointmentId) || null
+    : null;
+
+  useEffect(() => {
+    if (!selectedAppointment) {
+      setEditDate("");
+      setEditTime("");
+      setEditDescription("");
+      setEditDepositPaid(false);
+      return;
+    }
+    const start = new Date(selectedAppointment.startsAt);
+    setEditDate(format(start, "yyyy-MM-dd"));
+    setEditTime(format(start, "HH:mm"));
+    setEditDescription(selectedAppointment.description || "");
+    setEditDepositPaid(selectedAppointment.depositStatus === "paid");
+  }, [selectedAppointmentId]);
 
   const toggleDepositPaid = async (appt: Appointment) => {
     const isPaid = appt.depositStatus === "paid";
@@ -153,6 +176,39 @@ export function CalendarFull() {
         depositPaidAt: shouldBePaid ? new Date().toISOString() : null
       })
     });
+    await load();
+  };
+
+  const selectAppointment = (appt: Appointment) => {
+    setSelectedAppointmentId(appt.id);
+  };
+
+  const updateAppointment = async () => {
+    if (!selectedAppointment || !editDate || !editTime) return;
+    const previousStart = new Date(selectedAppointment.startsAt);
+    const previousEnd = new Date(selectedAppointment.endsAt);
+    const durationMs = previousEnd.getTime() - previousStart.getTime();
+    const nextStart = new Date(`${editDate}T${editTime}:00`);
+    const nextEnd = new Date(nextStart.getTime() + Math.max(durationMs, 30 * 60 * 1000));
+
+    await fetch(`/api/appointments/${selectedAppointment.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        startsAt: nextStart.toISOString(),
+        endsAt: nextEnd.toISOString(),
+        description: editDescription || null,
+        depositStatus: editDepositPaid ? "paid" : "pending",
+        depositPaidAt: editDepositPaid ? new Date().toISOString() : null
+      })
+    });
+    await load();
+  };
+
+  const deleteAppointment = async () => {
+    if (!selectedAppointment) return;
+    await fetch(`/api/appointments/${selectedAppointment.id}`, { method: "DELETE" });
+    setSelectedAppointmentId(null);
     await load();
   };
 
@@ -215,7 +271,8 @@ export function CalendarFull() {
                 <div key={day} className="text-center">{day}</div>
               ))}
             </div>
-            <div className="mt-2 grid grid-cols-7 gap-2">
+            <div className="mt-2 overflow-x-auto">
+              <div className="grid min-w-[720px] grid-cols-7 gap-2">
               {days.map((day) => {
                 const key = format(day, "yyyy-MM-dd");
                 const isSelected = isSameDay(day, selectedDate);
@@ -239,12 +296,22 @@ export function CalendarFull() {
                     <div className="font-semibold">{format(day, "d")}</div>
                     <div className="mt-1 space-y-1">
                       {dayAppointments.slice(0, 2).map((appt) => (
-                        <div key={appt.id} className="rounded-md border border-ink-700 px-2 py-1 text-[11px]">
+                        <button
+                          key={appt.id}
+                          type="button"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            selectAppointment(appt);
+                          }}
+                          className={`w-full rounded-md border px-2 py-1 text-left text-[11px] ${
+                            selectedAppointmentId === appt.id ? "border-accent-500/70 bg-ink-800/70" : "border-ink-700"
+                          }`}
+                        >
                           {format(new Date(appt.startsAt), "HH:mm")} · {appt.client.name}
                           <div className="text-[10px] text-ink-400">
                             Zadatek: {appt.depositStatus === "paid" ? "tak" : "nie"}
                           </div>
-                        </div>
+                        </button>
                       ))}
                       {dayAppointments.length > 2 && (
                         <div className="text-[11px] text-ink-400">+{dayAppointments.length - 2} więcej</div>
@@ -253,10 +320,12 @@ export function CalendarFull() {
                   </div>
                 );
               })}
+              </div>
             </div>
           </>
         ) : (
-          <div className="mt-4 grid gap-3 md:grid-cols-7">
+          <>
+            <div className="mt-4 grid gap-3 md:grid-cols-7">
             {weekDays.map((day) => {
               const key = format(day, "yyyy-MM-dd");
               const isSelected = isSameDay(day, selectedDate);
@@ -274,19 +343,58 @@ export function CalendarFull() {
                   <div className="mt-2 space-y-2">
                     {dayAppointments.length === 0 && <div className="text-ink-500">Brak wizyt</div>}
                     {dayAppointments.map((appt) => (
-                      <div key={appt.id} className="rounded-lg border border-ink-700 px-2 py-1">
+                      <button
+                        key={appt.id}
+                        type="button"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          selectAppointment(appt);
+                        }}
+                        className={`w-full rounded-lg border px-2 py-1 text-left ${
+                          selectedAppointmentId === appt.id ? "border-accent-500/70 bg-ink-800/70" : "border-ink-700"
+                        }`}
+                      >
                         <div className="font-semibold">{format(new Date(appt.startsAt), "HH:mm")}</div>
                         <div className="text-ink-400">{appt.client.name}</div>
                         <div className="text-[10px] text-ink-400">
                           Zadatek: {appt.depositStatus === "paid" ? "tak" : "nie"}
                         </div>
-                      </div>
+                      </button>
                     ))}
                   </div>
                 </div>
               );
             })}
-          </div>
+            </div>
+            <div className="mt-4 space-y-3 md:hidden">
+              {weekDays.map((day) => {
+                const key = format(day, "yyyy-MM-dd");
+                const dayAppointments = appointmentsByDay[key] || [];
+                return (
+                  <div key={key} className="rounded-xl border border-ink-700 p-3">
+                    <div className="text-xs text-ink-400">{format(day, "EEEE", { locale: pl })}</div>
+                    <div className="text-sm font-semibold text-ink-100">{format(day, "dd.MM", { locale: pl })}</div>
+                    <div className="mt-2 space-y-2">
+                      {dayAppointments.length === 0 && <div className="text-xs text-ink-500">Brak wizyt</div>}
+                      {dayAppointments.map((appt) => (
+                        <button
+                          key={appt.id}
+                          type="button"
+                          onClick={() => selectAppointment(appt)}
+                          className={`w-full rounded-lg border px-3 py-2 text-left text-sm ${
+                            selectedAppointmentId === appt.id ? "border-accent-500/70 bg-ink-800/70" : "border-ink-700"
+                          }`}
+                        >
+                          <div className="font-semibold">{format(new Date(appt.startsAt), "HH:mm")}</div>
+                          <div className="text-ink-400">{appt.client.name}</div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </>
         )}
       </Card>
 
@@ -389,13 +497,77 @@ export function CalendarFull() {
                   {format(new Date(appt.startsAt), "HH:mm")} · {appt.artist.name}
                 </div>
               </div>
-              <Button variant="secondary" onClick={() => toggleDepositPaid(appt)}>
-                Zadatek: {appt.depositStatus === "paid" ? "tak" : "nie"}
-              </Button>
+              <div className="flex gap-2">
+                <Button variant="secondary" onClick={() => selectAppointment(appt)}>
+                  Edytuj
+                </Button>
+                <Button variant="secondary" onClick={() => toggleDepositPaid(appt)}>
+                  Zadatek: {appt.depositStatus === "paid" ? "tak" : "nie"}
+                </Button>
+              </div>
             </div>
           ))}
         </div>
       </Card>
+
+      {selectedAppointment && (
+        <Card>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <div className="text-xs text-ink-400">Edytuj wizytę</div>
+              <div className="text-sm font-semibold">{selectedAppointment.client.name}</div>
+              <div className="text-xs text-ink-500">{selectedAppointment.artist.name}</div>
+            </div>
+            <button
+              type="button"
+              className="text-xs text-ink-400"
+              onClick={() => setSelectedAppointmentId(null)}
+            >
+              Zamknij
+            </button>
+          </div>
+          <div className="mt-4 grid gap-2 text-sm md:grid-cols-2">
+            <Input type="date" value={editDate} onChange={(e) => setEditDate(e.target.value)} />
+            <select
+              className="w-full rounded-xl border border-ink-700 bg-ink-900/70 px-4 py-2 text-sm"
+              value={editTime}
+              onChange={(e) => setEditTime(e.target.value)}
+            >
+              {Array.from({ length: 24 }).flatMap((_, idx) => {
+                const hour = String(idx).padStart(2, "0");
+                const values = [`${hour}:00`, `${hour}:30`];
+                return values.map((value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ));
+              })}
+            </select>
+            <Input
+              placeholder="Opis"
+              value={editDescription}
+              onChange={(e) => setEditDescription(e.target.value)}
+            />
+            <label className="flex items-center gap-2 text-xs text-ink-300">
+              <input
+                type="checkbox"
+                checked={editDepositPaid}
+                onChange={(e) => setEditDepositPaid(e.target.checked)}
+              />
+              Wpłacony zadatek
+            </label>
+          </div>
+          <div className="mt-4 flex flex-wrap justify-end gap-2">
+            <Button variant="secondary" onClick={updateAppointment}>Zapisz zmiany</Button>
+            <Button
+              className="bg-red-500/20 text-red-100 hover:bg-red-500/30"
+              onClick={deleteAppointment}
+            >
+              Usuń wizytę
+            </Button>
+          </div>
+        </Card>
+      )}
     </div>
   );
 }

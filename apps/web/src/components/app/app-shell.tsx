@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ReactNode } from "react";
 
 const nav = [
@@ -19,7 +20,10 @@ export function AppShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-ink-900">
       <div className="flex">
         <aside className="hidden w-64 border-r border-ink-800 bg-ink-900/80 p-6 lg:block">
-          <div className="text-lg font-display">TaFlo</div>
+          <div className="flex items-center gap-3">
+            <Image src="/logo.png" alt="TaFlo" width={120} height={40} className="h-8 w-auto" />
+            <span className="sr-only">TaFlo</span>
+          </div>
           <div className="mt-8 flex flex-col gap-3 text-sm text-ink-300">
             {nav.map((item) => (
               <Link key={item.href} href={item.href} className="rounded-lg px-3 py-2 hover:bg-ink-800">
@@ -28,10 +32,30 @@ export function AppShell({ children }: { children: ReactNode }) {
             ))}
           </div>
         </aside>
-        <main className="flex-1 p-6 lg:p-10">
-          <div className="mb-6 flex items-center justify-between">
-            <div className="text-sm text-ink-300">Strefa: Europe/Warsaw · Waluta: PLN</div>
-            <div className="text-xs text-ink-400">Plan: Trial</div>
+        <main className="flex-1 p-4 sm:p-6 lg:p-10">
+          <div className="mb-6 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+            <div className="hidden text-sm text-ink-300 lg:block">Strefa: Europe/Warsaw · Waluta: PLN</div>
+            <div className="hidden text-xs text-ink-400 lg:block">Plan: Trial</div>
+            <div className="flex flex-col gap-3 lg:hidden">
+              <div className="flex items-center justify-between">
+                <Image src="/logo.png" alt="TaFlo" width={120} height={40} className="h-8 w-auto" />
+                <span className="text-xs text-ink-400">Plan: Trial</span>
+              </div>
+              <div className="text-xs text-ink-500">Strefa: Europe/Warsaw · Waluta: PLN</div>
+              <div className="-mx-4 overflow-x-auto px-4">
+                <div className="flex gap-2">
+                  {nav.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="whitespace-nowrap rounded-full border border-ink-700 px-3 py-1.5 text-xs text-ink-200"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
           {children}
         </main>
