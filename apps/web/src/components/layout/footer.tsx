@@ -7,7 +7,7 @@ export function Footer() {
       <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div>
           <div className="flex items-center gap-3">
-            <Image src="/logo.png" alt="TaFlo" width={140} height={46} className="h-8 w-auto" />
+            <Image src="/talfologo.png" alt="TaFlo" width={140} height={46} className="h-8 w-auto" />
             <span className="sr-only">TaFlo</span>
           </div>
           <p className="mt-2 max-w-md text-xs text-ink-300">
