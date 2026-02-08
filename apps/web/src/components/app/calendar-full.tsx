@@ -291,7 +291,7 @@ export function CalendarFull() {
                         setSelectedDate(day);
                       }
                     }}
-                    className={`min-h-[96px] rounded-xl border px-2 py-2 text-left text-xs transition ${
+                    className={`min-h-[96px] min-w-0 overflow-hidden rounded-xl border px-2 py-2 text-left text-xs transition ${
                       isSelected ? "border-accent-500 bg-ink-800/80" : "border-ink-700 bg-ink-900/40"
                     } ${isSameMonth(day, currentMonth) ? "text-ink-100" : "text-ink-500"}`}
                   >
@@ -305,11 +305,13 @@ export function CalendarFull() {
                             event.stopPropagation();
                             selectAppointment(appt);
                           }}
-                          className={`w-full rounded-md border px-2 py-1 text-left text-[11px] ${
+                          className={`w-full min-w-0 rounded-md border px-2 py-1 text-left text-[11px] ${
                             selectedAppointmentId === appt.id ? "border-accent-500/70 bg-ink-800/70" : "border-ink-700"
                           }`}
                         >
-                          {format(new Date(appt.startsAt), "HH:mm")} · {appt.client.name}
+                          <div className="truncate">
+                            {format(new Date(appt.startsAt), "HH:mm")} · {appt.client.name}
+                          </div>
                           <div className="text-[10px] text-ink-400">
                             Zadatek: {appt.depositStatus === "paid" ? "tak" : "nie"}
                           </div>
@@ -327,7 +329,7 @@ export function CalendarFull() {
           </>
         ) : (
           <>
-            <div className="mt-4 grid gap-3 md:grid-cols-7">
+            <div className="mt-4 hidden gap-3 md:grid md:grid-cols-7">
             {weekDays.map((day) => {
               const key = format(day, "yyyy-MM-dd");
               const isSelected = isSameDay(day, selectedDate);
