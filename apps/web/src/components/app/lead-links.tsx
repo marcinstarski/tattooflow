@@ -32,8 +32,8 @@ export function LeadLinks() {
       <div className="mt-3 space-y-4">
         <div>
           <div className="text-xs text-ink-500">Link do formularza</div>
-          <div className="mt-2 flex gap-2">
-            <Input value={leadLink} readOnly />
+          <div className="mt-2 flex flex-col gap-2 sm:flex-row">
+            <Input value={leadLink} readOnly className="min-w-0" />
             <Button variant="secondary" onClick={() => navigator.clipboard.writeText(leadLink)}>
               Kopiuj
             </Button>
@@ -41,7 +41,7 @@ export function LeadLinks() {
         </div>
         <div>
           <div className="text-xs text-ink-500">Kod do wklejenia na stronę</div>
-          <pre className="mt-2 whitespace-pre-wrap rounded-xl border border-ink-700 bg-ink-900/70 p-3 text-xs text-ink-200">
+          <pre className="mt-2 max-w-full whitespace-pre-wrap break-all rounded-xl border border-ink-700 bg-ink-900/70 p-3 text-xs text-ink-200">
             {iframeSnippet}
           </pre>
           <div className="mt-2">

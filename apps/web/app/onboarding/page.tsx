@@ -100,11 +100,11 @@ export default function OnboardingPage() {
           {step === 5 && (
             <div className="rounded-xl border border-ink-700 bg-ink-900/70 p-4 text-sm text-ink-200">
               <p>Wklej na swoją stronę:</p>
-              <pre className="mt-3 overflow-x-auto rounded-lg bg-ink-800 p-3 text-xs">
+              <pre className="mt-3 max-w-full overflow-x-auto break-all rounded-lg bg-ink-800 p-3 text-xs">
 {`<script src="https://twoj-domenowy-url/widget.js" data-org="${orgId || "ORG_ID"}"></script>`}
               </pre>
               <p className="mt-4 text-xs text-ink-400">Lub użyj bezpośredniego linku do formularza:</p>
-              <pre className="mt-2 overflow-x-auto rounded-lg bg-ink-800 p-3 text-xs">
+              <pre className="mt-2 max-w-full overflow-x-auto break-all rounded-lg bg-ink-800 p-3 text-xs">
 {`https://twoj-domenowy-url/lead/${orgId || "ORG_ID"}`}
               </pre>
             </div>
