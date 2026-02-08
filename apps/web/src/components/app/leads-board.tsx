@@ -264,12 +264,12 @@ export function LeadsBoard() {
         </div>
       </Card>
 
-      <div className="grid gap-6 lg:grid-cols-[2.2fr_1fr]">
-        <div className="hidden gap-4 md:grid md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid min-w-0 gap-6 lg:grid-cols-[2.2fr_1fr]">
+        <div className="hidden min-w-0 gap-4 md:grid md:grid-cols-2 lg:grid-cols-4">
           {statuses.map((status) => (
             <Card
               key={status}
-              className={`min-h-[320px] ${dragOver === status ? "border-accent-500/60" : ""}`}
+              className={`min-h-[320px] min-w-0 ${dragOver === status ? "border-accent-500/60" : ""}`}
               onDragOver={(event) => {
                 event.preventDefault();
                 setDragOver(status);
@@ -297,7 +297,7 @@ export function LeadsBoard() {
                     onDragStart={() => setDraggedId(lead.id)}
                     onDragEnd={() => setDraggedId(null)}
                     onClick={() => openLead(lead)}
-                    className={`cursor-pointer rounded-lg border p-3 text-sm transition ${
+                    className={`cursor-pointer rounded-lg border p-3 text-sm transition break-words min-w-0 ${
                       selectedLead?.id === lead.id ? "border-accent-500/70 bg-ink-900" : "border-ink-700 hover:border-ink-500"
                     }`}
                   >
@@ -305,7 +305,7 @@ export function LeadsBoard() {
                     <div className="text-xs text-ink-400">{lead.source}</div>
                     {lead.message && <div className="mt-2 text-xs text-ink-200 line-clamp-2">{lead.message}</div>}
                     <select
-                      className="mt-3 w-full rounded-md border border-ink-700 bg-ink-900 px-2 py-1 text-xs"
+                      className="mt-3 w-full max-w-full rounded-md border border-ink-700 bg-ink-900 px-2 py-1 text-xs"
                       value={lead.status}
                       onClick={(event) => event.stopPropagation()}
                       onChange={(e) => updateStatus(lead.id, e.target.value as LeadStatus)}
@@ -345,14 +345,14 @@ export function LeadsBoard() {
                 key={lead.id}
                 type="button"
                 onClick={() => openLead(lead)}
-                className={`w-full rounded-xl border p-3 text-left text-sm ${
+                className={`w-full min-w-0 rounded-xl border p-3 text-left text-sm break-words ${
                   selectedLead?.id === lead.id ? "border-accent-500/70 bg-ink-900" : "border-ink-700"
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <div className="font-semibold">{lead.name}</div>
                   <select
-                    className="rounded-md border border-ink-700 bg-ink-900 px-2 py-1 text-[11px]"
+                    className="max-w-full rounded-md border border-ink-700 bg-ink-900 px-2 py-1 text-[11px]"
                     value={lead.status}
                     onClick={(event) => event.stopPropagation()}
                     onChange={(e) => updateStatus(lead.id, e.target.value as LeadStatus)}
@@ -369,7 +369,7 @@ export function LeadsBoard() {
           </div>
         </div>
 
-        <Card className="min-h-[420px]">
+        <Card className="min-h-[420px] min-w-0">
           <div className="text-sm text-ink-400">Szczegóły leada</div>
           {!selectedLead && (
             <div className="mt-4 text-xs text-ink-500">Wybierz leada z kolumny.</div>
@@ -377,7 +377,7 @@ export function LeadsBoard() {
           {selectedLead && (
             <>
               <div className="mt-4">
-                <div className="text-lg font-semibold">{selectedLead.name}</div>
+                <div className="text-lg font-semibold break-words">{selectedLead.name}</div>
               <div className="mt-2 flex flex-wrap gap-2">
                 {selectedLead.phone && (
                   <Button
@@ -424,22 +424,22 @@ export function LeadsBoard() {
                 </div>
                 <div className="rounded-xl border border-ink-700 p-3">
                   <div className="text-xs text-ink-500">Źródło</div>
-                  <div className="font-semibold">{selectedLead.source}</div>
+                  <div className="font-semibold break-words">{selectedLead.source}</div>
                 </div>
                 <div className="rounded-xl border border-ink-700 p-3">
                   <div className="text-xs text-ink-500">Email</div>
-                  <div className="font-semibold">{selectedLead.email || "Brak"}</div>
+                  <div className="font-semibold break-words">{selectedLead.email || "Brak"}</div>
                 </div>
                 <div className="rounded-xl border border-ink-700 p-3">
                   <div className="text-xs text-ink-500">Telefon</div>
-                  <div className="font-semibold">{selectedLead.phone || "Brak"}</div>
+                  <div className="font-semibold break-words">{selectedLead.phone || "Brak"}</div>
                 </div>
               </div>
 
               {selectedLead.message && (
                 <div className="mt-4 rounded-xl border border-ink-700 p-4 text-sm">
                   <div className="text-xs text-ink-500">Wiadomość</div>
-                  <div className="mt-2 text-ink-100">{selectedLead.message}</div>
+                  <div className="mt-2 break-words text-ink-100">{selectedLead.message}</div>
                 </div>
               )}
 

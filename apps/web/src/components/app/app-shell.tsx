@@ -15,14 +15,6 @@ const nav = [
   { href: "/app/settings", label: "Ustawienia" }
 ];
 
-const mobileNav = [
-  { href: "/app", label: "Start" },
-  { href: "/app/calendar", label: "Kalendarz" },
-  { href: "/app/leads", label: "Leady" },
-  { href: "/app/messages", label: "Wiadomości" },
-  { href: "/app/clients", label: "Klienci" }
-];
-
 export function AppShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-ink-900">
@@ -40,7 +32,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             ))}
           </div>
         </aside>
-        <main className="flex-1 p-4 pb-24 sm:p-6 sm:pb-28 lg:p-10 lg:pb-10">
+        <main className="flex-1 p-4 sm:p-6 lg:p-10">
           <div className="mb-6 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
             <div className="hidden text-sm text-ink-300 lg:block">Strefa: Europe/Warsaw · Waluta: PLN</div>
             <div className="hidden text-xs text-ink-400 lg:block">Plan: Trial</div>
@@ -52,22 +44,22 @@ export function AppShell({ children }: { children: ReactNode }) {
               <div className="text-xs text-ink-500">Strefa: Europe/Warsaw · Waluta: PLN</div>
             </div>
           </div>
+          <div className="mb-6 lg:hidden">
+            <div className="flex gap-2 overflow-x-auto pb-2">
+              {nav.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="whitespace-nowrap rounded-full border border-ink-700 px-4 py-1.5 text-xs text-ink-200"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
           {children}
         </main>
       </div>
-      <nav className="fixed bottom-0 left-0 right-0 z-20 border-t border-ink-800 bg-ink-900/95 px-3 py-2 backdrop-blur lg:hidden">
-        <div className="flex items-center justify-between">
-          {mobileNav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="flex flex-1 flex-col items-center justify-center gap-1 rounded-lg px-2 py-2 text-[11px] text-ink-300"
-            >
-              <span>{item.label}</span>
-            </Link>
-          ))}
-        </div>
-      </nav>
     </div>
   );
 }
