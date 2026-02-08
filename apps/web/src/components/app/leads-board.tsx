@@ -321,7 +321,7 @@ export function LeadsBoard() {
           ))}
         </div>
         <div className="space-y-4 md:hidden">
-          <div className="flex gap-2 overflow-x-auto pb-2">
+          <div className="flex flex-nowrap gap-2 overflow-x-auto pb-2">
             {statuses.map((status) => (
               <button
                 key={status}
