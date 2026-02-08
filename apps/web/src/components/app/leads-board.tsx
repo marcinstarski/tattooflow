@@ -237,8 +237,8 @@ export function LeadsBoard() {
   };
 
   return (
-    <div className="space-y-6">
-      <Card>
+    <div className="space-y-6 overflow-x-hidden">
+      <Card className="min-w-0">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           <Input placeholder="Imię i nazwisko" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
           <Input placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />

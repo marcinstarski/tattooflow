@@ -32,7 +32,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             ))}
           </div>
         </aside>
-        <main className="flex-1 p-4 sm:p-6 lg:p-10">
+        <main className="flex-1 overflow-x-hidden p-4 sm:p-6 lg:p-10">
           <div className="mb-6 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
             <div className="hidden text-sm text-ink-300 lg:block">Strefa: Europe/Warsaw · Waluta: PLN</div>
             <div className="hidden text-xs text-ink-400 lg:block">Plan: Trial</div>
@@ -45,7 +45,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             </div>
           </div>
           <div className="mb-6 lg:hidden">
-            <div className="flex gap-2 overflow-x-auto pb-2">
+            <div className="flex max-w-full gap-2 overflow-x-auto pb-2">
               {nav.map((item) => (
                 <Link
                   key={item.href}
