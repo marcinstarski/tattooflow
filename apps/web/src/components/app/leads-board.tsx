@@ -321,19 +321,21 @@ export function LeadsBoard() {
           ))}
         </div>
         <div className="space-y-4 md:hidden">
-          <div className="flex flex-nowrap gap-2 overflow-x-auto pb-2">
+          <div className="w-full max-w-full overflow-x-auto pb-2">
+            <div className="flex min-w-max gap-2">
             {statuses.map((status) => (
               <button
                 key={status}
                 type="button"
                 onClick={() => setMobileStatus(status)}
-                className={`whitespace-nowrap rounded-full border px-3 py-1.5 text-xs ${
+                className={`shrink-0 whitespace-nowrap rounded-full border px-3 py-1.5 text-xs ${
                   mobileStatus === status ? "border-accent-500 bg-ink-800/80 text-ink-100" : "border-ink-700 text-ink-300"
                 }`}
               >
                 {statusLabels[status]}
               </button>
             ))}
+            </div>
           </div>
           <div className="space-y-3">
             {loading && <div className="text-xs text-ink-400">Ładowanie...</div>}
