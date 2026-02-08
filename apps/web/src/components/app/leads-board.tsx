@@ -237,8 +237,8 @@ export function LeadsBoard() {
   };
 
   return (
-    <div className="space-y-6 overflow-x-hidden">
-      <Card className="min-w-0">
+    <div className="space-y-6">
+      <Card className="min-w-0 overflow-hidden">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           <Input placeholder="Imię i nazwisko" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
           <Input placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
@@ -320,10 +320,10 @@ export function LeadsBoard() {
             </Card>
           ))}
         </div>
-        <div className="space-y-4 md:hidden">
+        <div className="space-y-4 md:hidden min-w-0">
           <div
             className="w-full max-w-full overflow-x-auto pb-2"
-            style={{ WebkitOverflowScrolling: "touch" }}
+            style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-x" }}
           >
             <div className="flex w-max gap-2">
             {statuses.map((status) => (
@@ -340,7 +340,7 @@ export function LeadsBoard() {
             ))}
             </div>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-3 min-w-0">
             {loading && <div className="text-xs text-ink-400">Ładowanie...</div>}
             {!loading && grouped[mobileStatus].length === 0 && (
               <div className="text-xs text-ink-500">Brak leadów</div>
@@ -350,12 +350,12 @@ export function LeadsBoard() {
                 key={lead.id}
                 type="button"
                 onClick={() => openLead(lead)}
-                className={`w-full min-w-0 rounded-xl border p-3 text-left text-sm break-words ${
+                className={`w-full min-w-0 rounded-xl border p-3 text-left text-sm break-words overflow-hidden ${
                   selectedLead?.id === lead.id ? "border-accent-500/70 bg-ink-900" : "border-ink-700"
                 }`}
               >
-                <div className="flex items-center justify-between">
-                  <div className="font-semibold">{lead.name}</div>
+                <div className="flex min-w-0 items-center justify-between gap-2">
+                  <div className="min-w-0 flex-1 font-semibold break-words">{lead.name}</div>
                   <select
                     className="max-w-full rounded-md border border-ink-700 bg-ink-900 px-2 py-1 text-[11px]"
                     value={lead.status}
@@ -374,7 +374,7 @@ export function LeadsBoard() {
           </div>
         </div>
 
-        <Card className="min-h-[420px] min-w-0">
+        <Card className="min-h-[420px] min-w-0 overflow-hidden">
           <div className="text-sm text-ink-400">Szczegóły leada</div>
           {!selectedLead && (
             <div className="mt-4 text-xs text-ink-500">Wybierz leada z kolumny.</div>
