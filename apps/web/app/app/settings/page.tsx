@@ -114,11 +114,11 @@ export default function SettingsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-display">Ustawienia</h1>
+        <h1 className="text-2xl font-display md:text-3xl">Ustawienia</h1>
         <p className="text-sm text-ink-300">Studio, szablony, role, RODO.</p>
       </div>
       <Card>
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label className="text-sm">Nazwa studia</label>
             <Input placeholder="TaFlo Tattoo" value={studioName} onChange={(e) => setStudioName(e.target.value)} />
@@ -129,7 +129,7 @@ export default function SettingsPage() {
           </div>
         </div>
         {status && <div className="mt-3 text-xs text-ink-400">{status}</div>}
-        <div className="mt-4 flex gap-3">
+        <div className="mt-4 flex flex-wrap gap-3">
           <Button onClick={save} disabled={saving || !studioName.trim()}>
             {saving ? "Zapisywanie..." : "Zapisz"}
           </Button>
@@ -159,7 +159,7 @@ export default function SettingsPage() {
         )}
 
         {seatInfo?.canAdd ? (
-          <div className="mt-4 grid gap-3 md:grid-cols-3">
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             <Input placeholder="Imię i nazwisko" value={newArtist.name} onChange={(e) => setNewArtist({ ...newArtist, name: e.target.value })} />
             <Input placeholder="Email" value={newArtist.email} onChange={(e) => setNewArtist({ ...newArtist, email: e.target.value })} />
             <Input placeholder="Telefon" value={newArtist.phone} onChange={(e) => setNewArtist({ ...newArtist, phone: e.target.value })} />

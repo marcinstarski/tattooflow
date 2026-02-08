@@ -111,7 +111,7 @@ export function DepositsBoard() {
             key={appointment.id}
             className="rounded-2xl border border-ink-700 bg-ink-900/60 px-6 py-4 shadow-soft"
           >
-            <div className="grid items-center gap-4 md:grid-cols-[1.6fr_0.7fr_0.7fr_auto]">
+            <div className="hidden items-center gap-4 md:grid md:grid-cols-[1.6fr_0.7fr_0.7fr_auto]">
               <div>
                 <div className="text-lg font-semibold">{appointment.client.name}</div>
                 <div className="text-xs text-ink-400">
@@ -140,6 +140,36 @@ export function DepositsBoard() {
                   {sendingId === appointment.id ? "Wysyłanie..." : "Wyślij link"}
                 </Button>
               </div>
+            </div>
+            <div className="space-y-3 md:hidden">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <div className="text-lg font-semibold">{appointment.client.name}</div>
+                  <div className="text-xs text-ink-400">
+                    {formatDate(appointment.startsAt)} · {formatTime(appointment.startsAt)}
+                  </div>
+                </div>
+                <div className="text-lg font-semibold">{amountLabel}</div>
+              </div>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className={statusText === "Wpłacony" ? "text-emerald-300" : "text-amber-300"}>
+                  {statusText}
+                </div>
+                <button
+                  className="text-xs text-ink-400 transition hover:text-ink-100"
+                  onClick={() => togglePaid(appointment)}
+                  disabled={updatingId === appointment.id}
+                >
+                  {updatingId === appointment.id
+                    ? "Aktualizacja..."
+                    : appointment.depositStatus === "paid"
+                    ? "Oznacz jako nieopłacony"
+                    : "Oznacz jako opłacony"}
+                </button>
+              </div>
+              <Button onClick={() => sendLink(appointment.id)} disabled={sendingId === appointment.id} className="w-full">
+                {sendingId === appointment.id ? "Wysyłanie..." : "Wyślij link"}
+              </Button>
             </div>
           </div>
         );
