@@ -10,6 +10,7 @@ import { useState } from "react";
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <main className="min-h-screen bg-ink-900 px-6">
@@ -27,12 +28,21 @@ export default function LoginPage() {
         <h1 className="text-3xl font-display">Zaloguj się</h1>
         <div className="space-y-3">
           <Input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <Input
-            placeholder="Hasło"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="relative">
+            <Input
+              placeholder="Hasło"
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-ink-300 hover:text-ink-100"
+            >
+              {showPassword ? "Ukryj" : "Pokaż"}
+            </button>
+          </div>
           <Button
             className="w-full"
             onClick={() => signIn("credentials", { email, password, callbackUrl: "/app" })}

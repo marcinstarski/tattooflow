@@ -12,6 +12,7 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [studioName, setStudioName] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
+  const [showPassword, setShowPassword] = useState(false);
 
   const submit = async () => {
     setStatus("loading");
@@ -43,12 +44,21 @@ export default function RegisterPage() {
         <div className="space-y-3">
           <Input placeholder="Nazwa studia" value={studioName} onChange={(e) => setStudioName(e.target.value)} />
           <Input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <Input
-            placeholder="Hasło"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="relative">
+            <Input
+              placeholder="Hasło"
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-ink-300 hover:text-ink-100"
+            >
+              {showPassword ? "Ukryj" : "Pokaż"}
+            </button>
+          </div>
           <Button className="w-full" onClick={submit}>
             Załóż konto + trial
           </Button>
