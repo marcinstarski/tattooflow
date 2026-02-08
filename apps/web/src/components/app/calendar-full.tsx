@@ -268,13 +268,13 @@ export function CalendarFull() {
         </div>
         {view === "month" ? (
           <>
-            <div className="mt-4 grid grid-cols-7 gap-2 text-xs text-ink-400">
+            <div className="mt-4 grid grid-cols-7 gap-1 text-[10px] text-ink-400 sm:gap-2 sm:text-xs">
               {["Pn", "Wt", "Śr", "Cz", "Pt", "Sb", "Nd"].map((day) => (
                 <div key={day} className="text-center">{day}</div>
               ))}
             </div>
             <div className="mt-2">
-              <div className="grid grid-cols-7 gap-2">
+              <div className="grid grid-cols-7 gap-1 sm:gap-2">
               {days.map((day) => {
                 const key = format(day, "yyyy-MM-dd");
                 const isSelected = isSameDay(day, selectedDate);
@@ -291,12 +291,12 @@ export function CalendarFull() {
                         setSelectedDate(day);
                       }
                     }}
-                    className={`min-h-[96px] min-w-0 overflow-hidden rounded-xl border px-2 py-2 text-left text-xs transition ${
+                    className={`min-h-[88px] min-w-0 overflow-hidden rounded-xl border px-1.5 py-2 text-left text-[10px] transition sm:min-h-[96px] sm:px-2 sm:text-xs ${
                       isSelected ? "border-accent-500 bg-ink-800/80" : "border-ink-700 bg-ink-900/40"
                     } ${isSameMonth(day, currentMonth) ? "text-ink-100" : "text-ink-500"}`}
                   >
                     <div className="font-semibold">{format(day, "d")}</div>
-                    <div className="mt-1 space-y-1">
+                    <div className="mt-1 space-y-1 sm:block hidden">
                       {dayAppointments.slice(0, 2).map((appt) => (
                         <button
                           key={appt.id}
@@ -320,6 +320,9 @@ export function CalendarFull() {
                       {dayAppointments.length > 2 && (
                         <div className="text-[11px] text-ink-400">+{dayAppointments.length - 2} więcej</div>
                       )}
+                    </div>
+                    <div className="mt-2 text-[9px] text-ink-400 sm:hidden">
+                      {dayAppointments.length > 0 ? `${dayAppointments.length} wizyt` : "Brak"}
                     </div>
                   </div>
                 );
