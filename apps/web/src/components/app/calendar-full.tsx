@@ -216,14 +216,16 @@ export function CalendarFull() {
     <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
       <Card>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-2">
+          <div className="flex w-full gap-2 sm:w-auto">
             <Button
+              className="w-1/2 sm:w-auto"
               variant={view === "week" ? "primary" : "secondary"}
               onClick={() => setView("week")}
             >
               Tydzień
             </Button>
             <Button
+              className="w-1/2 sm:w-auto"
               variant={view === "month" ? "primary" : "secondary"}
               onClick={() => setView("month")}
             >
@@ -271,8 +273,8 @@ export function CalendarFull() {
                 <div key={day} className="text-center">{day}</div>
               ))}
             </div>
-            <div className="mt-2 overflow-x-auto">
-              <div className="grid min-w-[720px] grid-cols-7 gap-2">
+            <div className="mt-2">
+              <div className="grid grid-cols-7 gap-2">
               {days.map((day) => {
                 const key = format(day, "yyyy-MM-dd");
                 const isSelected = isSameDay(day, selectedDate);
