@@ -42,8 +42,8 @@ export function AppShell({ children }: { children: ReactNode }) {
                 <span className="text-xs text-ink-400">Plan: Trial</span>
               </div>
               <div className="text-xs text-ink-500">Strefa: Europe/Warsaw · Waluta: PLN</div>
-              <div className="-mx-4 overflow-x-auto px-4">
-                <div className="flex gap-2">
+              <div className="w-full overflow-x-auto">
+                <div className="flex gap-2 px-1">
                   {nav.map((item) => (
                     <Link
                       key={item.href}
