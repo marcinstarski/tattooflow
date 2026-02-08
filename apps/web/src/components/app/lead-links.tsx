@@ -24,10 +24,10 @@ export function LeadLinks() {
   }
 
   const leadLink = `${origin}/lead/${org.id}`;
-  const iframeSnippet = `<iframe src=\"${origin}/lead/${org.id}\" style=\"width:100%;max-width:560px;height:620px;border:0;border-radius:20px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,0.12);background:transparent;\" loading=\"lazy\" title=\"Formularz kontaktowy\"></iframe>`;
+  const iframeSnippet = `<iframe src=\"${origin}/lead/${org.id}\" style=\"width:100%;max-width:100%;height:620px;border:0;border-radius:20px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,0.12);background:transparent;display:block;box-sizing:border-box;\" loading=\"lazy\" title=\"Formularz kontaktowy\"></iframe>`;
 
   return (
-    <Card>
+    <Card className="min-w-0 overflow-hidden">
       <div className="text-sm text-ink-400">Formularz leadów</div>
       <div className="mt-3 space-y-4">
         <div>
@@ -41,7 +41,7 @@ export function LeadLinks() {
         </div>
         <div>
           <div className="text-xs text-ink-500">Kod do wklejenia na stronę</div>
-          <pre className="mt-2 max-w-full whitespace-pre-wrap break-all rounded-xl border border-ink-700 bg-ink-900/70 p-3 text-xs text-ink-200">
+          <pre className="mt-2 max-w-full overflow-x-auto whitespace-pre-wrap break-all rounded-xl border border-ink-700 bg-ink-900/70 p-3 text-xs text-ink-200">
             {iframeSnippet}
           </pre>
           <div className="mt-2">
