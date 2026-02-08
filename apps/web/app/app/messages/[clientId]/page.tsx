@@ -168,7 +168,7 @@ export default function MessageThreadPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-display">Wątek: {client.name}</h1>
+        <h1 className="text-2xl font-display md:text-3xl">Wątek: {client.name}</h1>
         <p className="text-xs text-ink-400">
           Odpowiedź zostanie wysłana przez: {channelLabel}
         </p>

@@ -30,8 +30,8 @@ export default function PricingPage() {
   return (
     <main className="pb-24">
       <section className="py-16">
-        <h1 className="text-4xl font-display">Cennik</h1>
-        <p className="mt-4 text-ink-200">14 dni okresu próbnego. Bez karty. PLN netto.</p>
+        <h1 className="text-3xl font-display sm:text-4xl">Cennik</h1>
+        <p className="mt-4 text-sm text-ink-200 sm:text-base">14 dni okresu próbnego. Bez karty. PLN netto.</p>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {plans.map((plan) => (
             <Card key={plan.name} className="flex flex-col gap-4">

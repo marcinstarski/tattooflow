@@ -98,7 +98,7 @@ export default function DemoPage() {
       <section className="py-16">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <h1 className="text-4xl font-display">Demo produktu</h1>
+            <h1 className="text-3xl font-display sm:text-4xl">Demo produktu</h1>
             <p className="mt-4 text-ink-200">
               Klikalny podgląd kluczowych ekranów. Dane są przykładowe i tylko do prezentacji.
             </p>
@@ -162,7 +162,7 @@ export default function DemoPage() {
                       {selectedLead.depositStatus}
                     </span>
                   </div>
-                  <div className="mt-4 flex gap-2">
+                  <div className="mt-4 flex flex-wrap gap-2">
                     <Button variant="secondary">Zadzwoń</Button>
                     <Button variant="secondary">Wyślij wiadomość</Button>
                   </div>
@@ -229,7 +229,7 @@ export default function DemoPage() {
                       {selectedThread.depositStatus}
                     </span>
                   </div>
-                  <div className="mt-4 flex gap-2">
+                  <div className="mt-4 flex flex-wrap gap-2">
                     <Button variant="secondary">Odpowiedz</Button>
                     <Button variant="secondary">Wyślij link do zadatku</Button>
                   </div>
@@ -240,7 +240,10 @@ export default function DemoPage() {
             {active === "Zadatki" && (
               <div className="mt-6 space-y-3">
                 {demoDeposits.map((row) => (
-                  <div key={row.id} className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-ink-700 bg-ink-900/50 p-4 text-sm">
+                  <div
+                    key={row.id}
+                    className="flex flex-col gap-3 rounded-xl border border-ink-700 bg-ink-900/50 p-4 text-sm sm:flex-row sm:items-center sm:justify-between"
+                  >
                     <div>
                       <div className="font-semibold">{row.name}</div>
                       <div className="text-xs text-ink-400">{row.date}</div>

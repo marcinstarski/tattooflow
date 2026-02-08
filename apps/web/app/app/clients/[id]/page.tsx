@@ -211,10 +211,10 @@ export default function ClientDetailsPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
         <div>
-          <h1 className="text-3xl font-display">{client.name}</h1>
+          <h1 className="text-2xl font-display md:text-3xl">{client.name}</h1>
           <div className="text-xs text-ink-400">Utworzono: {new Date(client.createdAt).toLocaleDateString("pl-PL")}</div>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Button variant="secondary" onClick={toggleMarketing}>
             {client.marketingOptIn ? "Wyłącz zgodę marketingową" : "Włącz zgodę marketingową"}
           </Button>

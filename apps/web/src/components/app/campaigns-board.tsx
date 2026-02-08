@@ -81,7 +81,7 @@ export function CampaignsBoard() {
   return (
     <div className="space-y-6">
       <Card>
-        <div className="grid gap-3 md:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           <Input placeholder="Nazwa kampanii" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
           <select
             className="w-full rounded-xl border border-ink-700 bg-ink-900/70 px-4 py-2 text-sm"

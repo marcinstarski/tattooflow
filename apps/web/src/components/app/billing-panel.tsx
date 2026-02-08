@@ -117,7 +117,10 @@ export function BillingPanel() {
         <div className="mt-4 space-y-3 text-sm">
           {invoices.length === 0 && <div className="text-xs text-ink-500">Brak faktur</div>}
           {invoices.map((invoice) => (
-            <div key={invoice.id} className="flex items-center justify-between rounded-lg border border-ink-700 p-3">
+            <div
+              key={invoice.id}
+              className="flex flex-col gap-2 rounded-lg border border-ink-700 p-3 sm:flex-row sm:items-center sm:justify-between"
+            >
               <div>
                 <div className="font-semibold">{invoice.number}</div>
                 <div className="text-xs text-ink-400">{invoice.amount} {invoice.currency} · {invoice.status}</div>

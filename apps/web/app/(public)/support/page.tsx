@@ -7,8 +7,8 @@ export default function SupportPage() {
   return (
     <main className="pb-24">
       <section className="py-16">
-        <h1 className="text-4xl font-display">Pomoc</h1>
-        <p className="mt-4 text-ink-200">Masz pytanie? Napisz do nas.</p>
+        <h1 className="text-3xl font-display sm:text-4xl">Pomoc</h1>
+        <p className="mt-4 text-sm text-ink-200 sm:text-base">Masz pytanie? Napisz do nas.</p>
         <div className="mt-10 grid gap-6 md:grid-cols-[1.1fr_0.9fr]">
           <Card>
             <form className="space-y-4">

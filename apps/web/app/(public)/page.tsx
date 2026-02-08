@@ -34,10 +34,10 @@ export default function LandingPage() {
       <section className="grid gap-10 py-16 md:grid-cols-[1.2fr_0.8fr] md:items-center">
         <div className="space-y-6">
           <Badge className="border-accent-500 text-accent-400">CRM dla tatuatorów</Badge>
-          <h1 className="text-4xl font-display leading-tight md:text-6xl">
+          <h1 className="text-3xl font-display leading-tight sm:text-4xl md:text-6xl">
             TaFlo pomaga domykać więcej klientów na tatuaż.
           </h1>
-          <p className="text-lg text-ink-200">
+          <p className="text-base text-ink-200 sm:text-lg">
             Leady, kalendarz, zadatki, automatyzacje i marketing w jednym miejscu. Zbudowane z myślą o studiach tatuażu.
           </p>
           <div className="flex flex-wrap gap-4">
@@ -54,7 +54,7 @@ export default function LandingPage() {
           </div>
         </div>
         <Card className="overflow-hidden p-0">
-          <div className="relative h-56">
+          <div className="relative h-48 sm:h-56">
             <img
               src={heroImage}
               alt="Tatuażysta podczas pracy w studio"
@@ -128,9 +128,9 @@ export default function LandingPage() {
             <h3 className="text-2xl font-display">Darmowa checklista</h3>
             <p className="text-sm text-ink-200">Pobierz checklistę: Jak domykać klientów na tatuaż.</p>
           </div>
-          <form className="flex w-full max-w-md gap-3">
+          <form className="flex w-full max-w-md flex-col gap-3 sm:flex-row">
             <input
-              className="w-full rounded-xl border border-ink-700 bg-ink-900/70 px-4 py-2 text-sm"
+              className="w-full flex-1 rounded-xl border border-ink-700 bg-ink-900/70 px-4 py-2 text-sm"
               placeholder="Twój email"
               type="email"
             />

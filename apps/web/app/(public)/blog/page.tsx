@@ -6,8 +6,8 @@ export default function BlogPage() {
   return (
     <main className="pb-24">
       <section className="py-16">
-        <h1 className="text-4xl font-display">Baza wiedzy</h1>
-        <p className="mt-4 text-ink-200">Praktyczne porady dla studiów tatuażu.</p>
+        <h1 className="text-3xl font-display sm:text-4xl">Baza wiedzy</h1>
+        <p className="mt-4 text-sm text-ink-200 sm:text-base">Praktyczne porady dla studiów tatuażu.</p>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {blogPosts.map((post) => (
             <Card key={post.slug}>
