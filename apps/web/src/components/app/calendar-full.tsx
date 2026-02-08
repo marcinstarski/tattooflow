@@ -522,13 +522,6 @@ export function CalendarFull() {
               <div className="text-sm font-semibold">{selectedAppointment.client.name}</div>
               <div className="text-xs text-ink-500">{selectedAppointment.artist.name}</div>
             </div>
-            <button
-              type="button"
-              className="text-xs text-ink-400"
-              onClick={() => setSelectedAppointmentId(null)}
-            >
-              Zamknij
-            </button>
           </div>
           <div className="mt-4 grid gap-2 text-sm md:grid-cols-2">
             <Input type="date" value={editDate} onChange={(e) => setEditDate(e.target.value)} />
