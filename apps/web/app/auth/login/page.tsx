@@ -27,11 +27,23 @@ export default function LoginPage() {
         </div>
         <h1 className="text-3xl font-display">Zaloguj się</h1>
         <div className="space-y-3">
-          <Input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <Input
+            placeholder="Email"
+            type="email"
+            inputMode="email"
+            autoCapitalize="none"
+            autoCorrect="off"
+            autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
           <div className="relative">
             <Input
               placeholder="Hasło"
               type={showPassword ? "text" : "password"}
+              autoCapitalize="none"
+              autoCorrect="off"
+              autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

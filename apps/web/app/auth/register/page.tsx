@@ -42,12 +42,29 @@ export default function RegisterPage() {
         </div>
         <h1 className="text-3xl font-display">Załóż konto</h1>
         <div className="space-y-3">
-          <Input placeholder="Nazwa studia" value={studioName} onChange={(e) => setStudioName(e.target.value)} />
-          <Input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <Input
+            placeholder="Nazwa studia"
+            autoComplete="organization"
+            value={studioName}
+            onChange={(e) => setStudioName(e.target.value)}
+          />
+          <Input
+            placeholder="Email"
+            type="email"
+            inputMode="email"
+            autoCapitalize="none"
+            autoCorrect="off"
+            autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
           <div className="relative">
             <Input
               placeholder="Hasło"
               type={showPassword ? "text" : "password"}
+              autoCapitalize="none"
+              autoCorrect="off"
+              autoComplete="new-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
