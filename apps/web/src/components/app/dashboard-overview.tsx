@@ -85,7 +85,7 @@ export function DashboardOverview() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
-          <h1 className="text-3xl font-display">Dashboard</h1>
+          <h1 className="text-2xl font-display md:text-3xl">Dashboard</h1>
           <p className="text-sm text-ink-300">Najważniejsze informacje w jednym miejscu.</p>
         </div>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
@@ -103,7 +103,7 @@ export function DashboardOverview() {
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
         <Card>
           <div className="text-sm text-ink-400">Nowe leady (7 dni)</div>
           <div className="mt-3 text-3xl font-display">{stats.leadsNew}</div>
@@ -120,11 +120,11 @@ export function DashboardOverview() {
 
       <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
         <Card>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="text-sm text-ink-400">Kalendarz tygodnia</div>
             <Button variant="secondary" onClick={() => window.location.href = "/app/calendar"}>Pełny kalendarz</Button>
           </div>
-          <div className="mt-4 grid gap-3 md:grid-cols-7">
+          <div className="mt-4 hidden gap-3 md:grid md:grid-cols-7">
             {days.map((day) => {
               const dayAppointments = appointments.filter((appt) => {
                 const starts = new Date(appt.startsAt);
@@ -141,6 +141,30 @@ export function DashboardOverview() {
                       <div key={appt.id} className="rounded-lg border border-ink-700 px-2 py-1">
                         <div className="font-semibold">{format(new Date(appt.startsAt), "HH:mm", { locale: pl })}</div>
                         <div className="text-ink-400">{appt.client.name}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="mt-4 space-y-3 md:hidden">
+            {days.map((day) => {
+              const dayAppointments = appointments.filter((appt) => {
+                const starts = new Date(appt.startsAt);
+                return starts.toDateString() === day.toDateString();
+              });
+              return (
+                <div key={day.toISOString()} className="rounded-xl border border-ink-700 p-3 text-sm">
+                  <div className="text-xs text-ink-400">{format(day, "EEEE dd.MM", { locale: pl })}</div>
+                  <div className="mt-2 space-y-2">
+                    {dayAppointments.length === 0 && (
+                      <div className="text-xs text-ink-500">Brak wizyt</div>
+                    )}
+                    {dayAppointments.map((appt) => (
+                      <div key={appt.id} className="rounded-lg border border-ink-700 px-3 py-2">
+                        <div className="font-semibold">{format(new Date(appt.startsAt), "HH:mm", { locale: pl })}</div>
+                        <div className="text-xs text-ink-400">{appt.client.name}</div>
                       </div>
                     ))}
                   </div>

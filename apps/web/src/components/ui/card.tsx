@@ -4,7 +4,7 @@ import type { HTMLAttributes } from "react";
 export function Card({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={clsx("rounded-2xl border border-ink-700 bg-ink-800/60 p-6 shadow-soft", className)}
+      className={clsx("rounded-2xl border border-ink-700 bg-ink-800/60 p-4 shadow-soft sm:p-6", className)}
       {...props}
     />
   );

@@ -47,6 +47,7 @@ export function LeadsBoard() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState<LeadForm>(emptyForm);
+  const [mobileStatus, setMobileStatus] = useState<LeadStatus>("new");
   const [draggedId, setDraggedId] = useState<string | null>(null);
   const [dragOver, setDragOver] = useState<LeadStatus | null>(null);
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
@@ -238,7 +239,7 @@ export function LeadsBoard() {
   return (
     <div className="space-y-6">
       <Card>
-        <div className="grid gap-3 md:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           <Input placeholder="Imię i nazwisko" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
           <Input placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
           <Input placeholder="Telefon" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
@@ -264,7 +265,7 @@ export function LeadsBoard() {
       </Card>
 
       <div className="grid gap-6 lg:grid-cols-[2.2fr_1fr]">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="hidden gap-4 md:grid md:grid-cols-2 lg:grid-cols-4">
           {statuses.map((status) => (
             <Card
               key={status}
@@ -318,6 +319,54 @@ export function LeadsBoard() {
               </div>
             </Card>
           ))}
+        </div>
+        <div className="space-y-4 md:hidden">
+          <div className="flex gap-2 overflow-x-auto pb-2">
+            {statuses.map((status) => (
+              <button
+                key={status}
+                type="button"
+                onClick={() => setMobileStatus(status)}
+                className={`whitespace-nowrap rounded-full border px-3 py-1.5 text-xs ${
+                  mobileStatus === status ? "border-accent-500 bg-ink-800/80 text-ink-100" : "border-ink-700 text-ink-300"
+                }`}
+              >
+                {statusLabels[status]}
+              </button>
+            ))}
+          </div>
+          <div className="space-y-3">
+            {loading && <div className="text-xs text-ink-400">Ładowanie...</div>}
+            {!loading && grouped[mobileStatus].length === 0 && (
+              <div className="text-xs text-ink-500">Brak leadów</div>
+            )}
+            {grouped[mobileStatus].map((lead) => (
+              <button
+                key={lead.id}
+                type="button"
+                onClick={() => openLead(lead)}
+                className={`w-full rounded-xl border p-3 text-left text-sm ${
+                  selectedLead?.id === lead.id ? "border-accent-500/70 bg-ink-900" : "border-ink-700"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="font-semibold">{lead.name}</div>
+                  <select
+                    className="rounded-md border border-ink-700 bg-ink-900 px-2 py-1 text-[11px]"
+                    value={lead.status}
+                    onClick={(event) => event.stopPropagation()}
+                    onChange={(e) => updateStatus(lead.id, e.target.value as LeadStatus)}
+                  >
+                    {statuses.map((opt) => (
+                      <option key={opt} value={opt}>{statusLabels[opt]}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="text-xs text-ink-400">{lead.source}</div>
+                {lead.message && <div className="mt-2 text-xs text-ink-200 line-clamp-2">{lead.message}</div>}
+              </button>
+            ))}
+          </div>
         </div>
 
         <Card className="min-h-[420px]">

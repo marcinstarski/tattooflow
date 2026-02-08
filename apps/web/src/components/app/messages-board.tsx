@@ -210,7 +210,7 @@ export function MessagesBoard() {
 
   return (
     <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
-      <Card className="space-y-3">
+      <Card className="hidden space-y-3 lg:block">
         <div className="text-xs text-ink-400">Wątki</div>
         {loading && <div className="text-xs text-ink-400">Ładowanie...</div>}
         {!loading && threads.length === 0 && <div className="text-xs text-ink-500">Brak wiadomości</div>}
@@ -230,7 +230,7 @@ export function MessagesBoard() {
         ))}
       </Card>
 
-      <Card className="min-h-[520px]">
+      <Card className="hidden min-h-[520px] lg:block">
         <div className="flex items-center justify-between">
           <div className="text-sm text-ink-400">Wątek</div>
           {selectedClient && (
@@ -328,6 +328,32 @@ export function MessagesBoard() {
             </div>
           </>
         )}
+      </Card>
+      <Card className="lg:hidden">
+        <div className="text-sm text-ink-400">Wątki</div>
+        <div className="mt-4 space-y-3">
+          {loading && <div className="text-xs text-ink-400">Ładowanie...</div>}
+          {!loading && threads.length === 0 && <div className="text-xs text-ink-500">Brak wiadomości</div>}
+          {threads.map((thread) => (
+            <Link
+              key={thread.client.id}
+              href={`/app/messages/${thread.client.id}`}
+              className={`block rounded-xl border p-3 text-sm ${
+                thread.needsReply ? "border-red-500/70 bg-red-500/10" : "border-ink-700"
+              }`}
+            >
+              <div className="flex items-center justify-between gap-2">
+                <div className="font-semibold">{thread.client.name}</div>
+                <div className="text-[11px] text-ink-500">
+                  {new Date(thread.lastMessage.createdAt).toLocaleDateString("pl-PL")}
+                </div>
+              </div>
+              <div className="text-xs text-ink-400">{thread.lastMessage.channel}</div>
+              <div className="mt-2 text-xs text-ink-200 line-clamp-2">{thread.lastMessage.body}</div>
+              {thread.needsReply && <div className="mt-2 text-[11px] text-red-300">Brak odpowiedzi</div>}
+            </Link>
+          ))}
+        </div>
       </Card>
     </div>
   );
