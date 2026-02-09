@@ -257,7 +257,7 @@ export default function SettingsPage() {
             />
           </div>
           <div className="text-[11px] text-ink-500">
-            Dostępne zmienne: {{`{{clientName}}`}}, {{`{{appointmentDate}}`}}, {{`{{depositLink}}`}}
+            Dostępne zmienne: {"{{clientName}}"}, {"{{appointmentDate}}"}, {"{{depositLink}}"}
           </div>
           {templateStatus && <div className="text-xs text-ink-400">{templateStatus}</div>}
           <div className="flex justify-end">
