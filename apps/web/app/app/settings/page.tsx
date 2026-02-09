@@ -268,6 +268,10 @@ export default function SettingsPage() {
         </div>
       </Card>
 
+      <LeadLinks />
+
+      <MetaConnectCard />
+
       <Card>
         <div className="text-sm text-ink-400">Konto</div>
         <div className="mt-3 flex flex-wrap gap-2">
@@ -276,10 +280,6 @@ export default function SettingsPage() {
           </Button>
         </div>
       </Card>
-
-      <LeadLinks />
-
-      <MetaConnectCard />
     </div>
   );
 }
