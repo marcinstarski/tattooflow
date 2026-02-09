@@ -13,9 +13,11 @@ export default function RegisterPage() {
   const [studioName, setStudioName] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
   const [showPassword, setShowPassword] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
 
   const submit = async () => {
     setStatus("loading");
+    setMessage(null);
     const res = await fetch("/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -23,7 +25,8 @@ export default function RegisterPage() {
     });
     setStatus(res.ok ? "ok" : "error");
     if (res.ok) {
-      await signIn("credentials", { email, password, callbackUrl: "/onboarding" });
+      await signIn("email", { email, callbackUrl: "/onboarding", redirect: false });
+      setMessage("Wysłaliśmy maila z linkiem do onboardingu. Sprawdź skrzynkę.");
     }
   };
 
@@ -80,6 +83,7 @@ export default function RegisterPage() {
             Załóż konto + trial
           </Button>
           {status === "error" && <div className="text-sm text-red-400">Nie udało się utworzyć konta.</div>}
+          {message && <div className="text-sm text-emerald-300">{message}</div>}
         </div>
         <p className="text-sm text-ink-300">
           Masz już konto? <Link href="/auth/login" className="text-accent-400">Zaloguj się</Link>

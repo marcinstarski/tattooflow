@@ -50,17 +50,10 @@ export const campaignCreateSchema = z.object({
 
 export const onboardingSchema = z.object({
   studioName: z.string().min(1),
-  address: z.string().min(1),
   timezone: z.string().min(1).default("Europe/Warsaw"),
   artistName: z.string().min(1),
   artistEmail: z.string().email(),
   artistPhone: z.string().min(6),
-  depositType: z.enum(["fixed", "percent"]).default("fixed"),
-  depositValue: z.number().nonnegative().default(0),
-  depositDueDays: z.number().int().nonnegative().default(7),
-  templateReminder: z.string().min(1),
-  templateDeposit: z.string().min(1),
-  templateFollowUp: z.string().min(1),
 });
 
 export const billingDetailsSchema = z.object({
