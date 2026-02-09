@@ -70,9 +70,9 @@ export default function OnboardingPage() {
           )}
           {step === 1 && (
             <>
-              <Input placeholder="Imię i nazwisko (manager)" value={form.artistName} onChange={(e) => setForm({ ...form, artistName: e.target.value })} />
-              <Input placeholder="Email managera" value={form.artistEmail} onChange={(e) => setForm({ ...form, artistEmail: e.target.value })} />
-              <Input placeholder="Telefon managera" value={form.artistPhone} onChange={(e) => setForm({ ...form, artistPhone: e.target.value })} />
+              <Input placeholder="Imię i nazwisko" value={form.artistName} onChange={(e) => setForm({ ...form, artistName: e.target.value })} />
+              <Input placeholder="Email" value={form.artistEmail} onChange={(e) => setForm({ ...form, artistEmail: e.target.value })} />
+              <Input placeholder="Telefon" value={form.artistPhone} onChange={(e) => setForm({ ...form, artistPhone: e.target.value })} />
             </>
           )}
         </div>
