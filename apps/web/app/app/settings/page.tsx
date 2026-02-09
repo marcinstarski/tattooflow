@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { MetaConnectCard } from "@/components/app/meta-connect-card";
 import { LeadLinks } from "@/components/app/lead-links";
+import { signOut } from "next-auth/react";
 
 type Artist = {
   id: string;
@@ -191,6 +192,15 @@ export default function SettingsPage() {
         </div>
         <div className="mt-3 text-xs">
           <a className="text-accent-400" href="/legal/privacy">Zobacz politykę prywatności</a>
+        </div>
+      </Card>
+
+      <Card>
+        <div className="text-sm text-ink-400">Konto</div>
+        <div className="mt-3 flex flex-wrap gap-2">
+          <Button variant="secondary" onClick={() => signOut({ callbackUrl: "/auth/login" })}>
+            Wyloguj się
+          </Button>
         </div>
       </Card>
 
