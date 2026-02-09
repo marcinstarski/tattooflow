@@ -11,6 +11,25 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleLogin = async () => {
+    if (!email || !password) {
+      setError("Wpisz email i hasło.");
+      return;
+    }
+    setLoading(true);
+    setError(null);
+    const result = await signIn("credentials", { email, password, callbackUrl: "/app", redirect: false });
+    setLoading(false);
+    if (result?.error) {
+      setError("Nieprawidłowy email lub hasło.");
+    }
+    if (result?.url) {
+      window.location.href = result.url;
+    }
+  };
 
   return (
     <main className="min-h-screen bg-ink-900 px-6">
@@ -55,11 +74,13 @@ export default function LoginPage() {
               {showPassword ? "Ukryj" : "Pokaż"}
             </button>
           </div>
+          {error && <div className="text-xs text-red-300">{error}</div>}
           <Button
             className="w-full"
-            onClick={() => signIn("credentials", { email, password, callbackUrl: "/app" })}
+            onClick={handleLogin}
+            disabled={loading}
           >
-            Zaloguj
+            {loading ? "Logowanie..." : "Zaloguj"}
           </Button>
         </div>
         <p className="text-sm text-ink-300">
