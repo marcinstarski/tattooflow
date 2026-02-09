@@ -4,11 +4,11 @@ import { ReactNode } from "react";
 
 const nav = [
   { href: "/app", label: "Dashboard" },
+  { href: "/app/calendar", label: "Kalendarz" },
+  { href: "/app/messages", label: "Wiadomości" },
   { href: "/app/leads", label: "Leady" },
   { href: "/app/clients", label: "Klienci" },
-  { href: "/app/calendar", label: "Kalendarz" },
   { href: "/app/deposits", label: "Zadatki" },
-  { href: "/app/messages", label: "Wiadomości" },
   { href: "/app/campaigns", label: "Kampanie" },
   { href: "/app/profile", label: "Mój profil" },
   { href: "/app/billing", label: "Rozliczenia" },
