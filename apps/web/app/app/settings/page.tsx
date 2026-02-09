@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { MetaConnectCard } from "@/components/app/meta-connect-card";
 import { LeadLinks } from "@/components/app/lead-links";
@@ -35,6 +36,13 @@ export default function SettingsPage() {
   const [artistStatus, setArtistStatus] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
+  const [templates, setTemplates] = useState({
+    templateReminder: "",
+    templateDeposit: "",
+    templateFollowUp: ""
+  });
+  const [savingTemplates, setSavingTemplates] = useState(false);
+  const [templateStatus, setTemplateStatus] = useState<string | null>(null);
 
   useEffect(() => {
     const load = async () => {
@@ -55,6 +63,16 @@ export default function SettingsPage() {
       if (seatsRes.ok) {
         const seats = await seatsRes.json();
         setSeatInfo(seats);
+      }
+
+      const settingsRes = await fetch("/api/settings");
+      if (settingsRes.ok) {
+        const data = await settingsRes.json();
+        setTemplates({
+          templateReminder: data?.templateReminder || "",
+          templateDeposit: data?.templateDeposit || "",
+          templateFollowUp: data?.templateFollowUp || ""
+        });
       }
     };
     load().catch(() => undefined);
@@ -110,6 +128,22 @@ export default function SettingsPage() {
     if (data?.url) {
       window.location.href = data.url as string;
     }
+  };
+
+  const saveTemplates = async () => {
+    setSavingTemplates(true);
+    setTemplateStatus(null);
+    const res = await fetch("/api/settings", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(templates)
+    });
+    if (res.ok) {
+      setTemplateStatus("Zapisano szablony.");
+    } else {
+      setTemplateStatus("Nie udało się zapisać.");
+    }
+    setSavingTemplates(false);
   };
 
   return (
@@ -192,6 +226,45 @@ export default function SettingsPage() {
         </div>
         <div className="mt-3 text-xs">
           <a className="text-accent-400" href="/legal/privacy">Zobacz politykę prywatności</a>
+        </div>
+      </Card>
+
+      <Card>
+        <div className="text-sm text-ink-400">Szablony wiadomości</div>
+        <div className="mt-3 grid gap-3">
+          <div>
+            <label className="text-xs text-ink-400">Przypomnienie o wizycie</label>
+            <Textarea
+              rows={3}
+              value={templates.templateReminder}
+              onChange={(e) => setTemplates({ ...templates, templateReminder: e.target.value })}
+            />
+          </div>
+          <div>
+            <label className="text-xs text-ink-400">Zadatek</label>
+            <Textarea
+              rows={3}
+              value={templates.templateDeposit}
+              onChange={(e) => setTemplates({ ...templates, templateDeposit: e.target.value })}
+            />
+          </div>
+          <div>
+            <label className="text-xs text-ink-400">Follow-up</label>
+            <Textarea
+              rows={3}
+              value={templates.templateFollowUp}
+              onChange={(e) => setTemplates({ ...templates, templateFollowUp: e.target.value })}
+            />
+          </div>
+          <div className="text-[11px] text-ink-500">
+            Dostępne zmienne: {{`{{clientName}}`}}, {{`{{appointmentDate}}`}}, {{`{{depositLink}}`}}
+          </div>
+          {templateStatus && <div className="text-xs text-ink-400">{templateStatus}</div>}
+          <div className="flex justify-end">
+            <Button onClick={saveTemplates} disabled={savingTemplates}>
+              {savingTemplates ? "Zapisywanie..." : "Zapisz szablony"}
+            </Button>
+          </div>
         </div>
       </Card>
 
