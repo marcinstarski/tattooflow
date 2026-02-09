@@ -52,8 +52,6 @@ export const onboardingSchema = z.object({
   studioName: z.string().min(1),
   timezone: z.string().min(1).default("Europe/Warsaw"),
   artistName: z.string().min(1),
-  artistEmail: z.string().email(),
-  artistPhone: z.string().min(6),
 });
 
 export const billingDetailsSchema = z.object({

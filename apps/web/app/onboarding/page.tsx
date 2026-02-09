@@ -12,8 +12,6 @@ export default function OnboardingPage() {
     studioName: "",
     timezone: "Europe/Warsaw",
     artistName: "",
-    artistEmail: "",
-    artistPhone: "",
   });
 
   useEffect(() => {
@@ -70,9 +68,11 @@ export default function OnboardingPage() {
           )}
           {step === 1 && (
             <>
-              <Input placeholder="Imię i nazwisko" value={form.artistName} onChange={(e) => setForm({ ...form, artistName: e.target.value })} />
-              <Input placeholder="Email" value={form.artistEmail} onChange={(e) => setForm({ ...form, artistEmail: e.target.value })} />
-              <Input placeholder="Telefon" value={form.artistPhone} onChange={(e) => setForm({ ...form, artistPhone: e.target.value })} />
+              <Input
+                placeholder="Imię i nazwisko managera"
+                value={form.artistName}
+                onChange={(e) => setForm({ ...form, artistName: e.target.value })}
+              />
             </>
           )}
         </div>

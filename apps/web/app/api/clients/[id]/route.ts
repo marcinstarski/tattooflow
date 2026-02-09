@@ -11,6 +11,27 @@ function getAppRoot() {
 
 export async function PATCH(req: Request, { params }: { params: { id: string } }) {
   const orgId = await requireOrgId();
+  const role = await requireRole();
+  const artistId = role === "artist" ? await getArtistId() : null;
+  if (role === "artist" && !artistId) {
+    return NextResponse.json({ error: "Brak profilu artysty" }, { status: 400 });
+  }
+  if (role === "artist") {
+    const allowed = await prisma.client.findFirst({
+      where: {
+        id: params.id,
+        orgId,
+        OR: [
+          { appointments: { some: { artistId } } },
+          { leads: { some: { artistId } } },
+          { messages: { some: { artistId } } }
+        ]
+      }
+    });
+    if (!allowed) {
+      return NextResponse.json({ error: "Brak uprawnień" }, { status: 403 });
+    }
+  }
   const body = await req.json();
   const updated = await prisma.client.updateMany({
     where: { id: params.id, orgId },
@@ -31,7 +52,19 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
     return NextResponse.json({ error: "Brak profilu artysty" }, { status: 400 });
   }
   const client = await prisma.client.findFirst({
-    where: { id: params.id, orgId },
+    where: {
+      id: params.id,
+      orgId,
+      ...(artistId
+        ? {
+            OR: [
+              { appointments: { some: { artistId } } },
+              { leads: { some: { artistId } } },
+              { messages: { some: { artistId } } }
+            ]
+          }
+        : {})
+    },
     include: {
       appointments: {
         where: artistId ? { artistId } : undefined,
@@ -54,6 +87,10 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
 
 export async function DELETE(req: Request, { params }: { params: { id: string } }) {
   const orgId = await requireOrgId();
+  const role = await requireRole();
+  if (role !== "owner") {
+    return NextResponse.json({ error: "Brak uprawnień" }, { status: 403 });
+  }
   const client = await prisma.client.findFirst({ where: { id: params.id, orgId } });
   if (!client) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });

@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ReactNode } from "react";
+import { signOut } from "next-auth/react";
 
 const nav = [
   { href: "/app", label: "Dashboard" },
@@ -35,13 +38,31 @@ export function AppShell({ children }: { children: ReactNode }) {
         <main className="flex-1 overflow-x-hidden p-4 sm:p-6 lg:p-10">
           <div className="mb-6 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
             <div className="hidden text-sm text-ink-300 lg:block">Strefa: Europe/Warsaw · Waluta: PLN</div>
-            <div className="hidden text-xs text-ink-400 lg:block">Plan: Trial</div>
+            <div className="hidden items-center gap-4 lg:flex">
+              <div className="text-xs text-ink-400">Plan: Trial</div>
+              <button
+                type="button"
+                onClick={() => signOut({ callbackUrl: "/auth/login" })}
+                className="text-xs text-ink-300 hover:text-ink-100"
+              >
+                Wyloguj
+              </button>
+            </div>
             <div className="flex flex-col gap-3 lg:hidden">
               <div className="flex items-center justify-between">
                 <Image src="/taflologo.png" alt="TaFlo" width={120} height={40} className="h-8 w-auto" />
-                <span className="text-xs text-ink-400">Plan: Trial</span>
+                <button
+                  type="button"
+                  onClick={() => signOut({ callbackUrl: "/auth/login" })}
+                  className="text-xs text-ink-300 hover:text-ink-100"
+                >
+                  Wyloguj
+                </button>
               </div>
-              <div className="text-xs text-ink-500">Strefa: Europe/Warsaw · Waluta: PLN</div>
+              <div className="flex items-center justify-between text-xs text-ink-500">
+                <span>Strefa: Europe/Warsaw · Waluta: PLN</span>
+                <span>Plan: Trial</span>
+              </div>
             </div>
           </div>
           <div className="mb-6 lg:hidden">

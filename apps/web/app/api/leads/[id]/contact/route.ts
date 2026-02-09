@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/server/db";
-import { requireOrgId, requireUserId } from "@/server/tenant";
+import { requireOrgId, requireUserId, requireRole, getArtistId } from "@/server/tenant";
 import { sendEmail, sendSms } from "@/server/notifications";
 import { logAudit } from "@/server/utils/audit";
 
@@ -13,6 +13,11 @@ const schema = z.object({
 
 export async function POST(req: Request, { params }: { params: { id: string } }) {
   const orgId = await requireOrgId();
+  const role = await requireRole();
+  const artistId = role === "artist" ? await getArtistId() : null;
+  if (role === "artist" && !artistId) {
+    return NextResponse.json({ error: "Brak profilu artysty" }, { status: 400 });
+  }
   const userId = await requireUserId();
   const payload = await req.json();
   const parsed = schema.safeParse(payload);
@@ -20,7 +25,13 @@ export async function POST(req: Request, { params }: { params: { id: string } })
     return NextResponse.json({ error: "Nieprawidłowe dane" }, { status: 400 });
   }
 
-  const lead = await prisma.lead.findFirst({ where: { id: params.id, orgId } });
+  const lead = await prisma.lead.findFirst({
+    where: {
+      id: params.id,
+      orgId,
+      ...(artistId ? { artistId } : {})
+    }
+  });
   if (!lead) {
     return NextResponse.json({ error: "Brak leada" }, { status: 404 });
   }

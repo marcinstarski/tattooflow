@@ -111,6 +111,7 @@ model Organization {
   clientAlbums           ClientAlbum[]
   artistIntegrations     ArtistIntegration[]
   seatSubscriptions      SeatSubscription[]
+  invites                Invite[]
 
   @@index([plan])
 }
@@ -377,6 +378,23 @@ model SeatSubscription {
   org                   Organization @relation(fields: [orgId], references: [id])
 
   @@index([orgId, status])
+}
+
+model Invite {
+  id        String          @id @default(cuid())
+  orgId     String
+  email     String
+  name      String?
+  role      MembershipRole @default(artist)
+  token     String          @unique
+  expiresAt DateTime
+  acceptedAt DateTime?
+  createdAt DateTime        @default(now())
+
+  org       Organization @relation(fields: [orgId], references: [id])
+
+  @@index([orgId, email])
+  @@index([orgId, token])
 }
 
 model Settings {

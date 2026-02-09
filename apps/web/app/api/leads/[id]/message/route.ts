@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/server/db";
-import { requireOrgId, requireUserId, getArtistId } from "@/server/tenant";
+import { requireOrgId, requireUserId, getArtistId, requireRole } from "@/server/tenant";
 import { isDevMode } from "@/server/env";
 import { sendMetaMessage } from "@/server/integrations/meta-messaging";
 
@@ -12,6 +12,7 @@ const schema = z.object({
 
 export async function POST(req: Request, { params }: { params: { id: string } }) {
   const orgId = await requireOrgId();
+  const role = await requireRole();
   const artistId = await getArtistId();
   if (!artistId) {
     return NextResponse.json({ error: "Brak profilu artysty" }, { status: 400 });
@@ -26,6 +27,12 @@ export async function POST(req: Request, { params }: { params: { id: string } })
   const lead = await prisma.lead.findFirst({ where: { id: params.id, orgId } });
   if (!lead) {
     return NextResponse.json({ error: "Brak leada" }, { status: 404 });
+  }
+  if (lead.artistId && lead.artistId !== artistId && role === "artist") {
+    return NextResponse.json({ error: "Brak uprawnień" }, { status: 403 });
+  }
+  if (!lead.artistId && role === "artist") {
+    return NextResponse.json({ error: "Lead nie jest przypisany" }, { status: 400 });
   }
 
   let client = lead.clientId
