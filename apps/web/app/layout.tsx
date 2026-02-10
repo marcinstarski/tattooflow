@@ -8,7 +8,19 @@ const archivo = Archivo_Black({ subsets: ["latin"], weight: "400", variable: "--
 export const metadata: Metadata = {
   title: "TaFlo CRM – CRM dla tatuatorów",
   description: "CRM dla studiów tatuażu: leady, kalendarz, zadatki, automatyzacje i marketing.",
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL("https://taflo.app"),
+  manifest: "/manifest.webmanifest",
+  themeColor: "#0a0a0f",
+  appleWebApp: {
+    capable: true,
+    title: "TaFlo",
+    statusBarStyle: "black-translucent"
+  },
+  other: {
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-title": "TaFlo",
+    "mobile-web-app-capable": "yes"
+  },
   openGraph: {
     title: "TaFlo CRM",
     description: "SaaS CRM dla tatuatorów.",
