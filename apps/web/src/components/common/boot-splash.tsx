@@ -11,10 +11,12 @@ export function BootSplash() {
     const lockScroll = () => {
       document.body.style.overflow = "hidden";
       document.documentElement.style.overflow = "hidden";
+      document.documentElement.classList.add("splash-active");
     };
     const unlockScroll = () => {
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
+      document.documentElement.classList.remove("splash-active");
     };
 
     lockScroll();

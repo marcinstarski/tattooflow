@@ -15,6 +15,15 @@ body {
   @apply bg-ink-900 text-ink-100 font-sans;
 }
 
+#app-root {
+  opacity: 1;
+  transition: opacity 500ms ease;
+}
+
+html.splash-active #app-root {
+  opacity: 0;
+}
+
 a {
   @apply text-ink-100;
 }

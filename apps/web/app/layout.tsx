@@ -43,7 +43,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <RegisterServiceWorker />
         <BootSplash />
-        {children}
+        <div id="app-root" className="min-h-screen">
+          {children}
+        </div>
       </body>
     </html>
   );
