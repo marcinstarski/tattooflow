@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { ReactNode } from "react";
 import { signOut } from "next-auth/react";
-import { InstallButton } from "@/components/common/install-button";
 import { SessionGuard } from "@/components/common/session-guard";
 
 const nav = [
@@ -43,7 +42,6 @@ export function AppShell({ children }: { children: ReactNode }) {
             <div className="hidden text-sm text-ink-300 lg:block">Strefa: Europe/Warsaw · Waluta: PLN</div>
             <div className="hidden items-center gap-4 lg:flex">
               <div className="text-xs text-ink-400">Plan: Trial</div>
-              <InstallButton />
               <button
                 type="button"
                 onClick={() => signOut({ callbackUrl: "/auth/login" })}
@@ -63,7 +61,6 @@ export function AppShell({ children }: { children: ReactNode }) {
                   Wyloguj
                 </button>
               </div>
-              <InstallButton />
               <div className="flex items-center justify-between text-xs text-ink-500">
                 <span>Strefa: Europe/Warsaw · Waluta: PLN</span>
                 <span>Plan: Trial</span>

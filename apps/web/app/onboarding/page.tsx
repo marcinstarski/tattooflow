@@ -64,6 +64,15 @@ export default function OnboardingPage() {
                 <option value="America/Los_Angeles">America/Los_Angeles</option>
                 <option value="Asia/Dubai">Asia/Dubai</option>
               </select>
+              <div className="rounded-xl border border-ink-800 bg-ink-900/60 p-4 text-xs text-ink-300">
+                <div className="font-semibold text-ink-100">Zainstaluj aplikację na telefonie</div>
+                <div className="mt-2">
+                  iPhone: Safari → Udostępnij → Do ekranu głównego.
+                </div>
+                <div className="mt-1">
+                  Android: Chrome → Zainstaluj aplikację.
+                </div>
+              </div>
             </>
           )}
           {step === 1 && (
