@@ -12,15 +12,6 @@ export function SessionGuard() {
     const remember = localStorage.getItem(REMEMBER_KEY) === "1";
     const loginAtRaw = localStorage.getItem(LOGIN_AT_KEY);
     const loginAt = loginAtRaw ? Number(loginAtRaw) : 0;
-    const isStandalone =
-      window.matchMedia("(display-mode: standalone)").matches ||
-      (window.navigator as Navigator & { standalone?: boolean }).standalone === true;
-
-    if (isStandalone && !remember) {
-      signOut({ callbackUrl: "/auth/login" });
-      return;
-    }
-
     if (!remember && loginAt && Date.now() - loginAt > ONE_HOUR) {
       signOut({ callbackUrl: "/auth/login" });
     }
