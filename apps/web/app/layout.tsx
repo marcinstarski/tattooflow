@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, Archivo_Black } from "next/font/google";
 import { RegisterServiceWorker } from "@/components/common/register-sw";
+import { BootSplash } from "@/components/common/boot-splash";
 
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-sans" });
 const archivo = Archivo_Black({ subsets: ["latin"], weight: "400", variable: "--font-display" });
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pl" className={`${dmSans.variable} ${archivo.variable}`}>
       <body>
         <RegisterServiceWorker />
+        <BootSplash />
         {children}
       </body>
     </html>

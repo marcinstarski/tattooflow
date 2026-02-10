@@ -1,4 +1,4 @@
-const CACHE_NAME = "taflo-static-v1";
+const CACHE_NAME = "taflo-static-v2";
 const STATIC_ASSETS = ["/", "/app", "/auth/login", "/auth/register"];
 
 self.addEventListener("install", (event) => {
