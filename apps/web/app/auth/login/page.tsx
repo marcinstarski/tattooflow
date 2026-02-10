@@ -13,6 +13,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [remember, setRemember] = useState(false);
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -27,6 +28,12 @@ export default function LoginPage() {
       setError("Nieprawidłowy email lub hasło.");
     }
     if (result?.url) {
+      try {
+        localStorage.setItem("taflo_remember", remember ? "1" : "0");
+        localStorage.setItem("taflo_login_at", String(Date.now()));
+      } catch {
+        // ignore
+      }
       window.location.href = result.url;
     }
   };
@@ -75,6 +82,15 @@ export default function LoginPage() {
             </button>
           </div>
           {error && <div className="text-xs text-red-300">{error}</div>}
+          <label className="flex items-center gap-2 text-xs text-ink-300">
+            <input
+              type="checkbox"
+              className="h-4 w-4 rounded border-ink-600 bg-ink-900"
+              checked={remember}
+              onChange={(e) => setRemember(e.target.checked)}
+            />
+            Zapamiętaj mnie na tym urządzeniu
+          </label>
           <Button
             className="w-full"
             onClick={handleLogin}

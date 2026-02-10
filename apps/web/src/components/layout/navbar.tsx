@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { InstallButton } from "../common/install-button";
 
 export function Navbar() {
   return (
@@ -15,6 +16,9 @@ export function Navbar() {
         <Link href="/blog">Baza wiedzy</Link>
       </nav>
       <div className="flex items-center gap-2 sm:gap-3">
+        <div className="hidden sm:block">
+          <InstallButton />
+        </div>
         <Link href="/auth/login" className="text-sm text-ink-200">Zaloguj</Link>
         <Link href="/auth/register" className="hidden sm:inline-flex">
           <Button>Rozpocznij okres próbny</Button>

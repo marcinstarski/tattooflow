@@ -1,6 +1,7 @@
 import "./globals.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans, Archivo_Black } from "next/font/google";
+import { RegisterServiceWorker } from "@/components/common/register-sw";
 
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-sans" });
 const archivo = Archivo_Black({ subsets: ["latin"], weight: "400", variable: "--font-display" });
@@ -10,11 +11,14 @@ export const metadata: Metadata = {
   description: "CRM dla studiów tatuażu: leady, kalendarz, zadatki, automatyzacje i marketing.",
   metadataBase: new URL("https://taflo.app"),
   manifest: "/manifest.webmanifest",
-  themeColor: "#0a0a0f",
   appleWebApp: {
     capable: true,
     title: "TaFlo",
     statusBarStyle: "black-translucent"
+  },
+  icons: {
+    icon: "/tafloicon.png",
+    apple: "/apple-icon.png"
   },
   other: {
     "apple-mobile-web-app-capable": "yes",
@@ -28,10 +32,17 @@ export const metadata: Metadata = {
   }
 };
 
+export const viewport: Viewport = {
+  themeColor: "#0a0a0f"
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pl" className={`${dmSans.variable} ${archivo.variable}`}>
-      <body>{children}</body>
+      <body>
+        <RegisterServiceWorker />
+        {children}
+      </body>
     </html>
   );
 }
