@@ -30,7 +30,7 @@ const proofItems = [
 
 export default function LandingPage() {
   return (
-    <main className="pb-24">
+    <main>
       <section className="grid gap-10 py-16 md:grid-cols-[1.2fr_0.8fr] md:items-center">
         <div className="space-y-6">
           <Badge className="border-accent-500 text-accent-400">CRM dla tatuatorów</Badge>
