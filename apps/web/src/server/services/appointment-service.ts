@@ -1,5 +1,5 @@
 import { prisma } from "@/server/db";
-import { reminderQueue } from "@/server/jobs/queues";
+import { getQueues } from "@/server/jobs/queues";
 import { subHours } from "date-fns";
 
 export async function checkConflict(params: { orgId: string; artistId: string; startsAt: Date; endsAt: Date }) {
@@ -72,11 +72,14 @@ export async function scheduleAppointmentReminders(appointmentId: string, orgId:
     }
   });
 
-  await reminderQueue.add(
-    "appointment_reminder",
-    { appointmentId, orgId },
-    { delay: Math.max(0, reminder24h.getTime() - Date.now()) }
-  );
+  const queues = getQueues();
+  if (queues) {
+    await queues.reminderQueue.add(
+      "appointment_reminder",
+      { appointmentId, orgId },
+      { delay: Math.max(0, reminder24h.getTime() - Date.now()) }
+    );
+  }
 
   return reminderRecord;
 }

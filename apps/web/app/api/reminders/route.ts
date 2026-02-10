@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { requireOrgId } from "@/server/tenant";
 import { prisma } from "@/server/db";
-import { reminderQueue } from "@/server/jobs/queues";
+import { getQueues } from "@/server/jobs/queues";
 
 export async function POST(req: Request) {
   const orgId = await requireOrgId();
@@ -16,7 +16,11 @@ export async function POST(req: Request) {
     }
   });
 
-  await reminderQueue.add(
+  const queues = getQueues();
+  if (!queues) {
+    return NextResponse.json({ error: "Kolejki niedostępne" }, { status: 503 });
+  }
+  await queues.reminderQueue.add(
     "appointment_reminder",
     { appointmentId: body.appointmentId, orgId },
     { delay: Math.max(0, reminder.sendAt.getTime() - Date.now()) }

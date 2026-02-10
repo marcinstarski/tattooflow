@@ -4,10 +4,15 @@ import { prisma } from "@/server/db";
 import { sendEmail, sendSms } from "@/server/notifications";
 import { renderTemplate } from "@/server/templates/renderer";
 import { generateToken } from "@/server/utils/token";
-import { reminderQueue, noReplyQueue, depositQueue, marketingQueue, dunningQueue } from "@/server/jobs/queues";
+import { getQueues } from "@/server/jobs/queues";
 import { env } from "@/server/env";
 
 const connection = getRedisOptions();
+const queues = getQueues();
+if (!queues) {
+  throw new Error("Redis queues unavailable");
+}
+const { reminderQueue, noReplyQueue, depositQueue, marketingQueue, dunningQueue } = queues;
 
 async function setupRepeatableJobs() {
   await noReplyQueue.add("scan", {}, { repeat: { every: 15 * 60 * 1000 } });

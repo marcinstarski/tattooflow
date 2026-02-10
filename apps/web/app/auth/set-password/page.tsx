@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -13,7 +13,9 @@ type InviteInfo = {
   orgName: string;
 };
 
-export default function SetPasswordPage() {
+export const dynamic = "force-dynamic";
+
+function SetPasswordContent() {
   const searchParams = useSearchParams();
   const token = searchParams.get("token") || "";
   const [invite, setInvite] = useState<InviteInfo | null>(null);
@@ -144,5 +146,13 @@ export default function SetPasswordPage() {
         )}
       </div>
     </main>
+  );
+}
+
+export default function SetPasswordPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-ink-900 px-6 py-24 text-sm text-ink-300">Ładowanie...</div>}>
+      <SetPasswordContent />
+    </Suspense>
   );
 }
