@@ -18,11 +18,11 @@ export function BootSplash() {
     };
 
     lockScroll();
-    const fadeTimer = setTimeout(() => setFadeOut(true), 900);
+    const fadeTimer = setTimeout(() => setFadeOut(true), 1200);
     const hideTimer = setTimeout(() => {
       setVisible(false);
       unlockScroll();
-    }, 1200);
+    }, 1700);
 
     return () => {
       clearTimeout(fadeTimer);
@@ -35,7 +35,7 @@ export function BootSplash() {
 
   return (
     <div
-      className={`fixed inset-0 z-[60] flex items-center justify-center bg-ink-900 transition-opacity duration-300 ${fadeOut ? "opacity-0" : "opacity-100"}`}
+      className={`fixed inset-0 z-[60] flex items-center justify-center bg-ink-900 transition-opacity duration-500 ${fadeOut ? "opacity-0" : "opacity-100"}`}
     >
       <Image src="/taflologo.png" alt="TaFlo" width={240} height={80} className="h-14 w-auto opacity-90" priority />
     </div>
