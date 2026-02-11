@@ -6,8 +6,15 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 export default function LoginPage() {
+  const searchParams = useSearchParams();
+  const callbackFromQuery = searchParams.get("callbackUrl");
+  const callbackUrl = callbackFromQuery && callbackFromQuery.startsWith("/")
+    ? callbackFromQuery
+    : "/app";
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -22,7 +29,7 @@ export default function LoginPage() {
     }
     setLoading(true);
     setError(null);
-    const result = await signIn("credentials", { email, password, callbackUrl: "/app", redirect: false });
+    const result = await signIn("credentials", { email, password, callbackUrl, redirect: false });
     setLoading(false);
     if (result?.error) {
       setError("Nieprawidłowy email lub hasło.");
