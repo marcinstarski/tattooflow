@@ -23,6 +23,17 @@ export const authOptions: NextAuthOptions = {
           console.log("[DEV MODE] Magic link:", url);
           return;
         }
+        let finalUrl = url;
+        try {
+          const baseUrl = env.PUBLIC_BASE_URL || env.NEXTAUTH_URL || "";
+          if (baseUrl) {
+            const parsed = new URL(url);
+            parsed.searchParams.set("callbackUrl", `${baseUrl}/onboarding`);
+            finalUrl = parsed.toString();
+          }
+        } catch {
+          // ignore
+        }
         const html = `
           <div style="background:#0b0b12;padding:32px;font-family:Arial,sans-serif;color:#f3f4f6">
             <div style="max-width:520px;margin:0 auto;background:#111827;border-radius:16px;padding:24px;border:1px solid #1f2937">
@@ -30,11 +41,11 @@ export const authOptions: NextAuthOptions = {
               <div style="font-size:14px;color:#d1d5db;margin-bottom:16px">
                 Kliknij przycisk, aby zalogować się i dokończyć onboarding.
               </div>
-              <a href="${url}" style="display:inline-block;padding:12px 18px;border-radius:999px;background:#111827;border:1px solid #4b5563;color:#f9fafb;text-decoration:none;font-size:14px">
+              <a href="${finalUrl}" style="display:inline-block;padding:12px 18px;border-radius:999px;background:#111827;border:1px solid #4b5563;color:#f9fafb;text-decoration:none;font-size:14px">
                 Przejdź do TaFlo
               </a>
               <div style="font-size:12px;color:#9ca3af;margin-top:16px">
-                Jeśli przycisk nie działa, skopiuj link: ${url}
+                Jeśli przycisk nie działa, skopiuj link: ${finalUrl}
               </div>
             </div>
           </div>
