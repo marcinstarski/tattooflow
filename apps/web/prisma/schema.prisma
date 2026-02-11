@@ -397,6 +397,21 @@ model Invite {
   @@index([orgId, token])
 }
 
+model OnboardingToken {
+  id        String   @id @default(cuid())
+  userId    String
+  orgId     String
+  token     String   @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime @default(now())
+
+  user      User @relation(fields: [userId], references: [id])
+  org       Organization @relation(fields: [orgId], references: [id])
+
+  @@index([orgId, userId])
+}
+
 model Settings {
   id              String   @id @default(cuid())
   orgId           String   @unique

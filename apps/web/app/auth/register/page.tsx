@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useState } from "react";
-import { signIn } from "next-auth/react";
 import Image from "next/image";
 
 export default function RegisterPage() {
@@ -25,9 +24,6 @@ export default function RegisterPage() {
     });
     setStatus(res.ok ? "ok" : "error");
     if (res.ok) {
-      const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
-      const callbackUrl = baseUrl ? `${baseUrl}/onboarding` : "/onboarding";
-      await signIn("email", { email, callbackUrl, redirect: false });
       setMessage("Wysłaliśmy maila z linkiem do onboardingu. Sprawdź skrzynkę.");
     }
   };

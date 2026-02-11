@@ -1,13 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 const steps = ["Studio", "Manager"];
 
-export default function OnboardingPage() {
+function OnboardingContent() {
+  const params = useSearchParams();
+  const tokenParam = params.get("token") || "";
   const [step, setStep] = useState(0);
+  const [token, setToken] = useState(tokenParam);
   const [form, setForm] = useState({
     studioName: "",
     timezone: "Europe/Warsaw",
@@ -15,27 +20,47 @@ export default function OnboardingPage() {
   });
 
   useEffect(() => {
-    fetch("/api/org")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data?.name) {
-          setForm((prev) => ({ ...prev, studioName: data.name }));
+    const load = async () => {
+      if (token) {
+        const res = await fetch(`/api/onboarding/token?token=${encodeURIComponent(token)}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data?.orgName) {
+            setForm((prev) => ({ ...prev, studioName: data.orgName }));
+          }
+          if (data?.timezone) {
+            setForm((prev) => ({ ...prev, timezone: data.timezone }));
+          }
+          return;
         }
-        if (data?.timezone) {
-          setForm((prev) => ({ ...prev, timezone: data.timezone }));
-        }
-      })
-      .catch(() => undefined);
-  }, []);
+      }
+      fetch("/api/org")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data?.name) {
+            setForm((prev) => ({ ...prev, studioName: data.name }));
+          }
+          if (data?.timezone) {
+            setForm((prev) => ({ ...prev, timezone: data.timezone }));
+          }
+        })
+        .catch(() => undefined);
+    };
+    load().catch(() => undefined);
+  }, [token]);
 
   const next = async () => {
     if (step === steps.length - 1) {
-      await fetch("/api/onboarding/complete", {
+      const res = await fetch("/api/onboarding/complete", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form)
+        body: JSON.stringify({ ...form, token })
       });
-      window.location.href = "/app";
+      if (res.ok && token) {
+        window.location.href = `/api/auth/auto-login?token=${encodeURIComponent(token)}`;
+        return;
+      }
+      window.location.href = "/auth/login";
       return;
     }
     setStep((s) => s + 1);
@@ -94,5 +119,13 @@ export default function OnboardingPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function OnboardingPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-ink-900 px-6 py-24 text-sm text-ink-300">Ładowanie...</div>}>
+      <OnboardingContent />
+    </Suspense>
   );
 }
