@@ -42,7 +42,7 @@ export const authOptions: NextAuthOptions = {
         await resend.emails.send({
           from: env.EMAIL_FROM,
           to: identifier,
-          subject: "TaFlo: link do onboardingu",
+          subject: "TaFlo: dokończ rejestrację",
           html
         });
       }
