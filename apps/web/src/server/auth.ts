@@ -23,11 +23,27 @@ export const authOptions: NextAuthOptions = {
           console.log("[DEV MODE] Magic link:", url);
           return;
         }
+        const html = `
+          <div style="background:#0b0b12;padding:32px;font-family:Arial,sans-serif;color:#f3f4f6">
+            <div style="max-width:520px;margin:0 auto;background:#111827;border-radius:16px;padding:24px;border:1px solid #1f2937">
+              <div style="font-size:20px;font-weight:700;letter-spacing:0.2px;margin-bottom:12px">TaFlo CRM</div>
+              <div style="font-size:14px;color:#d1d5db;margin-bottom:16px">
+                Kliknij przycisk, aby zalogować się i dokończyć onboarding.
+              </div>
+              <a href="${url}" style="display:inline-block;padding:12px 18px;border-radius:999px;background:#111827;border:1px solid #4b5563;color:#f9fafb;text-decoration:none;font-size:14px">
+                Przejdź do TaFlo
+              </a>
+              <div style="font-size:12px;color:#9ca3af;margin-top:16px">
+                Jeśli przycisk nie działa, skopiuj link: ${url}
+              </div>
+            </div>
+          </div>
+        `;
         await resend.emails.send({
           from: env.EMAIL_FROM,
           to: identifier,
-          subject: "TaFlo: magic link do logowania",
-          html: `<p>Użyj linku, aby zalogować się do TaFlo:</p><p><a href="${url}">${url}</a></p>`
+          subject: "TaFlo: link do onboardingu",
+          html
         });
       }
     }),

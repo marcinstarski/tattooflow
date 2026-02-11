@@ -25,7 +25,9 @@ export default function RegisterPage() {
     });
     setStatus(res.ok ? "ok" : "error");
     if (res.ok) {
-      await signIn("email", { email, callbackUrl: "/onboarding", redirect: false });
+      const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
+      const callbackUrl = baseUrl ? `${baseUrl}/onboarding` : "/onboarding";
+      await signIn("email", { email, callbackUrl, redirect: false });
       setMessage("Wysłaliśmy maila z linkiem do onboardingu. Sprawdź skrzynkę.");
     }
   };
