@@ -112,6 +112,7 @@ model Organization {
   artistIntegrations     ArtistIntegration[]
   seatSubscriptions      SeatSubscription[]
   invites                Invite[]
+  onboardingTokens       OnboardingToken[]
 
   @@index([plan])
 }
@@ -130,6 +131,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   artistProfile Artist? @relation("ArtistUser")
+  onboardingTokens OnboardingToken[]
 }
 
 model Membership {
