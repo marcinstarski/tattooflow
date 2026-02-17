@@ -50,11 +50,29 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Brak profilu artysty" }, { status: 400 });
   }
   try {
-    const depositAmount = parsed.data.depositAmount ?? 0;
+    const settings = await prisma.settings.findUnique({ where: { orgId } });
+    let depositAmount = parsed.data.depositAmount ?? 0;
+    if (!depositAmount && settings) {
+      const price = parsed.data.price || 0;
+      if (settings.depositType === "percent") {
+        depositAmount = Math.round((price * (settings.depositValue || 0)) / 100);
+      } else {
+        depositAmount = settings.depositValue || 0;
+      }
+    }
     const depositRequired = Boolean(parsed.data.depositRequired || depositAmount > 0);
     const depositPaid = Boolean(parsed.data.depositPaid) && depositRequired;
     const depositStatus = depositPaid ? "paid" : depositRequired ? "pending" : "none";
     const depositPaidAt = depositPaid ? new Date() : undefined;
+    let depositDueAt: Date | undefined;
+    if (depositRequired) {
+      if (parsed.data.depositDueAt) {
+        depositDueAt = new Date(parsed.data.depositDueAt);
+      } else if (settings?.depositDueDays !== undefined) {
+        depositDueAt = new Date();
+        depositDueAt.setDate(depositDueAt.getDate() + Math.max(settings.depositDueDays, 0));
+      }
+    }
     const appointment = await createAppointment({
       orgId,
       clientId: parsed.data.clientId,
@@ -65,7 +83,7 @@ export async function POST(req: Request) {
       price: parsed.data.price,
       depositRequired,
       depositAmount: depositRequired ? depositAmount : undefined,
-      depositDueAt: depositRequired && parsed.data.depositDueAt ? new Date(parsed.data.depositDueAt) : undefined,
+      depositDueAt,
       depositStatus,
       depositPaidAt
     });

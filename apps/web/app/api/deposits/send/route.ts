@@ -31,7 +31,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Nieprawidłowe dane" }, { status: 400 });
   }
 
-  const appointment = parsed.data.appointmentId
+  let appointment = parsed.data.appointmentId
     ? await prisma.appointment.findFirst({
         where: {
           id: parsed.data.appointmentId,
@@ -51,6 +51,44 @@ export async function POST(req: Request) {
         include: { client: true },
         orderBy: { startsAt: "asc" }
       });
+
+  const settings = await prisma.settings.findUnique({ where: { orgId } });
+
+  if (!appointment && parsed.data.clientId) {
+    appointment = await prisma.appointment.findFirst({
+      where: {
+        orgId,
+        clientId: parsed.data.clientId,
+        ...(artistId ? { artistId } : {}),
+        depositStatus: { not: "paid" }
+      },
+      include: { client: true },
+      orderBy: { startsAt: "asc" }
+    });
+
+    if (appointment && settings) {
+      const price = appointment.price || 0;
+      let depositAmount = settings.depositValue || 0;
+      if (settings.depositType === "percent") {
+        depositAmount = Math.round((price * depositAmount) / 100);
+      }
+      if (depositAmount > 0) {
+        const dueDays = settings.depositDueDays ?? 7;
+        const depositDueAt = new Date();
+        depositDueAt.setDate(depositDueAt.getDate() + Math.max(dueDays, 0));
+        appointment = await prisma.appointment.update({
+          where: { id: appointment.id },
+          data: {
+            depositRequired: true,
+            depositAmount,
+            depositDueAt,
+            depositStatus: "pending"
+          },
+          include: { client: true }
+        });
+      }
+    }
+  }
 
   if (!appointment) {
     return NextResponse.json({ error: "Brak wizyty z zadatkiem" }, { status: 404 });
@@ -83,7 +121,6 @@ export async function POST(req: Request) {
     });
   }
 
-  const settings = await prisma.settings.findUnique({ where: { orgId } });
   const body = renderTemplate(
     settings?.templateDeposit || "Cześć:) Podsyłam tutaj link do zadatku na naszą sesję: {{depositLink}}",
     {
