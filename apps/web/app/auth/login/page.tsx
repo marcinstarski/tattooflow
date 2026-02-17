@@ -41,7 +41,20 @@ export default function LoginPage() {
       } catch {
         // ignore
       }
-      window.location.href = result.url;
+      let nextUrl = result.url;
+      try {
+        if (callbackUrl.includes("/onboarding")) {
+          nextUrl = callbackUrl;
+        } else {
+          const profileRes = await fetch("/api/profile");
+          if (!profileRes.ok) {
+            nextUrl = "/onboarding";
+          }
+        }
+      } catch {
+        // ignore
+      }
+      window.location.href = nextUrl;
     }
   };
 
@@ -98,6 +111,9 @@ export default function LoginPage() {
             />
             Zapamiętaj mnie na tym urządzeniu
           </label>
+          <Link href="/auth/forgot-password" className="text-xs text-accent-400">
+            Nie pamiętasz hasła?
+          </Link>
           <Button
             className="w-full"
             onClick={handleLogin}

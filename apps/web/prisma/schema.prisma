@@ -132,6 +132,7 @@ model User {
   sessions      Session[]
   artistProfile Artist? @relation("ArtistUser")
   onboardingTokens OnboardingToken[]
+  passwordResetTokens PasswordResetToken[]
 }
 
 model Membership {
@@ -412,6 +413,19 @@ model OnboardingToken {
   org       Organization @relation(fields: [orgId], references: [id])
 
   @@index([orgId, userId])
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime @default(now())
+
+  user      User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
 }
 
 model Settings {
