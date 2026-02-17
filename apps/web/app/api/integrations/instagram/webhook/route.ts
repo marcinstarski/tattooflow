@@ -175,20 +175,27 @@ export async function POST(req: Request) {
         });
       }
 
-      await prisma.lead.create({
-        data: {
-          orgId,
-          artistId,
-          name: client.name,
-          email: client.email,
-          phone: client.phone,
-          igHandle: client.igHandle,
-          source: channel,
-          status: "new",
-          message: messageText || undefined,
-          clientId: client.id
-        }
-      }).catch(() => undefined);
+      const existingLead = await prisma.lead.findFirst({
+        where: { orgId, clientId: client.id }
+      });
+      if (!existingLead) {
+        await prisma.lead
+          .create({
+            data: {
+              orgId,
+              artistId,
+              name: client.name,
+              email: client.email,
+              phone: client.phone,
+              igHandle: client.igHandle,
+              source: channel,
+              status: "new",
+              message: messageText || undefined,
+              clientId: client.id
+            }
+          })
+          .catch(() => undefined);
+      }
     }
   }
 
