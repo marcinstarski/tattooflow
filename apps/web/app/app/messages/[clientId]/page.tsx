@@ -72,7 +72,7 @@ export default function MessageThreadPage() {
       load().catch(() => setLoading(false));
       const interval = window.setInterval(() => {
         load().catch(() => undefined);
-      }, 8000);
+      }, 3000);
       return () => window.clearInterval(interval);
     }
     return undefined;

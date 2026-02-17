@@ -62,7 +62,7 @@ export function MessagesBoard() {
     load().catch(() => setLoading(false));
     const interval = window.setInterval(() => {
       load(true).catch(() => undefined);
-    }, 8000);
+    }, 3000);
     return () => window.clearInterval(interval);
   }, []);
 
