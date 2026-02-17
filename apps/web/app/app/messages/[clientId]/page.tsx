@@ -230,7 +230,7 @@ export default function MessageThreadPage() {
   );
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 overflow-x-hidden">
       <div>
         <h1 className="text-2xl font-display md:text-3xl">Wątek: {client.name}</h1>
         <p className="text-xs text-ink-400">
@@ -262,7 +262,7 @@ export default function MessageThreadPage() {
       </div>
     </div>
 
-      <Card>
+      <Card className="overflow-hidden">
         <div className="space-y-3">
           {ordered.length === 0 && <div className="text-xs text-ink-500">Brak wiadomości.</div>}
           {ordered.map((msg) => (
@@ -294,7 +294,7 @@ export default function MessageThreadPage() {
               return (
                 <div
                   key={msg.id}
-                  className={`max-w-[80%] rounded-2xl border p-3 text-sm ${
+                  className={`max-w-[80%] break-words rounded-2xl border p-3 text-sm ${
                     msg.direction === "outbound"
                       ? "ml-auto border-accent-500/60 bg-accent-500/20"
                       : "border-ink-700 bg-ink-900/70"
@@ -309,7 +309,7 @@ export default function MessageThreadPage() {
                       <button
                         type="button"
                         onClick={() => setLightboxUrl(displayUrl)}
-                        className="block w-full"
+                        className="block w-full max-w-full"
                       >
                         <img
                           src={displayUrl}
