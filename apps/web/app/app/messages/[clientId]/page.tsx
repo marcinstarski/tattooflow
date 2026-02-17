@@ -57,6 +57,7 @@ export default function MessageThreadPage() {
   const [albumPickerFor, setAlbumPickerFor] = useState<string | null>(null);
   const [newAlbumName, setNewAlbumName] = useState("");
   const [albumSaving, setAlbumSaving] = useState(false);
+  const [lightboxUrl, setLightboxUrl] = useState<string | null>(null);
 
   const formatPLN = (value: number) =>
     new Intl.NumberFormat("pl-PL", {
@@ -266,9 +267,11 @@ export default function MessageThreadPage() {
           {ordered.length === 0 && <div className="text-xs text-ink-500">Brak wiadomości.</div>}
           {ordered.map((msg) => (
             (() => {
-              const isImage = isImageUrl(msg.body);
-              let asset: ClientAsset | null = isImage ? assetByUrl.get(normalizeUrl(msg.body)) || null : null;
-              let displayUrl: string | null = isImage ? msg.body : null;
+              const bodyValue = msg.body.trim();
+              const isUrl = bodyValue.startsWith("http://") || bodyValue.startsWith("https://");
+              const isImage = isImageUrl(bodyValue);
+              let asset: ClientAsset | null = isImage ? assetByUrl.get(normalizeUrl(bodyValue)) || null : null;
+              let displayUrl: string | null = isImage ? bodyValue : null;
 
               if (!isImage && msg.body.startsWith("Załącznik") && client.assets?.length) {
                 const msgTime = new Date(msg.createdAt).getTime();
@@ -303,11 +306,17 @@ export default function MessageThreadPage() {
                   </div>
                   {displayUrl ? (
                     <div className="mt-3 space-y-2">
-                      <img
-                        src={displayUrl}
-                        alt="Załącznik"
-                        className="max-h-80 w-full rounded-xl object-contain"
-                      />
+                      <button
+                        type="button"
+                        onClick={() => setLightboxUrl(displayUrl)}
+                        className="block w-full"
+                      >
+                        <img
+                          src={displayUrl}
+                          alt="Załącznik"
+                          className="max-h-80 w-full rounded-xl object-contain"
+                        />
+                      </button>
                       {asset ? (
                         <div className="space-y-2 text-xs text-ink-300">
                           {album ? (
@@ -367,6 +376,12 @@ export default function MessageThreadPage() {
                         <div className="text-[11px] text-ink-500">Nie znaleziono zasobu do albumu.</div>
                       )}
                     </div>
+                  ) : isUrl ? (
+                    <div className="mt-2 text-ink-100">
+                      <a href={bodyValue} target="_blank" rel="noreferrer" className="text-accent-400 break-all">
+                        {bodyValue}
+                      </a>
+                    </div>
                   ) : (
                     <div className="mt-2 text-ink-100">{msg.body}</div>
                   )}
@@ -394,6 +409,25 @@ export default function MessageThreadPage() {
           </Button>
         </div>
       </Card>
+      {lightboxUrl && (
+        <div
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-ink-950/90 p-6"
+          onClick={() => setLightboxUrl(null)}
+        >
+          <button
+            type="button"
+            className="absolute right-6 top-6 rounded-full border border-ink-700 bg-ink-900/80 px-3 py-1 text-xs text-ink-200"
+            onClick={() => setLightboxUrl(null)}
+          >
+            Zamknij
+          </button>
+          <img
+            src={lightboxUrl}
+            alt="Podgląd"
+            className="max-h-[90vh] w-full max-w-4xl rounded-xl object-contain"
+          />
+        </div>
+      )}
     </div>
   );
 }
