@@ -1,5 +1,35 @@
 import { env } from "@/server/env";
 
+export async function fetchMetaProfile(params: {
+  channel: "instagram" | "facebook";
+  senderId: string;
+  pageAccessToken: string;
+}) {
+  const graphVersion = env.META_GRAPH_VERSION || "v19.0";
+  const base = `https://graph.facebook.com/${graphVersion}`;
+  const fields = params.channel === "instagram" ? "username,name" : "name,first_name,last_name";
+  const url = new URL(`${base}/${params.senderId}`);
+  url.searchParams.set("fields", fields);
+  url.searchParams.set("access_token", params.pageAccessToken);
+
+  const res = await fetch(url.toString());
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    return null;
+  }
+
+  const name =
+    typeof data.name === "string"
+      ? data.name
+      : typeof data.first_name === "string" || typeof data.last_name === "string"
+      ? `${data.first_name || ""} ${data.last_name || ""}`.trim()
+      : typeof data.username === "string"
+      ? `@${data.username}`
+      : null;
+
+  return name || null;
+}
+
 export async function sendMetaMessage(params: {
   channel: "instagram" | "facebook";
   recipientId: string;

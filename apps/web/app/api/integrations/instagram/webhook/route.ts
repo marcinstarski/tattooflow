@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/server/db";
 import { env } from "@/server/env";
 import { verifyInstagramSignature } from "@/server/integrations/instagram";
+import { fetchMetaProfile } from "@/server/integrations/meta-messaging";
 
 type InstagramAttachment = { payload?: { url?: string } | null };
 type InstagramMessage = { mid?: string; text?: string; attachments?: InstagramAttachment[] };
@@ -123,17 +124,34 @@ export async function POST(req: Request) {
         where: isInstagram ? { orgId, igUserId: senderId } : { orgId, fbUserId: senderId }
       });
 
+      const profileName = integration.pageAccessToken
+        ? await fetchMetaProfile({
+            channel,
+            senderId,
+            pageAccessToken: integration.pageAccessToken
+          })
+        : null;
+
       if (!client) {
         const shortId = senderId.slice(-4);
         client = await prisma.client.create({
           data: {
             orgId,
-            name: `${isInstagram ? "Instagram" : "Facebook"} klient ${shortId}`,
+            name: profileName || `${isInstagram ? "Instagram" : "Facebook"} klient ${shortId}`,
             igUserId: isInstagram ? senderId : undefined,
             fbUserId: isFacebook ? senderId : undefined,
             marketingOptIn: false
           }
         });
+      } else if (profileName) {
+        const isPlaceholder =
+          client.name.startsWith("Instagram klient") || client.name.startsWith("Facebook klient");
+        if (isPlaceholder) {
+          client = await prisma.client.update({
+            where: { id: client.id },
+            data: { name: profileName }
+          });
+        }
       }
 
       if (mid) {
