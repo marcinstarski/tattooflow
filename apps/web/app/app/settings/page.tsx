@@ -43,6 +43,13 @@ export default function SettingsPage() {
   });
   const [savingTemplates, setSavingTemplates] = useState(false);
   const [templateStatus, setTemplateStatus] = useState<string | null>(null);
+  const [depositSettings, setDepositSettings] = useState({
+    depositType: "fixed",
+    depositValue: 0,
+    depositDueDays: 7
+  });
+  const [savingDeposit, setSavingDeposit] = useState(false);
+  const [depositStatus, setDepositStatus] = useState<string | null>(null);
 
   useEffect(() => {
     const load = async () => {
@@ -72,6 +79,11 @@ export default function SettingsPage() {
           templateReminder: data?.templateReminder || "",
           templateDeposit: data?.templateDeposit || "",
           templateFollowUp: data?.templateFollowUp || ""
+        });
+        setDepositSettings({
+          depositType: data?.depositType || "fixed",
+          depositValue: data?.depositValue ?? 0,
+          depositDueDays: data?.depositDueDays ?? 7
         });
       }
     };
@@ -146,6 +158,22 @@ export default function SettingsPage() {
     setSavingTemplates(false);
   };
 
+  const saveDepositSettings = async () => {
+    setSavingDeposit(true);
+    setDepositStatus(null);
+    const res = await fetch("/api/settings", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(depositSettings)
+    });
+    if (res.ok) {
+      setDepositStatus("Zapisano ustawienia zadatku.");
+    } else {
+      setDepositStatus("Nie udało się zapisać ustawień.");
+    }
+    setSavingDeposit(false);
+  };
+
   return (
     <div className="space-y-6">
       <div>
@@ -214,6 +242,61 @@ export default function SettingsPage() {
           ) : (
             <Button onClick={buySeat}>Dokup stanowisko</Button>
           )}
+        </div>
+      </Card>
+
+      <Card>
+        <div className="text-sm text-ink-400">Zadatek</div>
+        <div className="mt-3 grid gap-3 sm:grid-cols-3">
+          <div>
+            <label className="text-xs text-ink-400">Typ zadatku</label>
+            <select
+              className="mt-1 w-full rounded-xl border border-ink-700 bg-ink-900 px-3 py-2 text-sm text-ink-100"
+              value={depositSettings.depositType}
+              onChange={(e) =>
+                setDepositSettings((prev) => ({ ...prev, depositType: e.target.value }))
+              }
+            >
+              <option value="fixed">Stała kwota (PLN)</option>
+              <option value="percent">Procent ceny (%)</option>
+            </select>
+          </div>
+          <div>
+            <label className="text-xs text-ink-400">
+              {depositSettings.depositType === "percent" ? "Wartość (%)" : "Kwota (PLN)"}
+            </label>
+            <Input
+              type="number"
+              min={0}
+              value={depositSettings.depositValue}
+              onChange={(e) =>
+                setDepositSettings((prev) => ({
+                  ...prev,
+                  depositValue: Number(e.target.value || 0)
+                }))
+              }
+            />
+          </div>
+          <div>
+            <label className="text-xs text-ink-400">Termin wpłaty (dni)</label>
+            <Input
+              type="number"
+              min={0}
+              value={depositSettings.depositDueDays}
+              onChange={(e) =>
+                setDepositSettings((prev) => ({
+                  ...prev,
+                  depositDueDays: Number(e.target.value || 0)
+                }))
+              }
+            />
+          </div>
+        </div>
+        {depositStatus && <div className="mt-2 text-xs text-ink-400">{depositStatus}</div>}
+        <div className="mt-4 flex justify-end">
+          <Button onClick={saveDepositSettings} disabled={savingDeposit}>
+            {savingDeposit ? "Zapisywanie..." : "Zapisz ustawienia"}
+          </Button>
         </div>
       </Card>
 

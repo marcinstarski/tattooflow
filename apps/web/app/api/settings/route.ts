@@ -4,6 +4,9 @@ import { prisma } from "@/server/db";
 import { requireOrgId } from "@/server/tenant";
 
 const settingsSchema = z.object({
+  depositType: z.enum(["fixed", "percent"]).optional(),
+  depositValue: z.number().int().min(0).optional(),
+  depositDueDays: z.number().int().min(0).optional(),
   templateReminder: z.string().min(1).optional(),
   templateDeposit: z.string().min(1).optional(),
   templateFollowUp: z.string().min(1).optional()
