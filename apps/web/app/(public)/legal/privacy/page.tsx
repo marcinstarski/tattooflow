@@ -33,6 +33,10 @@ export default function PrivacyPage() {
             <p>termin wizyty,</p>
             <p>notatki dotyczące realizacji usługi,</p>
             <p>opcjonalnie: zdjęcia projektów tatuaży.</p>
+            <p className="mt-3">
+              W przypadku integracji z Meta (Facebook/Instagram) możemy pobierać z tych platform podstawowe dane profilu
+              rozmówcy (np. imię/nazwa profilu) wyłącznie w celu identyfikacji klienta i obsługi korespondencji.
+            </p>
           </div>
           <div>
             <p className="font-semibold">3. Cel przetwarzania danych</p>
