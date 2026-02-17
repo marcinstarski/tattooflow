@@ -88,7 +88,13 @@ export function MetaConnectCard() {
   };
 
   const disconnect = async () => {
-    await fetch("/api/integrations/instagram/disconnect", { method: "POST" });
+    setError(null);
+    const res = await fetch("/api/integrations/instagram/disconnect", { method: "POST" });
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      setError(data?.error || "Nie udało się rozłączyć integracji.");
+      return;
+    }
     await load();
   };
 
