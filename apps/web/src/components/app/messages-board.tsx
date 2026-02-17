@@ -260,9 +260,6 @@ export function MessagesBoard() {
                     Zadzwoń
                   </Button>
                 )}
-                <Button variant="secondary" onClick={sendDepositLink} disabled={sendingDeposit}>
-                  {sendingDeposit ? "Wysyłanie..." : "Wyślij link do zadatku"}
-                </Button>
               </div>
               <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-ink-400">
                 {depositLoading && <span>Ładowanie zadatku...</span>}
