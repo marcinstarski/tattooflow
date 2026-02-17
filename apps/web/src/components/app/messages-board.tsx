@@ -45,17 +45,25 @@ export function MessagesBoard() {
   const [depositSummary, setDepositSummary] = useState<DepositSummary | null>(null);
   const [depositLoading, setDepositLoading] = useState(false);
 
-  const load = async () => {
-    setLoading(true);
+  const load = async (silent = false) => {
+    if (!silent) {
+      setLoading(true);
+    }
     const [messagesRes, clientsRes] = await Promise.all([fetch("/api/messages"), fetch("/api/clients")]);
     const [messagesData, clientsData] = await Promise.all([messagesRes.json(), clientsRes.json()]);
     setMessages(messagesData as Message[]);
     setClients(clientsData as Client[]);
-    setLoading(false);
+    if (!silent) {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
     load().catch(() => setLoading(false));
+    const interval = window.setInterval(() => {
+      load(true).catch(() => undefined);
+    }, 8000);
+    return () => window.clearInterval(interval);
   }, []);
 
   const selectedClient = useMemo(

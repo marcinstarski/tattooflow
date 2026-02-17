@@ -70,7 +70,12 @@ export default function MessageThreadPage() {
   useEffect(() => {
     if (clientId) {
       load().catch(() => setLoading(false));
+      const interval = window.setInterval(() => {
+        load().catch(() => undefined);
+      }, 8000);
+      return () => window.clearInterval(interval);
     }
+    return undefined;
   }, [clientId]);
 
   useEffect(() => {
