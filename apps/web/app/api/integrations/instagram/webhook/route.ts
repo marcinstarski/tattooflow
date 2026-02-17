@@ -161,8 +161,9 @@ export async function POST(req: Request) {
         if (existing) continue;
       }
 
+      const firstAttachmentUrl = attachments[0]?.payload?.url;
       const bodyText =
-        messageText || (attachments.length ? `Załącznik z ${isInstagram ? "Instagrama" : "Facebooka"}` : "");
+        messageText || firstAttachmentUrl || (attachments.length ? `Załącznik z ${isInstagram ? "Instagrama" : "Facebooka"}` : "");
       if (bodyText) {
         await prisma.message.create({
           data: {

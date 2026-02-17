@@ -79,6 +79,19 @@ export function MessagesBoard() {
       maximumFractionDigits: 2
     }).format(value);
 
+  const isImageUrl = (value: string) => {
+    const lower = value.toLowerCase();
+    return (
+      lower.startsWith("http") &&
+      (lower.includes("fbcdn.net") ||
+        lower.includes("fbsbx.com") ||
+        lower.includes("cdninstagram.com") ||
+        lower.match(/\.(png|jpe?g|webp|gif)$/))
+    );
+  };
+
+  const formatPreview = (value: string) => (isImageUrl(value) ? "📷 Zdjęcie" : value);
+
   const depositStatusLabel = (status?: DepositSummary["status"]) => {
     if (status === "paid") return "Wpłacony";
     return "Nieopłacony";
@@ -232,7 +245,9 @@ export function MessagesBoard() {
           >
             <div className="font-semibold">{thread.client.name}</div>
             <div className="text-xs text-ink-400">{thread.lastMessage.channel}</div>
-            <div className="mt-2 text-xs text-ink-200 line-clamp-2">{thread.lastMessage.body}</div>
+            <div className="mt-2 text-xs text-ink-200 line-clamp-2">
+              {formatPreview(thread.lastMessage.body)}
+            </div>
             {thread.needsReply && <div className="mt-2 text-xs text-red-300">Brak odpowiedzi</div>}
           </button>
         ))}
@@ -354,7 +369,9 @@ export function MessagesBoard() {
                 </div>
               </div>
               <div className="text-xs text-ink-400">{thread.lastMessage.channel}</div>
-              <div className="mt-2 text-xs text-ink-200 line-clamp-2">{thread.lastMessage.body}</div>
+              <div className="mt-2 text-xs text-ink-200 line-clamp-2">
+                {formatPreview(thread.lastMessage.body)}
+              </div>
               {thread.needsReply && <div className="mt-2 text-[11px] text-red-300">Brak odpowiedzi</div>}
             </Link>
           ))}
