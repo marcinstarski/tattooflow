@@ -182,3 +182,7 @@ export async function POST(req: Request) {
 
   return NextResponse.json({ ok: true, depositLink, channel });
 }
+
+export async function GET() {
+  return NextResponse.json({ error: "Method not allowed" }, { status: 405 });
+}
