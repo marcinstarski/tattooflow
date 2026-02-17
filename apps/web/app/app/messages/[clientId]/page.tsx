@@ -37,9 +37,7 @@ export default function MessageThreadPage() {
   const [loading, setLoading] = useState(true);
   const [body, setBody] = useState("");
   const [sending, setSending] = useState(false);
-  const [sendingDeposit, setSendingDeposit] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [actionStatus, setActionStatus] = useState<string | null>(null);
   const [depositSummary, setDepositSummary] = useState<DepositSummary | null>(null);
   const [depositLoading, setDepositLoading] = useState(false);
 
@@ -130,24 +128,6 @@ export default function MessageThreadPage() {
     await load();
   };
 
-  const sendDepositLink = async () => {
-    if (!client) return;
-    setSendingDeposit(true);
-    setActionStatus(null);
-    const res = await fetch("/api/deposits/send", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ clientId: client.id })
-    });
-    if (res.ok) {
-      setActionStatus("Wysłano link do zadatku.");
-    } else {
-      const data = await res.json().catch(() => ({}));
-      setActionStatus(data?.error || "Nie udało się wysłać linku.");
-    }
-    setSendingDeposit(false);
-  };
-
   if (loading) {
     return <div className="text-sm text-ink-400">Ładowanie...</div>;
   }
@@ -181,9 +161,6 @@ export default function MessageThreadPage() {
               Zadzwoń
             </Button>
           )}
-          <Button variant="secondary" onClick={sendDepositLink} disabled={sendingDeposit}>
-            {sendingDeposit ? "Wysyłanie..." : "Wyślij link do zadatku"}
-          </Button>
         </div>
         <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-ink-400">
           {depositLoading && <span>Ładowanie zadatku...</span>}
@@ -195,12 +172,11 @@ export default function MessageThreadPage() {
               </span>
             </>
           )}
-          {!depositLoading && (!depositSummary || !depositSummary.hasDeposit) && (
-            <span>Zadatek: nieustawiony</span>
-          )}
-        </div>
-        {actionStatus && <div className="mt-2 text-xs text-ink-400">{actionStatus}</div>}
+        {!depositLoading && (!depositSummary || !depositSummary.hasDeposit) && (
+          <span>Zadatek: nieustawiony</span>
+        )}
       </div>
+    </div>
 
       <Card>
         <div className="space-y-3">
