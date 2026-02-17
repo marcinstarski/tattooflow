@@ -69,6 +69,14 @@ export async function POST(req: Request) {
         console.log("[META WEBHOOK] missing senderId", { entryId: entry.id });
         continue;
       }
+      console.log("[META WEBHOOK] message event", {
+        entryId: entry.id,
+        senderId,
+        recipientId,
+        mid,
+        hasText: Boolean(messageText),
+        attachments: attachments.length
+      });
 
       const conditions: Array<{ igBusinessAccountId?: string; pageId?: string }> = [];
       if (recipientId) {
@@ -92,6 +100,12 @@ export async function POST(req: Request) {
         console.log("[META WEBHOOK] integration not found", { senderId, recipientId, entryId: entry.id });
         continue;
       }
+      console.log("[META WEBHOOK] integration matched", {
+        orgId: integration.orgId,
+        artistId: integration.artistId,
+        pageId: integration.pageId,
+        igBusinessAccountId: integration.igBusinessAccountId
+      });
 
       const orgId = integration.orgId;
       const artistId = integration.artistId;
@@ -143,6 +157,7 @@ export async function POST(req: Request) {
             externalId: mid
           }
         });
+        console.log("[META WEBHOOK] message saved", { orgId, clientId: client.id, channel, mid });
       } else {
         console.log("[META WEBHOOK] empty bodyText", { senderId, recipientId, entryId: entry.id });
       }
