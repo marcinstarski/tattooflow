@@ -45,11 +45,19 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true });
   }
 
+  console.log("[META WEBHOOK] entries:", body.entry.length);
+
   for (const entry of body.entry) {
     const events = entry.messaging || [];
+    if (!events.length) {
+      console.log("[META WEBHOOK] entry has no messaging events", { entryId: entry.id });
+    }
     for (const event of events) {
       const message = event.message;
-      if (!message) continue;
+      if (!message) {
+        console.log("[META WEBHOOK] event without message", { entryId: entry.id });
+        continue;
+      }
 
       const senderId = event.sender?.id as string | undefined;
       const recipientId = event.recipient?.id as string | undefined;
@@ -57,7 +65,10 @@ export async function POST(req: Request) {
       const attachments = message.attachments || [];
       const mid = message.mid as string | undefined;
 
-      if (!senderId) continue;
+      if (!senderId) {
+        console.log("[META WEBHOOK] missing senderId", { entryId: entry.id });
+        continue;
+      }
 
       const conditions: Array<{ igBusinessAccountId?: string; pageId?: string }> = [];
       if (recipientId) {
@@ -68,13 +79,19 @@ export async function POST(req: Request) {
         conditions.push({ igBusinessAccountId: entry.id });
         conditions.push({ pageId: entry.id });
       }
-      if (conditions.length === 0) continue;
+      if (conditions.length === 0) {
+        console.log("[META WEBHOOK] no conditions to match integration", { senderId, recipientId, entryId: entry.id });
+        continue;
+      }
 
       const integration = await prisma.artistIntegration.findFirst({
         where: { OR: conditions }
       });
 
-      if (!integration) continue;
+      if (!integration) {
+        console.log("[META WEBHOOK] integration not found", { senderId, recipientId, entryId: entry.id });
+        continue;
+      }
 
       const orgId = integration.orgId;
       const artistId = integration.artistId;
@@ -126,6 +143,8 @@ export async function POST(req: Request) {
             externalId: mid
           }
         });
+      } else {
+        console.log("[META WEBHOOK] empty bodyText", { senderId, recipientId, entryId: entry.id });
       }
 
       for (const attachment of attachments) {
