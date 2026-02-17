@@ -40,28 +40,31 @@ export default function LoginPage() {
       setError("Nieprawidłowy email lub hasło.");
       return;
     }
-    if (result?.url) {
-      try {
-        localStorage.setItem("taflo_remember", remember ? "1" : "0");
-        localStorage.setItem("taflo_login_at", String(Date.now()));
-      } catch {
-        // ignore
-      }
-      let nextUrl = result.url;
-      try {
-        if (callbackUrl.includes("/onboarding")) {
-          nextUrl = callbackUrl;
-        } else {
-          const profileRes = await fetch("/api/profile");
-          if (!profileRes.ok) {
-            nextUrl = "/onboarding";
-          }
-        }
-      } catch {
-        // ignore
-      }
-      window.location.href = nextUrl;
+    try {
+      localStorage.setItem("taflo_remember", remember ? "1" : "0");
+      localStorage.setItem("taflo_login_at", String(Date.now()));
+    } catch {
+      // ignore
     }
+    let nextUrl = callbackUrl;
+    try {
+      if (!callbackUrl.includes("/onboarding")) {
+        const profileRes = await fetch("/api/profile");
+        if (!profileRes.ok) {
+          nextUrl = "/onboarding";
+        }
+      }
+      const sessionRes = await fetch("/api/auth/session");
+      const sessionData = await sessionRes.json().catch(() => null);
+      if (!sessionRes.ok || !sessionData?.user) {
+        setError("Nie udało się zalogować. Spróbuj ponownie.");
+        return;
+      }
+    } catch {
+      setError("Nie udało się zalogować. Spróbuj ponownie.");
+      return;
+    }
+    window.location.href = nextUrl;
   };
 
   return (
