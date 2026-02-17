@@ -22,6 +22,11 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [remember, setRemember] = useState(false);
 
+  const errorFromQuery = searchParams.get("error");
+  const errorMessage =
+    error ||
+    (errorFromQuery === "CredentialsSignin" ? "Nieprawidłowy email lub hasło." : null);
+
   const handleLogin = async () => {
     if (!email || !password) {
       setError("Wpisz email i hasło.");
@@ -31,8 +36,9 @@ export default function LoginPage() {
     setError(null);
     const result = await signIn("credentials", { email, password, callbackUrl, redirect: false });
     setLoading(false);
-    if (result?.error) {
+    if (!result || result?.error) {
       setError("Nieprawidłowy email lub hasło.");
+      return;
     }
     if (result?.url) {
       try {
@@ -72,7 +78,13 @@ export default function LoginPage() {
           </Link>
         </div>
         <h1 className="text-3xl font-display">Zaloguj się</h1>
-        <div className="space-y-3">
+        <form
+          className="space-y-3"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleLogin();
+          }}
+        >
           <Input
             placeholder="Email"
             type="email"
@@ -101,7 +113,7 @@ export default function LoginPage() {
               {showPassword ? "Ukryj" : "Pokaż"}
             </button>
           </div>
-          {error && <div className="text-xs text-red-300">{error}</div>}
+          {errorMessage && <div className="text-xs text-red-300">{errorMessage}</div>}
           <label className="flex items-center gap-2 text-xs text-ink-300">
             <input
               type="checkbox"
@@ -116,12 +128,12 @@ export default function LoginPage() {
           </Link>
           <Button
             className="w-full"
-            onClick={handleLogin}
+            type="submit"
             disabled={loading}
           >
             {loading ? "Logowanie..." : "Zaloguj"}
           </Button>
-        </div>
+        </form>
         <p className="text-sm text-ink-300">
           Nie masz konta? <Link href="/auth/register" className="text-accent-400">Zarejestruj się</Link>
         </p>
