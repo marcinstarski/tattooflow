@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -58,6 +58,7 @@ export default function MessageThreadPage() {
   const [newAlbumName, setNewAlbumName] = useState("");
   const [albumSaving, setAlbumSaving] = useState(false);
   const [lightboxUrl, setLightboxUrl] = useState<string | null>(null);
+  const lastMessageIdRef = useRef<string | null>(null);
 
   const formatPLN = (value: number) =>
     new Intl.NumberFormat("pl-PL", {
@@ -84,25 +85,29 @@ export default function MessageThreadPage() {
     return "Nieopłacony";
   };
 
-  const load = async () => {
-    setLoading(true);
+  const load = async (silent = false) => {
+    if (!silent) setLoading(true);
     const res = await fetch(`/api/clients/${clientId}`);
     if (!res.ok) {
-      setLoading(false);
+      if (!silent) setLoading(false);
       setClient(null);
       return;
     }
     const data = (await res.json()) as Client;
-    setClient(data);
-    setLoading(false);
+    const newest = data.messages[0]?.id || null;
+    if (!silent || newest !== lastMessageIdRef.current) {
+      setClient(data);
+      lastMessageIdRef.current = newest;
+    }
+    if (!silent) setLoading(false);
   };
 
   useEffect(() => {
     if (clientId) {
       load().catch(() => setLoading(false));
       const interval = window.setInterval(() => {
-        load().catch(() => undefined);
-      }, 1000);
+        load(true).catch(() => undefined);
+      }, 3000);
       return () => window.clearInterval(interval);
     }
     return undefined;
