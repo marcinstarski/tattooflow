@@ -103,6 +103,28 @@ export function MessagesBoard() {
     return value;
   };
 
+  const renderBody = (value: string) => {
+    const trimmed = value.trim();
+    const url = extractFirstUrl(trimmed);
+    if (url && isImageUrl(url)) {
+      return (
+        <img
+          src={url}
+          alt="Załącznik"
+          className="mt-2 max-h-72 w-full rounded-xl object-contain"
+        />
+      );
+    }
+    if (url) {
+      return (
+        <a href={url} target="_blank" rel="noreferrer" className="break-all text-accent-400">
+          {url}
+        </a>
+      );
+    }
+    return <span className="text-ink-100">{value}</span>;
+  };
+
   const depositStatusLabel = (status?: DepositSummary["status"]) => {
     if (status === "paid") return "Wpłacony";
     return "Nieopłacony";
@@ -331,7 +353,7 @@ export function MessagesBoard() {
                     {msg.direction === "outbound" ? "Ty" : "Klient"} · {msg.channel} ·{" "}
                     {new Date(msg.createdAt).toLocaleString("pl-PL")}
                   </div>
-                  <div className="mt-2 text-ink-100">{msg.body}</div>
+                  <div className="mt-2">{renderBody(msg.body)}</div>
                 </div>
               ))}
             </div>
