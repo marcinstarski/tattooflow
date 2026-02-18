@@ -29,7 +29,7 @@ export function CalendarFull() {
   const appliedPrefill = useRef(false);
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [view, setView] = useState<"week" | "month">("week");
+  const [view, setView] = useState<"week" | "month">("month");
   const [artists, setArtists] = useState<Artist[]>([]);
   const [clients, setClients] = useState<Client[]>([]);
   const [appointments, setAppointments] = useState<Appointment[]>([]);
