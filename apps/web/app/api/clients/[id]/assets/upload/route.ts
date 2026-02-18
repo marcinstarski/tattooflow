@@ -18,6 +18,7 @@ export async function POST(req: Request, { params }: { params: { id: string } })
   const formData = await req.formData();
   const note = (formData.get("note") as string | null) || undefined;
   const albumId = (formData.get("albumId") as string | null) || undefined;
+  const source = (formData.get("source") as string | null) || "client";
   const files = formData.getAll("files").filter(Boolean) as File[];
 
   if (!files.length) {
@@ -50,7 +51,7 @@ export async function POST(req: Request, { params }: { params: { id: string } })
         albumId: albumId || undefined,
         url,
         note,
-        source: "client"
+        source
       }
     });
 

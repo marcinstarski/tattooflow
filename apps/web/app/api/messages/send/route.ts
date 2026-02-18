@@ -3,16 +3,21 @@ import { z } from "zod";
 import { prisma } from "@/server/db";
 import { requireOrgId, requireUserId, getArtistId } from "@/server/tenant";
 import { sendEmail, sendSms } from "@/server/notifications";
-import { isDevMode } from "@/server/env";
+import { env, isDevMode } from "@/server/env";
 import { sendMetaMessage } from "@/server/integrations/meta-messaging";
 
-const schema = z.object({
-  clientId: z.string().min(1),
-  channel: z.enum(["email", "sms", "instagram", "facebook"]),
-  body: z.string().min(1),
-  to: z.string().optional(),
-  subject: z.string().optional()
-});
+const schema = z
+  .object({
+    clientId: z.string().min(1),
+    channel: z.enum(["email", "sms", "instagram", "facebook"]),
+    body: z.string().optional(),
+    imageUrl: z.string().url().optional(),
+    to: z.string().optional(),
+    subject: z.string().optional()
+  })
+  .refine((data) => Boolean(data.body?.trim()) || Boolean(data.imageUrl), {
+    message: "Treść lub obrazek są wymagane"
+  });
 
 export async function POST(req: Request) {
   const orgId = await requireOrgId();
@@ -33,6 +38,8 @@ export async function POST(req: Request) {
   }
 
   const channel = parsed.data.channel;
+  const body = parsed.data.body?.trim() || "";
+  const rawImageUrl = parsed.data.imageUrl;
   let to = parsed.data.to;
   let externalId: string | undefined;
 
@@ -46,7 +53,7 @@ export async function POST(req: Request) {
       orgId,
       to,
       subject,
-      html: `<p>${parsed.data.body}</p>`
+      html: `<p>${body || rawImageUrl}</p>`
     });
   }
 
@@ -55,7 +62,7 @@ export async function POST(req: Request) {
     if (!to) {
       return NextResponse.json({ error: "Brak numeru telefonu" }, { status: 400 });
     }
-    await sendSms({ orgId, to, body: parsed.data.body });
+    await sendSms({ orgId, to, body: body || rawImageUrl || "" });
   }
 
   if (channel === "instagram" || channel === "facebook") {
@@ -77,24 +84,41 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Brak identyfikatora rozmówcy" }, { status: 400 });
     }
 
+    const imageUrl =
+      rawImageUrl && rawImageUrl.startsWith("/")
+        ? new URL(rawImageUrl, env.PUBLIC_BASE_URL || env.NEXTAUTH_URL).toString()
+        : rawImageUrl;
+
     if (isDevMode || !integration?.pageAccessToken) {
       await prisma.outbox.create({
         data: {
           orgId,
           channel,
           to,
-          body: parsed.data.body
+          body: body || imageUrl || ""
         }
       });
     } else {
-      const result = await sendMetaMessage({
-        channel,
-        recipientId: to,
-        text: parsed.data.body,
-        pageAccessToken: integration.pageAccessToken,
-        igBusinessAccountId: integration.igBusinessAccountId
-      });
-      externalId = result.message_id || result.id;
+      if (body) {
+        const result = await sendMetaMessage({
+          channel,
+          recipientId: to,
+          text: body,
+          pageAccessToken: integration.pageAccessToken,
+          igBusinessAccountId: integration.igBusinessAccountId
+        });
+        externalId = result.message_id || result.id;
+      }
+      if (imageUrl) {
+        const result = await sendMetaMessage({
+          channel,
+          recipientId: to,
+          imageUrl,
+          pageAccessToken: integration.pageAccessToken,
+          igBusinessAccountId: integration.igBusinessAccountId
+        });
+        externalId = result.message_id || result.id;
+      }
     }
   }
 
@@ -105,7 +129,7 @@ export async function POST(req: Request) {
       artistId,
       direction: "outbound",
       channel,
-      body: parsed.data.body,
+      body: rawImageUrl || body,
       userId: userId || undefined,
       externalId
     }

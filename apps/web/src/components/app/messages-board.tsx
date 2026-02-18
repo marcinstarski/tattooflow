@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -47,6 +47,8 @@ export function MessagesBoard() {
   const [sendingReply, setSendingReply] = useState(false);
   const [depositSummary, setDepositSummary] = useState<DepositSummary | null>(null);
   const [depositLoading, setDepositLoading] = useState(false);
+  const [sendingMedia, setSendingMedia] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const load = async (silent = false) => {
     if (!silent) {
@@ -298,6 +300,63 @@ export function MessagesBoard() {
     }
   };
 
+  const sendPhoto = async (file: File) => {
+    if (!selectedClient || !replyChannel) return;
+    setSendingMedia(true);
+    setActionStatus(null);
+    try {
+      const form = new FormData();
+      form.append("files", file);
+      form.append("source", "artist");
+      const uploadRes = await fetch(`/api/clients/${selectedClient.id}/assets/upload`, {
+        method: "POST",
+        body: form
+      });
+      if (!uploadRes.ok) {
+        const data = await uploadRes.json().catch(() => ({}));
+        setActionStatus(data?.error || "Nie udało się wysłać zdjęcia.");
+        return;
+      }
+      const uploadData = (await uploadRes.json()) as { assets?: Array<{ id: string; url: string }> };
+      const assetUrl = uploadData.assets?.[0]?.url;
+      if (!assetUrl) {
+        setActionStatus("Nie udało się wysłać zdjęcia.");
+        return;
+      }
+      const optimisticMessage: Message = {
+        id: `optimistic-${Date.now()}`,
+        direction: "outbound",
+        channel: replyChannel,
+        body: assetUrl,
+        createdAt: new Date().toISOString(),
+        client: selectedClient
+      };
+      setMessages((prev) => [...prev, optimisticMessage]);
+      const res = await fetch("/api/messages/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          clientId: selectedClient.id,
+          channel: replyChannel,
+          imageUrl: assetUrl
+        })
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setActionStatus(data?.error || "Nie udało się wysłać zdjęcia.");
+        setMessages((prev) => prev.filter((msg) => msg.id !== optimisticMessage.id));
+        return;
+      }
+      setActionStatus("Zdjęcie wysłane.");
+      await load(true).catch(() => undefined);
+    } finally {
+      setSendingMedia(false);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+    }
+  };
+
   return (
     <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
       <Card className="hidden space-y-3 lg:block">
@@ -415,7 +474,26 @@ export function MessagesBoard() {
                   </div>
                 )}
               </div>
-              <div className="mt-4 flex justify-end">
+              <div className="mt-4 flex flex-wrap justify-end gap-2">
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={(event) => {
+                    const file = event.target.files?.[0];
+                    if (file) {
+                      sendPhoto(file).catch(() => setActionStatus("Nie udało się wysłać zdjęcia."));
+                    }
+                  }}
+                />
+                <Button
+                  variant="secondary"
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={!replyChannel || sendingMedia}
+                >
+                  {sendingMedia ? "Wysyłanie..." : "Wyślij zdjęcie"}
+                </Button>
                 <Button onClick={sendReply} disabled={!replyBody.trim() || sendingReply || !replyChannel}>
                   {sendingReply ? "Wysyłanie..." : "Wyślij wiadomość"}
                 </Button>

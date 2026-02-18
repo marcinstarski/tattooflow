@@ -60,6 +60,8 @@ export default function MessageThreadPage() {
   const [albumSaving, setAlbumSaving] = useState(false);
   const [lightboxUrl, setLightboxUrl] = useState<string | null>(null);
   const lastMessageIdRef = useRef<string | null>(null);
+  const [sendingMedia, setSendingMedia] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const goToReminder = () => {
     if (!client) return;
@@ -261,6 +263,78 @@ export default function MessageThreadPage() {
       await load(true).catch(() => undefined);
     } finally {
       setSending(false);
+    }
+  };
+
+  const sendPhoto = async (file: File) => {
+    if (!client || !lastInboundChannel) {
+      setError("Brak kanału odpowiedzi.");
+      return;
+    }
+    setSendingMedia(true);
+    setError(null);
+    try {
+      const form = new FormData();
+      form.append("files", file);
+      form.append("source", "artist");
+      const uploadRes = await fetch(`/api/clients/${client.id}/assets/upload`, {
+        method: "POST",
+        body: form
+      });
+      if (!uploadRes.ok) {
+        const data = await uploadRes.json().catch(() => ({}));
+        setError(data?.error || "Nie udało się wysłać zdjęcia.");
+        return;
+      }
+      const uploadData = (await uploadRes.json()) as { assets?: Array<{ id: string; url: string }> };
+      const assetUrl = uploadData.assets?.[0]?.url;
+      if (!assetUrl) {
+        setError("Nie udało się wysłać zdjęcia.");
+        return;
+      }
+      const optimisticMessage: Message = {
+        id: `optimistic-${Date.now()}`,
+        direction: "outbound",
+        channel: lastInboundChannel,
+        body: assetUrl,
+        createdAt: new Date().toISOString()
+      };
+      setClient((prev) =>
+        prev
+          ? {
+              ...prev,
+              messages: [...prev.messages, optimisticMessage]
+            }
+          : prev
+      );
+      const res = await fetch("/api/messages/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          clientId: client.id,
+          channel: lastInboundChannel,
+          imageUrl: assetUrl
+        })
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setError(data?.error || "Nie udało się wysłać zdjęcia.");
+        setClient((prev) =>
+          prev
+            ? {
+                ...prev,
+                messages: prev.messages.filter((msg) => msg.id !== optimisticMessage.id)
+              }
+            : prev
+        );
+        return;
+      }
+      await load(true).catch(() => undefined);
+    } finally {
+      setSendingMedia(false);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
     }
   };
 
@@ -469,7 +543,26 @@ export default function MessageThreadPage() {
           />
         </div>
         {error && <div className="mt-2 text-xs text-red-300">{error}</div>}
-        <div className="mt-3 flex justify-end">
+        <div className="mt-3 flex flex-wrap justify-end gap-2">
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/*"
+            className="hidden"
+            onChange={(event) => {
+              const file = event.target.files?.[0];
+              if (file) {
+                sendPhoto(file).catch(() => setError("Nie udało się wysłać zdjęcia."));
+              }
+            }}
+          />
+          <Button
+            variant="secondary"
+            onClick={() => fileInputRef.current?.click()}
+            disabled={sendingMedia || !lastInboundChannel}
+          >
+            {sendingMedia ? "Wysyłanie..." : "Wyślij zdjęcie"}
+          </Button>
           <Button onClick={sendReply} disabled={sending || !body.trim()}>
             {sending ? "Wysyłanie..." : "Wyślij"}
           </Button>

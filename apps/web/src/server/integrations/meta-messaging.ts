@@ -33,7 +33,8 @@ export async function fetchMetaProfile(params: {
 export async function sendMetaMessage(params: {
   channel: "instagram" | "facebook";
   recipientId: string;
-  text: string;
+  text?: string;
+  imageUrl?: string;
   pageAccessToken: string;
   igBusinessAccountId?: string | null;
 }) {
@@ -48,13 +49,26 @@ export async function sendMetaMessage(params: {
   const url = new URL(`${base}/${path}`);
   url.searchParams.set("access_token", params.pageAccessToken);
 
+  const message =
+    params.imageUrl
+      ? {
+          attachment: {
+            type: "image",
+            payload: {
+              url: params.imageUrl,
+              is_reusable: true
+            }
+          }
+        }
+      : { text: params.text || "" };
+
   const res = await fetch(url.toString(), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       messaging_type: "RESPONSE",
       recipient: { id: params.recipientId },
-      message: { text: params.text }
+      message
     })
   });
 
