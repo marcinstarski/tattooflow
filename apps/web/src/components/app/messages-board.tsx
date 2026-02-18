@@ -239,8 +239,19 @@ export function MessagesBoard() {
       return;
     }
     if (!replyBody.trim()) return;
+    const optimisticBody = replyBody.trim();
     setSendingReply(true);
     setActionStatus(null);
+    const optimisticMessage: Message = {
+      id: `optimistic-${Date.now()}`,
+      direction: "outbound",
+      channel: replyChannel,
+      body: optimisticBody,
+      createdAt: new Date().toISOString(),
+      client: selectedClient
+    };
+    setMessages((prev) => [...prev, optimisticMessage]);
+    setReplyBody("");
     try {
       const res = await fetch("/api/messages/send", {
         method: "POST",
@@ -248,17 +259,17 @@ export function MessagesBoard() {
         body: JSON.stringify({
           clientId: selectedClient.id,
           channel: replyChannel,
-          body: replyBody.trim()
+          body: optimisticBody
         })
       });
       if (res.ok) {
-        setReplyBody("");
         setActionStatus("Wiadomość wysłana.");
         await load(true).catch(() => undefined);
         return;
       }
       const data = await res.json().catch(() => ({}));
       setActionStatus(data?.error || "Nie udało się wysłać wiadomości.");
+      setMessages((prev) => prev.filter((msg) => msg.id !== optimisticMessage.id));
     } finally {
       setSendingReply(false);
     }

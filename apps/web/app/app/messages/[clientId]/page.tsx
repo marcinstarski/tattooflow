@@ -202,20 +202,44 @@ export default function MessageThreadPage() {
 
   const sendReply = async () => {
     if (!body.trim()) return;
+    const optimisticBody = body.trim();
     setSending(true);
     setError(null);
+    const optimisticMessage: Message = {
+      id: `optimistic-${Date.now()}`,
+      direction: "outbound",
+      channel: (lastInboundChannel || "other") as Message["channel"],
+      body: optimisticBody,
+      createdAt: new Date().toISOString()
+    };
+    setClient((prev) =>
+      prev
+        ? {
+            ...prev,
+            messages: [...prev.messages, optimisticMessage]
+          }
+        : prev
+    );
+    setBody("");
     try {
       const res = await fetch("/api/messages/reply", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ clientId, body })
+        body: JSON.stringify({ clientId, body: optimisticBody })
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
         setError(data?.error || "Nie udało się wysłać wiadomości.");
+        setClient((prev) =>
+          prev
+            ? {
+                ...prev,
+                messages: prev.messages.filter((msg) => msg.id !== optimisticMessage.id)
+              }
+            : prev
+        );
         return;
       }
-      setBody("");
       await load(true).catch(() => undefined);
     } finally {
       setSending(false);
