@@ -40,13 +40,9 @@ export function CalendarFull() {
   const [newClient, setNewClient] = useState({ name: "", email: "", phone: "", igHandle: "" });
   const [time, setTime] = useState("10:00");
   const [description, setDescription] = useState("");
-  const [depositPaid, setDepositPaid] = useState(false);
-  const [depositAmount, setDepositAmount] = useState("200");
-  const depositAmountNumber = Number(depositAmount || 0);
   const [editDate, setEditDate] = useState("");
   const [editTime, setEditTime] = useState("");
   const [editDescription, setEditDescription] = useState("");
-  const [editDepositPaid, setEditDepositPaid] = useState(false);
 
   useEffect(() => {
     if (appliedPrefill.current) return;
@@ -127,12 +123,6 @@ export function CalendarFull() {
       `${format(selectedDate, "yyyy-MM-dd")}T${time}:00`
     );
     const endsAt = new Date(startsAt.getTime() + 2 * 60 * 60 * 1000);
-    const depositRequired = depositAmountNumber > 0;
-    const depositPaidEffective = depositRequired && depositPaid;
-    const depositDueAt = depositRequired
-      ? new Date(startsAt.getTime() - 7 * 24 * 60 * 60 * 1000)
-      : undefined;
-
     await fetch("/api/appointments", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -141,11 +131,7 @@ export function CalendarFull() {
         artistId,
         startsAt: startsAt.toISOString(),
         endsAt: endsAt.toISOString(),
-        description,
-        depositRequired,
-        depositAmount: depositRequired ? depositAmountNumber : undefined,
-        depositDueAt: depositDueAt ? depositDueAt.toISOString() : undefined,
-        depositPaid: depositPaidEffective
+        description
       })
     });
 
@@ -153,7 +139,6 @@ export function CalendarFull() {
     setClientId("");
     setNewClientMode(false);
     setNewClient({ name: "", email: "", phone: "", igHandle: "" });
-    setDepositPaid(false);
     await load();
   };
 
@@ -184,24 +169,8 @@ export function CalendarFull() {
     setEditDate(format(start, "yyyy-MM-dd"));
     setEditTime(format(start, "HH:mm"));
     setEditDescription(selectedAppointment.description || "");
-    setEditDepositPaid(selectedAppointment.depositStatus === "paid");
   }, [selectedAppointmentId]);
 
-  const toggleDepositPaid = async (appt: Appointment) => {
-    const isPaid = appt.depositStatus === "paid";
-    const shouldBePaid = !isPaid;
-    const requiresDeposit = Boolean(appt.depositRequired || (appt.depositAmount || 0) > 0);
-    const nextStatus = shouldBePaid ? "paid" : requiresDeposit ? "pending" : "none";
-    await fetch(`/api/appointments/${appt.id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        depositStatus: nextStatus,
-        depositPaidAt: shouldBePaid ? new Date().toISOString() : null
-      })
-    });
-    await load();
-  };
 
   const selectAppointment = (appt: Appointment) => {
     setSelectedAppointmentId(appt.id);
@@ -221,9 +190,7 @@ export function CalendarFull() {
       body: JSON.stringify({
         startsAt: nextStart.toISOString(),
         endsAt: nextEnd.toISOString(),
-        description: editDescription || null,
-        depositStatus: editDepositPaid ? "paid" : "pending",
-        depositPaidAt: editDepositPaid ? new Date().toISOString() : null
+        description: editDescription || null
       })
     });
     await load();
@@ -336,9 +303,6 @@ export function CalendarFull() {
                           <div className="truncate">
                             {format(new Date(appt.startsAt), "HH:mm")} · {appt.client.name}
                           </div>
-                          <div className="text-[10px] text-ink-400">
-                            Zadatek: {appt.depositStatus === "paid" ? "tak" : "nie"}
-                          </div>
                         </button>
                       ))}
                       {dayAppointments.length > 2 && (
@@ -387,9 +351,6 @@ export function CalendarFull() {
                       >
                         <div className="font-semibold">{format(new Date(appt.startsAt), "HH:mm")}</div>
                         <div className="text-ink-400">{appt.client.name}</div>
-                        <div className="text-[10px] text-ink-400">
-                          Zadatek: {appt.depositStatus === "paid" ? "tak" : "nie"}
-                        </div>
                       </button>
                     ))}
                   </div>
@@ -491,21 +452,6 @@ export function CalendarFull() {
           </div>
           <Input placeholder="Opis" value={description} onChange={(e) => setDescription(e.target.value)} />
 
-          <div className="rounded-xl border border-ink-700 p-3">
-            <div className="text-xs text-ink-400">Zadatek</div>
-            <div className="mt-2 grid grid-cols-1 gap-2">
-              <Input placeholder="Kwota zadatku" value={depositAmount} onChange={(e) => setDepositAmount(e.target.value)} />
-            </div>
-            <label className="mt-3 flex items-center gap-2 text-xs text-ink-300">
-              <input
-                type="checkbox"
-                checked={depositPaid}
-                onChange={(e) => setDepositPaid(e.target.checked)}
-                disabled={depositAmountNumber <= 0}
-              />
-              Wpłacony zadatek
-            </label>
-          </div>
         </div>
         <div className="mt-4 flex justify-end">
           <Button onClick={createAppointment} disabled={!artistId || (!newClientMode && !clientId) || (newClientMode && !newClient.name)}>
@@ -531,9 +477,6 @@ export function CalendarFull() {
               <div className="flex gap-2">
                 <Button variant="secondary" onClick={() => selectAppointment(appt)}>
                   Edytuj
-                </Button>
-                <Button variant="secondary" onClick={() => toggleDepositPaid(appt)}>
-                  Zadatek: {appt.depositStatus === "paid" ? "tak" : "nie"}
                 </Button>
               </div>
             </div>
@@ -572,14 +515,6 @@ export function CalendarFull() {
               value={editDescription}
               onChange={(e) => setEditDescription(e.target.value)}
             />
-            <label className="flex items-center gap-2 text-xs text-ink-300">
-              <input
-                type="checkbox"
-                checked={editDepositPaid}
-                onChange={(e) => setEditDepositPaid(e.target.checked)}
-              />
-              Wpłacony zadatek
-            </label>
           </div>
           <div className="mt-4 flex flex-wrap justify-end gap-2">
             <Button variant="secondary" onClick={updateAppointment}>Zapisz zmiany</Button>

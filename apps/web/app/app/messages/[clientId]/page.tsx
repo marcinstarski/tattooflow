@@ -20,6 +20,7 @@ type Client = {
   phone?: string | null;
   email?: string | null;
   messages: Message[];
+  lastConversationHandledAt?: string | null;
   assets: ClientAsset[];
   albums: ClientAlbum[];
 };
@@ -65,6 +66,16 @@ export default function MessageThreadPage() {
     const text = `Napisz do ${client.name}`;
     const params = new URLSearchParams({ clientId: client.id, text });
     router.push(`/app/calendar?${params.toString()}`);
+  };
+
+  const markAnswered = async () => {
+    if (!client) return;
+    await fetch("/api/messages/mark-answered", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ clientId: client.id })
+    });
+    await load(true).catch(() => undefined);
   };
 
   const formatPLN = (value: number) =>
@@ -288,6 +299,9 @@ export default function MessageThreadPage() {
           )}
           <Button variant="secondary" onClick={goToReminder}>
             Ustaw przypomnienie
+          </Button>
+          <Button variant="secondary" onClick={markAnswered}>
+            Oznacz jako odpowiedziane
           </Button>
         </div>
         <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-ink-400">

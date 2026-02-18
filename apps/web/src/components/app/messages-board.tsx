@@ -16,6 +16,7 @@ type Client = {
   phone?: string | null;
   igUserId?: string | null;
   fbUserId?: string | null;
+  lastConversationHandledAt?: string | null;
 };
 
 type Message = {
@@ -157,11 +158,14 @@ export function MessagesBoard() {
       const lastMessage = ordered[0];
       const lastInbound = ordered.find((msg) => msg.direction === "inbound");
       const lastOutbound = ordered.find((msg) => msg.direction === "outbound");
-      const needsReply = Boolean(
-        lastInbound &&
-          (!lastOutbound ||
-            new Date(lastOutbound.createdAt).getTime() < new Date(lastInbound.createdAt).getTime())
-      );
+      const handledAt = thread.client.lastConversationHandledAt
+        ? new Date(thread.client.lastConversationHandledAt).getTime()
+        : null;
+      const lastInboundAt = lastInbound ? new Date(lastInbound.createdAt).getTime() : null;
+      const lastOutboundAt = lastOutbound ? new Date(lastOutbound.createdAt).getTime() : null;
+      const answeredByOutbound = Boolean(lastInboundAt && lastOutboundAt && lastOutboundAt >= lastInboundAt);
+      const answeredByHandle = Boolean(lastInboundAt && handledAt && handledAt >= lastInboundAt);
+      const needsReply = Boolean(lastInbound && !answeredByOutbound && !answeredByHandle);
       return { client: thread.client, lastMessage, needsReply };
     });
 
@@ -223,6 +227,16 @@ export function MessagesBoard() {
       : replyChannel === "sms"
       ? "SMS"
       : "—";
+
+  const markAnswered = async () => {
+    if (!selectedClient) return;
+    await fetch("/api/messages/mark-answered", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ clientId: selectedClient.id })
+    });
+    await load(true).catch(() => undefined);
+  };
 
   const sendDepositLink = async () => {
     if (!selectedClient) return;
@@ -340,6 +354,9 @@ export function MessagesBoard() {
                 )}
                 <Button variant="secondary" onClick={goToReminder}>
                   Ustaw przypomnienie
+                </Button>
+                <Button variant="secondary" onClick={markAnswered}>
+                  Oznacz jako odpowiedziane
                 </Button>
               </div>
               <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-ink-400">
