@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { addDays, addMonths, endOfMonth, endOfWeek, format, isSameDay, isSameMonth, startOfMonth, startOfWeek } from "date-fns";
 import { pl } from "date-fns/locale";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useSearchParams } from "next/navigation";
 
 
 type Artist = { id: string; name: string };
@@ -24,6 +25,8 @@ type Appointment = {
 };
 
 export function CalendarFull() {
+  const searchParams = useSearchParams();
+  const appliedPrefill = useRef(false);
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [view, setView] = useState<"week" | "month">("week");
@@ -44,6 +47,27 @@ export function CalendarFull() {
   const [editTime, setEditTime] = useState("");
   const [editDescription, setEditDescription] = useState("");
   const [editDepositPaid, setEditDepositPaid] = useState(false);
+
+  useEffect(() => {
+    if (appliedPrefill.current) return;
+    const reminderText = searchParams.get("text");
+    const reminderClientId = searchParams.get("clientId");
+    const reminderDate = searchParams.get("date");
+    if (reminderDate) {
+      const parsed = new Date(reminderDate);
+      if (!Number.isNaN(parsed.getTime())) {
+        setSelectedDate(parsed);
+        setCurrentMonth(parsed);
+      }
+    }
+    if (reminderText && !description) {
+      setDescription(reminderText);
+    }
+    if (reminderClientId) {
+      setClientId(reminderClientId);
+    }
+    appliedPrefill.current = true;
+  }, [searchParams, description]);
 
   const days = useMemo(() => {
     const start = startOfWeek(startOfMonth(currentMonth), { weekStartsOn: 1 });

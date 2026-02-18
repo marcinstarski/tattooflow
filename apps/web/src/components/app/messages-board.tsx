@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type Channel = "email" | "sms" | "instagram" | "facebook";
 
@@ -34,6 +35,7 @@ type DepositSummary = {
 };
 
 export function MessagesBoard() {
+  const router = useRouter();
   const [messages, setMessages] = useState<Message[]>([]);
   const [clients, setClients] = useState<Client[]>([]);
   const [replyBody, setReplyBody] = useState("");
@@ -70,6 +72,13 @@ export function MessagesBoard() {
     () => clients.find((client) => client.id === selectedClientId) || null,
     [clients, selectedClientId]
   );
+
+  const goToReminder = () => {
+    if (!selectedClient) return;
+    const text = `Napisz do ${selectedClient.name}`;
+    const params = new URLSearchParams({ clientId: selectedClient.id, text });
+    router.push(`/app/calendar?${params.toString()}`);
+  };
 
   const formatPLN = (value: number) =>
     new Intl.NumberFormat("pl-PL", {
@@ -329,6 +338,9 @@ export function MessagesBoard() {
                     Zadzwoń
                   </Button>
                 )}
+                <Button variant="secondary" onClick={goToReminder}>
+                  Ustaw przypomnienie
+                </Button>
               </div>
               <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-ink-400">
                 {depositLoading && <span>Ładowanie zadatku...</span>}

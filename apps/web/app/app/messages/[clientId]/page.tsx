@@ -60,6 +60,13 @@ export default function MessageThreadPage() {
   const [lightboxUrl, setLightboxUrl] = useState<string | null>(null);
   const lastMessageIdRef = useRef<string | null>(null);
 
+  const goToReminder = () => {
+    if (!client) return;
+    const text = `Napisz do ${client.name}`;
+    const params = new URLSearchParams({ clientId: client.id, text });
+    router.push(`/app/calendar?${params.toString()}`);
+  };
+
   const formatPLN = (value: number) =>
     new Intl.NumberFormat("pl-PL", {
       style: "currency",
@@ -264,7 +271,7 @@ export default function MessageThreadPage() {
   );
 
   return (
-    <div className="space-y-6 overflow-x-hidden">
+    <div className="w-full min-w-0 space-y-6 overflow-x-hidden">
       <div>
         <h1 className="text-2xl font-display md:text-3xl">Wątek: {client.name}</h1>
         <p className="text-xs text-ink-400">
@@ -279,6 +286,9 @@ export default function MessageThreadPage() {
               Zadzwoń
             </Button>
           )}
+          <Button variant="secondary" onClick={goToReminder}>
+            Ustaw przypomnienie
+          </Button>
         </div>
         <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-ink-400">
           {depositLoading && <span>Ładowanie zadatku...</span>}
@@ -296,8 +306,8 @@ export default function MessageThreadPage() {
       </div>
     </div>
 
-      <Card className="overflow-hidden">
-        <div className="space-y-3 max-w-full overflow-x-hidden">
+      <Card className="w-full min-w-0 overflow-hidden">
+        <div className="max-w-full space-y-3 overflow-x-hidden">
           {ordered.length === 0 && <div className="text-xs text-ink-500">Brak wiadomości.</div>}
           {ordered.map((msg) => (
             (() => {
@@ -331,7 +341,7 @@ export default function MessageThreadPage() {
               return (
                 <div
                   key={msg.id}
-                  className={`max-w-[80%] break-words rounded-2xl border p-3 text-sm ${
+                  className={`min-w-0 max-w-[80%] break-words rounded-2xl border p-3 text-sm ${
                     msg.direction === "outbound"
                       ? "ml-auto border-accent-500/60 bg-accent-500/20"
                       : "border-ink-700 bg-ink-900/70"
