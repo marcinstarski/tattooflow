@@ -162,7 +162,6 @@ export function CalendarFull() {
       setEditDate("");
       setEditTime("");
       setEditDescription("");
-      setEditDepositPaid(false);
       return;
     }
     const start = new Date(selectedAppointment.startsAt);
