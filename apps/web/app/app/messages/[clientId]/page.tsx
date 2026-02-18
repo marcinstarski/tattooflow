@@ -62,6 +62,7 @@ export default function MessageThreadPage() {
   const lastMessageIdRef = useRef<string | null>(null);
   const [sendingMedia, setSendingMedia] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [visibleCount, setVisibleCount] = useState(20);
 
   const goToReminder = () => {
     if (!client) return;
@@ -135,6 +136,10 @@ export default function MessageThreadPage() {
       return () => window.clearInterval(interval);
     }
     return undefined;
+  }, [clientId]);
+
+  useEffect(() => {
+    setVisibleCount(20);
   }, [clientId]);
 
   useEffect(() => {
@@ -354,6 +359,7 @@ export default function MessageThreadPage() {
   const ordered = [...client.messages].sort(
     (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
   );
+  const visibleMessages = ordered.slice(Math.max(0, ordered.length - visibleCount));
 
   return (
     <div className="w-full min-w-0 space-y-6 overflow-x-hidden">
@@ -397,7 +403,14 @@ export default function MessageThreadPage() {
       <Card className="w-full min-w-0 overflow-hidden">
         <div className="max-w-full space-y-3 overflow-x-hidden">
           {ordered.length === 0 && <div className="text-xs text-ink-500">Brak wiadomości.</div>}
-          {ordered.map((msg) => (
+          {ordered.length > visibleCount && (
+            <div className="flex justify-center">
+              <Button variant="secondary" onClick={() => setVisibleCount((count) => count + 20)}>
+                Pokaż wcześniejsze
+              </Button>
+            </div>
+          )}
+          {visibleMessages.map((msg) => (
             (() => {
               const bodyValue = msg.body.trim();
               const urlFromBody = extractFirstUrl(bodyValue);

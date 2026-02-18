@@ -49,6 +49,7 @@ export function MessagesBoard() {
   const [depositLoading, setDepositLoading] = useState(false);
   const [sendingMedia, setSendingMedia] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [visibleCount, setVisibleCount] = useState(20);
 
   const load = async (silent = false) => {
     if (!silent) {
@@ -181,6 +182,10 @@ export function MessagesBoard() {
       setSelectedClientId(threads[0].client.id);
     }
   }, [threads, selectedClientId]);
+  
+  useEffect(() => {
+    setVisibleCount(20);
+  }, [selectedClientId]);
 
   useEffect(() => {
     const clientId = selectedClient?.id;
@@ -207,6 +212,10 @@ export function MessagesBoard() {
         .filter((msg) => msg.client.id === selectedClient.id)
         .sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
     : [];
+
+  const visibleMessages = selectedMessages.slice(
+    Math.max(0, selectedMessages.length - visibleCount)
+  );
 
   const lastInbound = useMemo(() => {
     if (!selectedMessages.length) return null;
@@ -439,7 +448,17 @@ export function MessagesBoard() {
               {selectedMessages.length === 0 && (
                 <div className="text-xs text-ink-500">Brak wiadomości.</div>
               )}
-              {selectedMessages.map((msg) => (
+              {selectedMessages.length > visibleCount && (
+                <div className="flex justify-center">
+                  <Button
+                    variant="secondary"
+                    onClick={() => setVisibleCount((count) => count + 20)}
+                  >
+                    Pokaż wcześniejsze
+                  </Button>
+                </div>
+              )}
+              {visibleMessages.map((msg) => (
                 <div
                   key={msg.id}
                   className={`max-w-[80%] rounded-2xl border p-3 text-sm ${
