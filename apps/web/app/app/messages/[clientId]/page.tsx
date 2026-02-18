@@ -204,21 +204,22 @@ export default function MessageThreadPage() {
     if (!body.trim()) return;
     setSending(true);
     setError(null);
-    setActionStatus(null);
-    const res = await fetch("/api/messages/reply", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ clientId, body })
-    });
-    if (!res.ok) {
-      const data = await res.json().catch(() => ({}));
-      setError(data?.error || "Nie udało się wysłać wiadomości.");
+    try {
+      const res = await fetch("/api/messages/reply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ clientId, body })
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setError(data?.error || "Nie udało się wysłać wiadomości.");
+        return;
+      }
+      setBody("");
+      await load(true).catch(() => undefined);
+    } finally {
       setSending(false);
-      return;
     }
-    setBody("");
-    setSending(false);
-    await load();
   };
 
   if (loading) {

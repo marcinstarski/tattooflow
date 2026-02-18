@@ -79,8 +79,13 @@ export function MessagesBoard() {
       maximumFractionDigits: 2
     }).format(value);
 
+  const extractFirstUrl = (value: string) => {
+    const match = value.match(/https?:\/\/\S+/i);
+    return match ? match[0] : null;
+  };
+
   const isImageUrl = (value: string) => {
-    const lower = value.toLowerCase();
+    const lower = value.toLowerCase().trim();
     return (
       lower.startsWith("http") &&
       (lower.includes("fbcdn.net") ||
@@ -90,7 +95,13 @@ export function MessagesBoard() {
     );
   };
 
-  const formatPreview = (value: string) => (isImageUrl(value) ? "📷 Zdjęcie" : value);
+  const formatPreview = (value: string) => {
+    const trimmed = value.trim();
+    const url = extractFirstUrl(trimmed);
+    if (url && isImageUrl(url)) return "📷 Zdjęcie";
+    if (url) return "🔗 Link";
+    return value;
+  };
 
   const depositStatusLabel = (status?: DepositSummary["status"]) => {
     if (status === "paid") return "Wpłacony";
@@ -208,25 +219,27 @@ export function MessagesBoard() {
     if (!replyBody.trim()) return;
     setSendingReply(true);
     setActionStatus(null);
-    const res = await fetch("/api/messages/send", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        clientId: selectedClient.id,
-        channel: replyChannel,
-        body: replyBody.trim()
-      })
-    });
-    if (res.ok) {
-      setReplyBody("");
-      setActionStatus("Wiadomość wysłana.");
-      await load();
+    try {
+      const res = await fetch("/api/messages/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          clientId: selectedClient.id,
+          channel: replyChannel,
+          body: replyBody.trim()
+        })
+      });
+      if (res.ok) {
+        setReplyBody("");
+        setActionStatus("Wiadomość wysłana.");
+        await load(true).catch(() => undefined);
+        return;
+      }
+      const data = await res.json().catch(() => ({}));
+      setActionStatus(data?.error || "Nie udało się wysłać wiadomości.");
+    } finally {
       setSendingReply(false);
-      return;
     }
-    const data = await res.json().catch(() => ({}));
-    setActionStatus(data?.error || "Nie udało się wysłać wiadomości.");
-    setSendingReply(false);
   };
 
   return (
@@ -245,7 +258,7 @@ export function MessagesBoard() {
           >
             <div className="font-semibold">{thread.client.name}</div>
             <div className="text-xs text-ink-400">{thread.lastMessage.channel}</div>
-            <div className="mt-2 text-xs text-ink-200 line-clamp-2">
+            <div className="mt-2 break-words text-xs text-ink-200 line-clamp-2">
               {formatPreview(thread.lastMessage.body)}
             </div>
             {thread.needsReply && <div className="mt-2 text-xs text-red-300">Brak odpowiedzi</div>}
@@ -369,7 +382,7 @@ export function MessagesBoard() {
                 </div>
               </div>
               <div className="text-xs text-ink-400">{thread.lastMessage.channel}</div>
-              <div className="mt-2 text-xs text-ink-200 line-clamp-2">
+              <div className="mt-2 break-words text-xs text-ink-200 line-clamp-2">
                 {formatPreview(thread.lastMessage.body)}
               </div>
               {thread.needsReply && <div className="mt-2 text-[11px] text-red-300">Brak odpowiedzi</div>}
