@@ -34,6 +34,12 @@ export default function PrivacyPage() {
             <p>dane firmowe (jeśli podane),</p>
             <p>treść wiadomości z Facebooka i Instagrama oraz imiona/nazwy profili,</p>
             <p>zdjęcia i załączniki (np. projekty tatuażu).</p>
+            <p className="mt-3 font-semibold">Formularz kontaktowy (embed na stronie studia):</p>
+            <p>imię i nazwisko,</p>
+            <p>numer telefonu,</p>
+            <p>adres e-mail,</p>
+            <p>treść wiadomości,</p>
+            <p>zgody marketingowe (jeśli zostały zaznaczone).</p>
             <p className="mt-3 font-semibold">Dane płatności / fakturowania:</p>
             <p>dane niezbędne do rozliczeń i wystawiania faktur.</p>
           </div>
