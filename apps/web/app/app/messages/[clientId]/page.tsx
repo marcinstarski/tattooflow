@@ -273,7 +273,7 @@ export default function MessageThreadPage() {
     </div>
 
       <Card className="overflow-hidden">
-        <div className="space-y-3 max-w-full">
+        <div className="space-y-3 max-w-full overflow-x-hidden">
           {ordered.length === 0 && <div className="text-xs text-ink-500">Brak wiadomości.</div>}
           {ordered.map((msg) => (
             (() => {
@@ -390,8 +390,13 @@ export default function MessageThreadPage() {
                       )}
                     </div>
                   ) : isUrl ? (
-                    <div className="mt-2 break-all text-ink-100">
-                      <a href={urlFromBody || bodyValue} target="_blank" rel="noreferrer" className="text-accent-400 break-all">
+                    <div className="mt-2 max-w-full break-all text-ink-100">
+                      <a
+                        href={urlFromBody || bodyValue}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="block max-w-full break-all text-accent-400"
+                      >
                         {urlFromBody || bodyValue}
                       </a>
                     </div>
