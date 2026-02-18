@@ -117,6 +117,11 @@ function OnboardingContent() {
           </Button>
           <Button onClick={next}>{step === steps.length - 1 ? "Zakończ" : "Dalej"}</Button>
         </div>
+        <div className="mt-6 text-[11px] text-ink-400">
+          Administratorem danych jest TaFlo sp. z o.o. Dane przetwarzamy w celu świadczenia usługi CRM, obsługi kont i
+          komunikacji (w tym integracji z Facebook/Instagram). Masz prawo do dostępu, poprawy i usunięcia danych.{" "}
+          <a href="/legal/privacy" className="text-accent-400">Polityka prywatności</a>.
+        </div>
       </div>
     </main>
   );

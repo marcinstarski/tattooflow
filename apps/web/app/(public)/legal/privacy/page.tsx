@@ -7,99 +7,87 @@ export default function PrivacyPage() {
         <p className="mt-2 text-ink-200">Obowiązuje od: 17.02.2026</p>
         <div className="mt-8 space-y-6 text-sm text-ink-200">
           <div>
-            <p className="font-semibold">1. Informacje ogólne</p>
-            <p>Administratorem danych osobowych jest:</p>
+            <p className="font-semibold">1. Administrator danych</p>
             <p>TaFlo sp. z o.o.</p>
-            <p>Adres: Smyków, ul. Lipowa 2A, 33-206</p>
+            <p>Smyków, ul. Lipowa 2, 33-206</p>
             <p>E-mail kontaktowy: taflospzoo@gmail.com</p>
-            <p className="mt-3">
-              Aplikacja TaFlo CRM jest narzędziem przeznaczonym dla studiów tatuażu, umożliwiającym zarządzanie klientami,
-              rezerwacjami, projektami oraz komunikacją z wykorzystaniem platform Meta (Facebook i Instagram). Aplikacja znajduje
-              się obecnie w fazie testowej (beta).
+          </div>
+          <div>
+            <p className="font-semibold">2. Zakres działalności</p>
+            <p>
+              TaFlo CRM to aplikacja dla studiów tatuażu, służąca do zarządzania klientami, wizytami i komunikacją
+              (w tym integracji z Facebook/Instagram). Usługa jest skierowana do firm (B2B) i klientów indywidualnych (B2C).
             </p>
           </div>
           <div>
-            <p className="font-semibold">2. Zakres przetwarzanych danych</p>
-            <p>W ramach działania aplikacji przetwarzane mogą być następujące dane:</p>
-            <p className="mt-3 font-semibold">Dane użytkowników aplikacji (właścicieli/pracowników studiów tatuażu):</p>
+            <p className="font-semibold">3. Jakie dane przetwarzamy</p>
+            <p className="mt-3 font-semibold">Dane użytkowników aplikacji:</p>
             <p>imię i nazwisko,</p>
             <p>adres e-mail,</p>
-            <p>identyfikator konta Meta (Facebook/Instagram),</p>
-            <p>dane powiązanych stron i profili firmowych.</p>
-            <p className="mt-3 font-semibold">Dane klientów studia tatuażu (wprowadzane przez użytkownika aplikacji):</p>
-            <p>imię i nazwisko,</p>
             <p>numer telefonu,</p>
+            <p>dane firmowe,</p>
+            <p>dane kont powiązanych z Meta (Facebook/Instagram).</p>
+            <p className="mt-3 font-semibold">Dane klientów studia tatuażu:</p>
+            <p>imię i nazwisko,</p>
             <p>adres e-mail,</p>
-            <p>termin wizyty,</p>
-            <p>notatki dotyczące realizacji usługi,</p>
-            <p>opcjonalnie: zdjęcia projektów tatuaży.</p>
-            <p className="mt-3">
-              W przypadku integracji z Meta (Facebook/Instagram) możemy pobierać z tych platform podstawowe dane profilu
-              rozmówcy (np. imię/nazwa profilu) wyłącznie w celu identyfikacji klienta i obsługi korespondencji.
-            </p>
+            <p>numer telefonu,</p>
+            <p>dane firmowe (jeśli podane),</p>
+            <p>treść wiadomości z Facebooka i Instagrama oraz imiona/nazwy profili,</p>
+            <p>zdjęcia i załączniki (np. projekty tatuażu).</p>
+            <p className="mt-3 font-semibold">Dane płatności / fakturowania:</p>
+            <p>dane niezbędne do rozliczeń i wystawiania faktur.</p>
           </div>
           <div>
-            <p className="font-semibold">3. Cel przetwarzania danych</p>
-            <p>Dane osobowe są przetwarzane w celu:</p>
-            <p>świadczenia usług CRM (zarządzanie klientami, wizytami i projektami),</p>
-            <p>umożliwienia logowania do aplikacji za pomocą kont Meta,</p>
-            <p>integracji z Facebookiem i Instagramem (np. obsługa wiadomości),</p>
-            <p>poprawy działania aplikacji oraz rozwoju funkcjonalności,</p>
-            <p>zapewnienia bezpieczeństwa i obsługi zgłoszeń technicznych.</p>
+            <p className="font-semibold">4. Cel przetwarzania danych</p>
+            <p>świadczenie usług CRM,</p>
+            <p>zarządzanie klientami, wizytami i komunikacją,</p>
+            <p>integracja z Facebook/Instagram,</p>
+            <p>wysyłka wiadomości (e-mail/SMS/Meta),</p>
+            <p>obsługa rozliczeń i faktur,</p>
+            <p>zapewnienie bezpieczeństwa i obsługa zgłoszeń.</p>
           </div>
           <div>
-            <p className="font-semibold">4. Podstawa prawna przetwarzania danych</p>
-            <p>Dane są przetwarzane na podstawie:</p>
-            <p>zgody użytkownika (art. 6 ust. 1 lit. a RODO),</p>
-            <p>realizacji umowy / świadczenia usługi (art. 6 ust. 1 lit. b RODO),</p>
-            <p>prawnie uzasadnionego interesu administratora (art. 6 ust. 1 lit. f RODO),</p>
-            <p>obowiązków prawnych, jeśli takie wystąpią.</p>
+            <p className="font-semibold">5. Podstawa prawna</p>
+            <p>art. 6 ust. 1 lit. b RODO – realizacja umowy/usługi,</p>
+            <p>art. 6 ust. 1 lit. c RODO – obowiązki prawne,</p>
+            <p>art. 6 ust. 1 lit. f RODO – uzasadniony interes administratora,</p>
+            <p>art. 6 ust. 1 lit. a RODO – zgoda (gdy wymagana).</p>
           </div>
           <div>
-            <p className="font-semibold">5. Odbiorcy danych</p>
-            <p>Dane mogą być przekazywane wyłącznie:</p>
-            <p>dostawcom hostingu i infrastruktury IT,</p>
-            <p>podmiotom świadczącym usługi utrzymania systemów,</p>
-            <p>platformom Meta (Facebook, Instagram) w zakresie niezbędnym do integracji API.</p>
+            <p className="font-semibold">6. Odbiorcy danych</p>
+            <p>Railway (baza danych),</p>
+            <p>Vercel (hosting aplikacji),</p>
+            <p>Resend (e-maile),</p>
+            <p>SMSAPI (SMS, planowane),</p>
+            <p>Meta Platforms (Facebook/Instagram API).</p>
             <p>Dane nie są sprzedawane ani udostępniane podmiotom trzecim w celach marketingowych.</p>
           </div>
           <div>
-            <p className="font-semibold">6. Okres przechowywania danych</p>
-            <p>Dane są przechowywane:</p>
-            <p>przez czas trwania korzystania z aplikacji,</p>
-            <p>do momentu usunięcia konta przez użytkownika,</p>
-            <p>lub do momentu cofnięcia zgody – o ile przepisy prawa nie wymagają dłuższego przechowywania.</p>
+            <p className="font-semibold">7. Lokalizacja danych</p>
+            <p>Dane są hostowane na terenie UE. Nie przekazujemy danych poza EOG, o ile nie wymagają tego integracje.</p>
           </div>
           <div>
-            <p className="font-semibold">7. Prawa użytkownika</p>
-            <p>Każda osoba, której dane są przetwarzane, ma prawo do:</p>
-            <p>dostępu do danych,</p>
-            <p>ich poprawiania,</p>
-            <p>usunięcia („prawo do bycia zapomnianym”),</p>
-            <p>ograniczenia przetwarzania,</p>
-            <p>przenoszenia danych,</p>
-            <p>wniesienia sprzeciwu,</p>
-            <p>cofnięcia zgody w dowolnym momencie.</p>
+            <p className="font-semibold">8. Okres przechowywania</p>
+            <p>Przez czas korzystania z aplikacji,</p>
+            <p>do momentu usunięcia konta,</p>
+            <p>lub przez okres wymagany przepisami prawa (np. do 5 lat dla rozliczeń).</p>
           </div>
           <div>
-            <p className="font-semibold">8. Usunięcie danych / konta (wymagane przez Meta)</p>
-            <p>Użytkownik może w każdej chwili zażądać usunięcia swojego konta oraz danych osobowych poprzez:</p>
-            <p>kontakt mailowy: taflospzoo@gmail.com</p>
-            <p>Żądanie zostanie zrealizowane niezwłocznie, nie później niż w terminie 30 dni.</p>
+            <p className="font-semibold">9. Prawa użytkownika</p>
+            <p>dostęp do danych, poprawianie, usunięcie, ograniczenie przetwarzania, przenoszenie danych, sprzeciw, cofnięcie zgody.</p>
           </div>
           <div>
-            <p className="font-semibold">9. Bezpieczeństwo danych</p>
-            <p>
-              Administrator stosuje odpowiednie środki techniczne i organizacyjne w celu ochrony danych osobowych przed utratą,
-              nieuprawnionym dostępem, modyfikacją lub ujawnieniem.
-            </p>
+            <p className="font-semibold">10. Usunięcie danych / konta</p>
+            <p>Wnioski o usunięcie danych: taflospzoo@gmail.com</p>
+            <p>Wniosek realizowany maksymalnie w 30 dni.</p>
           </div>
           <div>
-            <p className="font-semibold">10. Zmiany polityki prywatności</p>
-            <p>
-              Polityka prywatności może być aktualizowana wraz z rozwojem funkcjonalności aplikacji TaFlo CRM. Aktualna wersja
-              polityki będzie zawsze dostępna pod adresem: taflo.app/polityka-prywatnosci
-            </p>
+            <p className="font-semibold">11. Cookies</p>
+            <p>Aktualnie używamy wyłącznie cookies technicznych. W przyszłości mogą zostać dodane analityczne.</p>
+          </div>
+          <div>
+            <p className="font-semibold">12. Zmiany polityki</p>
+            <p>Aktualna wersja polityki jest publikowana w tym miejscu.</p>
           </div>
         </div>
       </section>
