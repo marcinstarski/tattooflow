@@ -69,6 +69,10 @@ export default function MessageThreadPage() {
     }).format(value);
 
   const normalizeUrl = (url: string) => url.split("?")[0];
+  const extractFirstUrl = (value: string) => {
+    const match = value.match(/https?:\/\/\S+/i);
+    return match ? match[0] : null;
+  };
   const isImageUrl = (url: string) => {
     const lower = url.toLowerCase();
     return (
@@ -268,15 +272,18 @@ export default function MessageThreadPage() {
     </div>
 
       <Card className="overflow-hidden">
-        <div className="space-y-3">
+        <div className="space-y-3 max-w-full">
           {ordered.length === 0 && <div className="text-xs text-ink-500">Brak wiadomości.</div>}
           {ordered.map((msg) => (
             (() => {
               const bodyValue = msg.body.trim();
-              const isUrl = bodyValue.startsWith("http://") || bodyValue.startsWith("https://");
-              const isImage = isImageUrl(bodyValue);
-              let asset: ClientAsset | null = isImage ? assetByUrl.get(normalizeUrl(bodyValue)) || null : null;
-              let displayUrl: string | null = isImage ? bodyValue : null;
+              const urlFromBody = extractFirstUrl(bodyValue);
+              const isUrl = Boolean(urlFromBody);
+              const isImage = urlFromBody ? isImageUrl(urlFromBody) : false;
+              let asset: ClientAsset | null = isImage && urlFromBody
+                ? assetByUrl.get(normalizeUrl(urlFromBody)) || null
+                : null;
+              let displayUrl: string | null = isImage ? urlFromBody : null;
 
               if (!isImage && msg.body.startsWith("Załącznik") && client.assets?.length) {
                 const msgTime = new Date(msg.createdAt).getTime();
@@ -382,13 +389,13 @@ export default function MessageThreadPage() {
                       )}
                     </div>
                   ) : isUrl ? (
-                    <div className="mt-2 text-ink-100">
-                      <a href={bodyValue} target="_blank" rel="noreferrer" className="text-accent-400 break-all">
-                        {bodyValue}
+                    <div className="mt-2 break-all text-ink-100">
+                      <a href={urlFromBody || bodyValue} target="_blank" rel="noreferrer" className="text-accent-400 break-all">
+                        {urlFromBody || bodyValue}
                       </a>
                     </div>
                   ) : (
-                    <div className="mt-2 text-ink-100">{msg.body}</div>
+                    <div className="mt-2 break-words text-ink-100">{msg.body}</div>
                   )}
                 </div>
               );
