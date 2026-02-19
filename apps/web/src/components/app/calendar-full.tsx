@@ -39,9 +39,11 @@ export function CalendarFull() {
   const [newClientMode, setNewClientMode] = useState(false);
   const [newClient, setNewClient] = useState({ name: "", email: "", phone: "", igHandle: "" });
   const [time, setTime] = useState("10:00");
+  const [endTime, setEndTime] = useState("");
   const [description, setDescription] = useState("");
   const [editDate, setEditDate] = useState("");
   const [editTime, setEditTime] = useState("");
+  const [editEndTime, setEditEndTime] = useState("");
   const [editDescription, setEditDescription] = useState("");
 
   useEffect(() => {
@@ -119,10 +121,10 @@ export function CalendarFull() {
 
     if (!finalClientId || !artistId) return;
 
-    const startsAt = new Date(
-      `${format(selectedDate, "yyyy-MM-dd")}T${time}:00`
-    );
-    const endsAt = new Date(startsAt.getTime() + 2 * 60 * 60 * 1000);
+    const startsAt = new Date(`${format(selectedDate, "yyyy-MM-dd")}T${time}:00`);
+    const endsAt = endTime
+      ? new Date(`${format(selectedDate, "yyyy-MM-dd")}T${endTime}:00`)
+      : new Date(startsAt.getTime() + 2 * 60 * 60 * 1000);
     await fetch("/api/appointments", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -139,6 +141,7 @@ export function CalendarFull() {
     setClientId("");
     setNewClientMode(false);
     setNewClient({ name: "", email: "", phone: "", igHandle: "" });
+    setEndTime("");
     await load();
   };
 
@@ -161,12 +164,15 @@ export function CalendarFull() {
     if (!selectedAppointment) {
       setEditDate("");
       setEditTime("");
+      setEditEndTime("");
       setEditDescription("");
       return;
     }
     const start = new Date(selectedAppointment.startsAt);
+    const end = new Date(selectedAppointment.endsAt);
     setEditDate(format(start, "yyyy-MM-dd"));
     setEditTime(format(start, "HH:mm"));
+    setEditEndTime(format(end, "HH:mm"));
     setEditDescription(selectedAppointment.description || "");
   }, [selectedAppointmentId]);
 
@@ -181,7 +187,9 @@ export function CalendarFull() {
     const previousEnd = new Date(selectedAppointment.endsAt);
     const durationMs = previousEnd.getTime() - previousStart.getTime();
     const nextStart = new Date(`${editDate}T${editTime}:00`);
-    const nextEnd = new Date(nextStart.getTime() + Math.max(durationMs, 30 * 60 * 1000));
+    const nextEnd = editEndTime
+      ? new Date(`${editDate}T${editEndTime}:00`)
+      : new Date(nextStart.getTime() + Math.max(durationMs, 30 * 60 * 1000));
 
     await fetch(`/api/appointments/${selectedAppointment.id}`, {
       method: "PATCH",
@@ -448,6 +456,22 @@ export function CalendarFull() {
                 ));
               })}
             </select>
+            <select
+              className="w-full rounded-xl border border-ink-700 bg-ink-900/70 px-4 py-2 text-sm"
+              value={endTime}
+              onChange={(e) => setEndTime(e.target.value)}
+            >
+              <option value="">Do (opcjonalnie)</option>
+              {Array.from({ length: 24 }).flatMap((_, idx) => {
+                const hour = String(idx).padStart(2, "0");
+                const values = [`${hour}:00`, `${hour}:30`];
+                return values.map((value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ));
+              })}
+            </select>
           </div>
           <Input placeholder="Opis" value={description} onChange={(e) => setDescription(e.target.value)} />
 
@@ -499,6 +523,22 @@ export function CalendarFull() {
               value={editTime}
               onChange={(e) => setEditTime(e.target.value)}
             >
+              {Array.from({ length: 24 }).flatMap((_, idx) => {
+                const hour = String(idx).padStart(2, "0");
+                const values = [`${hour}:00`, `${hour}:30`];
+                return values.map((value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ));
+              })}
+            </select>
+            <select
+              className="w-full rounded-xl border border-ink-700 bg-ink-900/70 px-4 py-2 text-sm"
+              value={editEndTime}
+              onChange={(e) => setEditEndTime(e.target.value)}
+            >
+              <option value="">Do (opcjonalnie)</option>
               {Array.from({ length: 24 }).flatMap((_, idx) => {
                 const hour = String(idx).padStart(2, "0");
                 const values = [`${hour}:00`, `${hour}:30`];
