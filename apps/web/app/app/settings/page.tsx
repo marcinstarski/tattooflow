@@ -26,11 +26,23 @@ type SeatInfo = {
   plan: string;
 };
 
+type Manager = {
+  id: string;
+  name: string;
+  email: string;
+  createdAt: string;
+};
+
 export default function SettingsPage() {
   const [studioName, setStudioName] = useState("");
   const [smsPhone, setSmsPhone] = useState("");
   const [artists, setArtists] = useState<Artist[]>([]);
   const [seatInfo, setSeatInfo] = useState<SeatInfo | null>(null);
+  const [managers, setManagers] = useState<Manager[]>([]);
+  const [managerEmail, setManagerEmail] = useState("");
+  const [managerName, setManagerName] = useState("");
+  const [addingManager, setAddingManager] = useState(false);
+  const [managerStatus, setManagerStatus] = useState<string | null>(null);
   const [newArtist, setNewArtist] = useState({ name: "", email: "", phone: "" });
   const [addingArtist, setAddingArtist] = useState(false);
   const [artistStatus, setArtistStatus] = useState<string | null>(null);
@@ -53,10 +65,11 @@ export default function SettingsPage() {
 
   useEffect(() => {
     const load = async () => {
-      const [orgRes, artistsRes, seatsRes] = await Promise.all([
+      const [orgRes, artistsRes, seatsRes, managersRes] = await Promise.all([
         fetch("/api/org"),
         fetch("/api/artists"),
-        fetch("/api/billing/seats")
+        fetch("/api/billing/seats"),
+        fetch("/api/managers")
       ]);
       if (orgRes.ok) {
         const org = await orgRes.json();
@@ -70,6 +83,10 @@ export default function SettingsPage() {
       if (seatsRes.ok) {
         const seats = await seatsRes.json();
         setSeatInfo(seats);
+      }
+      if (managersRes.ok) {
+        const data = await managersRes.json();
+        setManagers(data || []);
       }
 
       const settingsRes = await fetch("/api/settings");
@@ -134,6 +151,34 @@ export default function SettingsPage() {
     setAddingArtist(false);
   };
 
+  const addManager = async () => {
+    if (!managerEmail.trim()) return;
+    setAddingManager(true);
+    setManagerStatus(null);
+    const res = await fetch("/api/invites", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: managerEmail.trim(),
+        name: managerName.trim() || undefined,
+        role: "owner"
+      })
+    });
+    if (res.ok) {
+      setManagerEmail("");
+      setManagerName("");
+      setManagerStatus("Zaproszenie wysłane.");
+      const managersRes = await fetch("/api/managers");
+      if (managersRes.ok) {
+        setManagers(await managersRes.json());
+      }
+    } else {
+      const data = await res.json().catch(() => ({}));
+      setManagerStatus(data?.error || "Nie udało się wysłać zaproszenia.");
+    }
+    setAddingManager(false);
+  };
+
   const buySeat = async () => {
     const res = await fetch("/api/billing/seats", { method: "POST" });
     const data = await res.json().catch(() => ({}));
@@ -195,6 +240,48 @@ export default function SettingsPage() {
         <div className="mt-4 flex flex-wrap gap-3">
           <Button onClick={save} disabled={saving || !studioName.trim()}>
             {saving ? "Zapisywanie..." : "Zapisz"}
+          </Button>
+        </div>
+      </Card>
+
+      <Card>
+        <div className="text-sm text-ink-400">Managerowie</div>
+        <div className="mt-3 space-y-2 text-sm">
+          {managers.length === 0 && (
+            <div className="text-xs text-ink-500">Brak managerów.</div>
+          )}
+          {managers.map((manager) => (
+            <div
+              key={manager.id}
+              className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-ink-700 px-3 py-2"
+            >
+              <div>
+                <div className="font-semibold">{manager.name}</div>
+                <div className="text-xs text-ink-400">{manager.email}</div>
+              </div>
+              <div className="text-[11px] text-ink-500">
+                {new Date(manager.createdAt).toLocaleDateString("pl-PL")}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          <Input
+            placeholder="Imię i nazwisko (opcjonalnie)"
+            value={managerName}
+            onChange={(e) => setManagerName(e.target.value)}
+          />
+          <Input
+            placeholder="Email managera"
+            value={managerEmail}
+            onChange={(e) => setManagerEmail(e.target.value)}
+          />
+        </div>
+        {managerStatus && <div className="mt-2 text-xs text-ink-400">{managerStatus}</div>}
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Button onClick={addManager} disabled={addingManager || !managerEmail.trim()}>
+            {addingManager ? "Wysyłanie..." : "Dodaj managera"}
           </Button>
         </div>
       </Card>
